@@ -1,0 +1,113 @@
+commit 4fd3a5e1c322f1a0b07ce1958714c80a6104c8b0
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 15:25:59 2019 +0200
+
+    tiedostoja/file1 poistettua ja file2 uudelleennimetty file22:si. Näköjään git luulee, että file2 on poistettu ja file 1 on uudelleennimettu file22:si.. molemmat olivat tyhjiä tietysti
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 53ae97e15874e0ed5de79cdd377ff87c9d50bd23
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 15:21:09 2019 +0200
+
+    tiedostoja/file[1-3] lisätty
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d6fa5a0374418483e3445714e7b2231a2999ef91
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:33:47 2019 +0200
+
+    muutoksen lisätty käyttämällä -p vipua
+
+ eka.txt    | 557 +------------------------------------------------------------
+ kolmas.txt |   2 +-
+ 2 files changed, 2 insertions(+), 557 deletions(-)
+
+commit 415de5da826eebdc88a73ababaee2a3e5e9a8d39
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:31:03 2019 +0200
+
+    muutettu tiedosto.txt -> eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 5a1cfbe30c2bdb48f8f3879338dde32172eaa99c
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:30:02 2019 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit 1c17b873bcb0561d165f8f8c86ebbf6ddb173a26
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:27:27 2019 +0200
+
+    Pieleen meni, nyt tiedosto.txt:ssä on reilusti tekstiä
+
+ tiedosto.txt | 557 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 556 insertions(+), 1 deletion(-)
+
+commit d768c6ac01993b824d60ccd4621666c02a642191
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:25:43 2019 +0200
+
+    lisätty reilusti tekstiä tiedosto.txt (helsinki.fi:n index.html)
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4a7c0e06cd985c987deab878d059c3e465b0bcdf
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:19:48 2019 +0200
+
+    stuff/info luotu
+
+ stuff/info | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 6423d6bbc3b47b62f0eb8c1408169bd047683e29
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:18:30 2019 +0200
+
+    toinen.txt ja kolmas.txt tiedostojen sisältöä muutettu
+
+ kolmas.txt | 2 +-
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit edc7f9ebc30e282df251e63f7cb0f9f62621db8b
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:17:01 2019 +0200
+
+    kolmas tiedosto luotu
+
+ kolmas.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 584c4f1615343e07a0c1480de175073e288955f5
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:14:14 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 4e6574df9c6dd5dc65121a061e0b0cb3facb6b25
+Author: Daniel Korpela <42967512+kordaniel@users.noreply.github.com>
+Date:   Fri Mar 15 14:12:18 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
