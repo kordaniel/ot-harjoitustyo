@@ -1,6 +1,6 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-tämä on *kevään* 2019 **ohjelmistotekniikka** kurssin repositorio
+tämä on HY:n *kevään* 2019 **ohjelmistotekniikka**-kurssin repositorio
 
 ## Tehtävät
 
