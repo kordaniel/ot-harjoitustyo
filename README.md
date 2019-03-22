@@ -2,8 +2,10 @@
 
 tämä on HY:n *kevään* 2019 **ohjelmistotekniikka**-kurssin repositorio
 
-## Tehtävät
+## Dokumentaatio
+[Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyö/tree/master/dokumentaatio/tuntikirjanpito.md)
 
+## Tehtävät
 Linkki | Sisältö
 -------|--------
 [Viikko1](http://github.com/kordaniel/ot-harjoitustyo/tree/master/laskarit/viikko1)|Viikko 1
