@@ -3,7 +3,7 @@
 tämä on HY:n *kevään* 2019 **ohjelmistotekniikka**-kurssin repositorio
 
 ## Dokumentaatio
-[Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyö/tree/master/dokumentaatio/tuntikirjanpito.md)
+[Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyö/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ## Tehtävät
 Linkki | Sisältö
