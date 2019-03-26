@@ -4,13 +4,13 @@
 Sovellus on yksinkertainen, klassinen Tetris-peli. Sovelluksella ei ole erilaisia käyttäjärooleja mutta käyttäjä voi halutessaan asettaa itselleen nimimerkin. Peli on tietyn kokoinen ruudukko ja seuraava palikka arvotaan satunnaisesti. Pelin tavoitteena on pitää ruudukko mahdollisimman tyhjänä. Pelin tahti nopeutuu mitä kauemmin pelaaja on pelannut.
 
 ## Käyttöliittymäluonnos
-![Käyttöliittymäluonnos](https://raw.githubusercontent.com/kordaniel/ot-harjoitustyo/master/dokumentaatio/kuvat/gui_mockup.png)
+![Käyttöliittymäluonnos](https://raw.githubusercontent.com/kordaniel/ot-harjoitustyo/master/dokumentaatio/kuvat/gui_mockup.png)  
 Peli aukeaa menunäkymään, josta valinnan mukaan voi asettaa itselleen nimimerkin, käynnistää pelin, tarkastella ennätystuloksia tai poistua sovelluksesta.
 
 ## Perusversion tarjoama toiminnallisuus
 * Pelaaja voi pelata tetristä
   * Ilman asetettua nimimerkkiä, jolloin peli ei tallenna mitään
-  * Nimimerkin kanssa, jolloin mahdollinen huipputulos tallenneteaan huipputulosten listaan, jos pistemäärä riittävän korkea
+  * Nimimerkin kanssa, jolloin mahdollinen huipputulos tallennetetaan huipputulosten listaan, jos pistemäärä riittävän korkea
 * Pelinäkymässä näytetään
   * Itse pelitilanne
   * Seuraavaksi tuleva palikka
