@@ -1,8 +1,11 @@
 # Ohjelmistotekniikka, harjoitustyö
-
 tämä on HY:n *kevään* 2019 **ohjelmistotekniikka**-kurssin repositorio
 
+## Tetris
+Tähän repositorioon pyrin totetuttamaan klassisen tetris-pelin kloonin.
+
 ## Dokumentaatio
+[Vaatimusmäärittely](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ## Tehtävät
