@@ -15,6 +15,7 @@ public class Main extends Application {
         
         GameScene game = new GameScene(main);
         MenuScene menu = new MenuScene(main, game);
+        game.setMenu(menu);
         
         main.setCenter(menu.getScene());
         
