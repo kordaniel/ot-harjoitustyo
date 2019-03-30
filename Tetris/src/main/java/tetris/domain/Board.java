@@ -36,7 +36,9 @@ public class Board {
     
     for (int y = 0; y < dim; y++) {
       for (int x = 0; x < dim; x++) {
-        if (pieceCoords[y][x] == 0) continue;
+        if (pieceCoords[y][x] == 0) {
+          continue;
+        }
         this.board[py - dim + y][px+x] = pieceCoords[y][x];
       }
     }
@@ -45,7 +47,9 @@ public class Board {
   public void dropRows() {
     for (int y = this.height - 1; y >= 0; y--) {
       for (int x = 0; x < this.width; x++) {
-        if (this.board[y][x] == 0) continue;
+        if (this.board[y][x] == 0) {
+          continue;
+        }
         int symbol = this.board[y][x];
         this.board[y][x] = 0;
         this.dropCoordinate(x, y, symbol);
@@ -84,20 +88,27 @@ public class Board {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("+");
-    for (int i = 0; i < this.width; i++) sb.append("-");
+    for (int i = 0; i < this.width; i++) {
+      sb.append("-");
+    }
     sb.append("+\n");
     
     for (int y = 0; y < this.height; y++) {
       sb.append("|");
       for (int x = 0; x < this.width; x++) {
-        if (this.board[y][x] != 0) sb.append(this.board[y][x]);
-        else sb.append(" ");
+        if (this.board[y][x] != 0) {
+          sb.append(this.board[y][x]);
+        } else {
+          sb.append(" ");
+        }
       }
       sb.append("|\n");
     }
     
     sb.append("+");
-    for (int i = 0; i < this.width; i++) sb.append("-");
+    for (int i = 0; i < this.width; i++) {
+      sb.append("-");
+    }
     sb.append("+");
     return sb.toString();
   }
