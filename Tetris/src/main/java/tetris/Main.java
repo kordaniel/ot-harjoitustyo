@@ -4,11 +4,15 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import tetris.domain.Board;
+import tetris.domain.Piece;
+import tetris.domain.PieceI;
+import tetris.domain.PieceT;
 import tetris.ui.GameScene;
 import tetris.ui.MenuScene;
 
-public class Main extends Application {
-    
+public class Main /*extends Application*/ {
+    /*
     @Override
     public void start(Stage stage) {
         BorderPane main = new BorderPane();
@@ -44,11 +48,50 @@ public class Main extends Application {
                 this.prevNanoTime = currentNanoTime;
             }
         }.start();
-        */
+        *./
         stage.show();
-    }
+    }*/
     
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+        //Board b = new Board(10,18);
+        //System.out.println(b);
+        //b.clearRows();
+        
+        //b.dropRows();
+        Piece p = new PieceI();
+        p.print();
+        p.rotateLeft();
+        p.print();
+        p.rotateLeft();
+        p.print();
+        p.rotateLeft();
+        p.print();
+        p.rotateLeft();
+        p.print();
+        p.rotateLeft();
+        p.print();
+        p.rotateLeft();
+        p.print();
+        p.rotateLeft();
+        p.print();
+        System.out.println("****");
+        System.out.println("****");
+        p = new PieceI();
+        p.print();
+        p.rotateRight();
+        p.print();
+        p.rotateRight();
+        p.print();
+        p.rotateRight();
+        p.print();
+        p.rotateRight();
+        p.print();
+        p.rotateRight();
+        p.print();
+        p.rotateRight();
+        p.print();
+        p.rotateRight();
+        p.print();
     }
 }

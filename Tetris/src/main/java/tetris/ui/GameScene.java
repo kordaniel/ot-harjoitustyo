@@ -49,6 +49,7 @@ public class GameScene {
         //TEST
         for (int i = 0; i < width; i++) {
             rectangleboard[i][i].setFill(Color.TRANSPARENT);
+            rectangleboard[i][width - 1 - i].setFill(Color.TRANSPARENT);
         }
     }
     
