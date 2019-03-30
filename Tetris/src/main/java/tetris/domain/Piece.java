@@ -8,16 +8,50 @@ public abstract class Piece {
   private int orientation;
   
   private int maxOrientations;
-  private int gridSize;
+  private int dimension;
   protected int[][][] coords;
+  
+  private int y;
+  private int x;
 
-  public Piece(String name, int gridSize, int maxOrientations) {
+  public Piece(String name, int dimension, int maxOrientations, int initialX) {
     this.orientation = 0;
     
     this.type = name;
     this.maxOrientations = maxOrientations;
-    this.gridSize = gridSize;
-    this.coords = new int[maxOrientations][gridSize][gridSize];
+    this.dimension = dimension;
+    this.coords = new int[maxOrientations][dimension][dimension];
+    
+    this.y = dimension;
+    this.x = initialX;
+  }
+  
+  public int[][] getCoords() {
+    return this.coords[this.orientation];
+  }
+  
+  public void moveDown() {
+    this.y++;
+  }
+  
+  public void moveLeft() {
+    this.x--;
+  }
+  
+  public void moveRight() {
+    this.x++;
+  }
+  
+  public int getX() {
+    return this.x;
+  }
+
+  public int getY() {
+    return this.y;
+  }
+  
+  public int getDimension() {
+    return this.dimension;
   }
   
   public void rotateLeft() {
@@ -35,6 +69,7 @@ public abstract class Piece {
   public void print() {
     System.out.println("");
     System.out.println("Piece type: " + this.type);
+    System.out.println("y/x: (" + y + "," + x + ")");
     
     System.out.println("**********-- " + this.orientation + " --**********");
     for (int y = 0; y < this.coords[this.orientation].length; y++) {

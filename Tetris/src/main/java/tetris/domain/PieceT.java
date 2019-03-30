@@ -3,8 +3,9 @@ package tetris.domain;
 public class PieceT extends Piece {
 
   private final int SYMBOL;
-  public PieceT() {
-    super("T", 3, 4);
+  
+  public PieceT(int initialX) {
+    super("T", 3, 4, initialX);
     this.SYMBOL = 2;
     this.initializeCoords();
   }

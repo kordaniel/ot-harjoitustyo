@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import tetris.domain.Board;
+import tetris.domain.Game;
 import tetris.domain.Piece;
 import tetris.domain.PieceI;
 import tetris.domain.PieceT;
@@ -59,7 +60,10 @@ public class Main /*extends Application*/ {
         //b.clearRows();
         
         //b.dropRows();
-        Piece p = new PieceI();
+        Game g = new Game(18, 10);
+        g.addPiece();
+        /*
+        Piece p = new PieceI(3);
         p.print();
         p.rotateLeft();
         p.print();
@@ -77,7 +81,7 @@ public class Main /*extends Application*/ {
         p.print();
         System.out.println("****");
         System.out.println("****");
-        p = new PieceI();
+        p = new PieceI(3);
         p.print();
         p.rotateRight();
         p.print();
@@ -93,5 +97,6 @@ public class Main /*extends Application*/ {
         p.print();
         p.rotateRight();
         p.print();
+        */
     }
 }

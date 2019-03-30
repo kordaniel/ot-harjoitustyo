@@ -2,16 +2,17 @@ package tetris.domain;
 
 public class Board {
   
-  private int width;
   private int height;
+  private int width;
   private int[][] board;
 
-  public Board(int width, int height) {
+  public Board(int height, int width) {
     this.width = width;
     this.height = height;
 
     this.board =  new int[height][width];
     
+    /*
     //SET INITIAL PIECES FOR TESTING PURPOSES
     for (int i = 0; i < this.width; i++) {
       this.board[i][i] = 1;
@@ -20,26 +21,45 @@ public class Board {
     for (int x = 0; x < this.width; x++) {
       this.board[4][x] = 3;
     }
+    */
+  }
+  
+  public void resetBoard() {
+    this.board = new int[this.height][this.width];
+  }
+  
+  public void setPiece(Piece p) {
+    int[][] pieceCoords = p.getCoords();
+    int py = p.getY();
+    int px = p.getX();
+    int dim = p.getDimension();
+    
+    for (int y = 0; y < dim; y++) {
+      for (int x = 0; x < dim; x++) {
+        if (pieceCoords[y][x] == 0) continue;
+        this.board[py - dim + y][px+x] = pieceCoords[y][x];
+      }
+    }
   }
 
   public void dropRows() {
     for (int y = this.height - 1; y >= 0; y--) {
       for (int x = 0; x < this.width; x++) {
         if (this.board[y][x] == 0) continue;
-        int oli = this.board[y][x];
+        int symbol = this.board[y][x];
         this.board[y][x] = 0;
-        this.dropCoordinate(x, y, oli);
+        this.dropCoordinate(x, y, symbol);
         this.clearRows();
       }
     }
   }
   
-  public void dropCoordinate(int x, int y, int pieceNum) {
+  public void dropCoordinate(int x, int y, int symbol) {
     if (y + 1 == this.height || this.board[y + 1][x] != 0) {
-      this.board[y][x] = pieceNum;
+      this.board[y][x] = symbol;
       return;
     }
-    this.dropCoordinate(x, y + 1, pieceNum);
+    this.dropCoordinate(x, y + 1, symbol);
   }
   
   public void clearRows() {
