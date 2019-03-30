@@ -14,9 +14,9 @@ public class GameScene {
     
     private BorderPane parent;
     private MenuScene menu;
-    private int width = 9;
-    private int height = 20;
-    private int size = 20;
+    private int width = 10;
+    private int height = 18;
+    private int size = 25;
     
     private Rectangle[][] rectangleboard;
     
@@ -47,7 +47,7 @@ public class GameScene {
             }
         }
         //TEST
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < width; i++) {
             rectangleboard[i][i].setFill(Color.TRANSPARENT);
         }
     }
@@ -60,8 +60,8 @@ public class GameScene {
         GridPane game = new GridPane();
         
         game.setStyle("-fx-background-color: cyan; -fx-grid-lines-visible: true;");
-        for (int x = 0; x < 9; x++) {
-            for (int y = 0; y < 20; y++) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
                 //game.add(new Label("" + x + "," + y), x, y);
                 game.add(rectangleboard[y][x], x, y);
             }
