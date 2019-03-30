@@ -8,4 +8,5 @@
 | 29.3  | 1h   | JavaFX tutustumista, sovellukselle luotu Main.java|
 | 29.3  | 3h   | JavaFX:n opiskelua, alustavat luokat menu sekä pelinäkymälle|
 | 30.3  | 4h   | Pelilogiikan sekä luokkien mietiskelyä, alustavat luokat luotu|
-| Yht   | 12h   | |
+| 30.3  | 3h   | Jatkettu pelilogiikan parissa, luotu Game-luokka jossa ylläpidetään pelin tilaa|
+| Yht   | 15h   | |
