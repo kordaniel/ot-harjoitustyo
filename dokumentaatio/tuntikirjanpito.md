@@ -9,4 +9,5 @@
 | 29.3  | 3h   | JavaFX:n opiskelua, alustavat luokat menu sekä pelinäkymälle|
 | 30.3  | 4h   | Pelilogiikan sekä luokkien mietiskelyä, alustavat luokat luotu|
 | 30.3  | 3h   | Jatkettu pelilogiikan parissa, luotu Game-luokka jossa ylläpidetään pelin tilaa|
-| Yht   | 15h   | |
+| 31.1  | 1h   | Luotu alustava luokka tekstikäyttöliittymää varten, helpottaa sovelluksen kehittämistä|
+| Yht   | 16h   | |

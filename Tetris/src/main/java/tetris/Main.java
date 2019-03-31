@@ -60,6 +60,7 @@ public class Main /*extends Application*/ {
         //launch(args);
         
         Scanner scanner = new Scanner(System.in);
+        
         Userinterface ui = new TextUI(scanner);
         ui.start();
 
