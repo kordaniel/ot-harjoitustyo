@@ -14,8 +14,11 @@ public abstract class Piece {
   private int y;
   private int x;
 
+  private boolean isFinished;
+  
   public Piece(String name, int dimension, int maxOrientations, int initialX) {
     this.orientation = 0;
+    this.isFinished = false;
     
     this.type = name;
     this.maxOrientations = maxOrientations;
@@ -52,6 +55,14 @@ public abstract class Piece {
   
   public int getDimension() {
     return this.dimension;
+  }
+  
+  public boolean getIsFinished() {
+    return this.isFinished;
+  }
+  
+  public void setFinished(boolean finished) {
+    this.isFinished = finished;
   }
   
   public void rotateLeft() {

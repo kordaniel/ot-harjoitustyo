@@ -1,5 +1,6 @@
 package tetris;
 
+import java.util.Scanner;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -11,6 +12,8 @@ import tetris.domain.PieceI;
 import tetris.domain.PieceT;
 import tetris.ui.GameScene;
 import tetris.ui.MenuScene;
+import tetris.ui.TextUI;
+import tetris.ui.Userinterface;
 
 public class Main /*extends Application*/ {
     /*
@@ -55,13 +58,24 @@ public class Main /*extends Application*/ {
     
     public static void main(String[] args) {
         //launch(args);
+        
+        Scanner scanner = new Scanner(System.in);
+        Userinterface ui = new TextUI(scanner);
+        ui.start();
+
+
+
         //Board b = new Board(10,18);
         //System.out.println(b);
         //b.clearRows();
         
         //b.dropRows();
-        Game g = new Game(18, 10);
-        g.addPiece();
+        
+        //Game g = new Game(18, 10);
+        //g.addPiece();
+        
+        
+        
         /*
         Piece p = new PieceI(3);
         p.print();
