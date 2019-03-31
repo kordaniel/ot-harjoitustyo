@@ -3,13 +3,15 @@ package tetris.ui;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+import tetris.domain.Game;
 
 public class TextUI implements Userinterface {
 
     private Scanner scanner;
     private Map<String, String> commands;
-
-    public TextUI(Scanner scanner) {
+    private Game game;
+    
+    public TextUI(Scanner scanner, Game game) {
         this.scanner = scanner;
 
         this.commands = new TreeMap<>();
@@ -18,6 +20,8 @@ public class TextUI implements Userinterface {
         commands.put("2", "Set Player name");
         commands.put("3", "High Scores");
         commands.put("q", "Quit");
+        
+        this.game = game;
     }
 
     @Override
@@ -29,11 +33,25 @@ public class TextUI implements Userinterface {
             this.printMainMenu();
 
             String command = this.askUser("> ");
-
-            if (command.equals("q")) {
+            
+            if (command.equals("1")) {
+                this.playGame();
+            } else if (command.equals("q")) {
                 break;
             }
 
+        }
+    }
+    
+    private void playGame() {
+        while (true) {
+            game.advanceGame();
+            System.out.println(this.game);
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+                System.out.println("virhe: " + e);
+            }
         }
     }
 

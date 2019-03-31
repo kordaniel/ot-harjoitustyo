@@ -58,10 +58,10 @@ public class Main /*extends Application*/ {
     
     public static void main(String[] args) {
         //launch(args);
-        
+        Game game = new Game(18, 10);
         Scanner scanner = new Scanner(System.in);
         
-        Userinterface ui = new TextUI(scanner);
+        Userinterface ui = new TextUI(scanner, game);
         ui.start();
 
 

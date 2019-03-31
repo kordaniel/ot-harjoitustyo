@@ -1,10 +1,12 @@
 package tetris.domain;
 
+import java.util.Arrays;
+
 public class Board {
 
     private int height;
     private int width;
-    private int[][] board;
+    private final int[][] board;
 
     public Board(int height, int width) {
         this.width = width;
@@ -23,27 +25,13 @@ public class Board {
     }
     */
     }
-
+    
+    /*
     public void resetBoard() {
         this.board = new int[this.height][this.width];
     }
-
-    public void setPiece(Piece p) {
-        int[][] pieceCoords = p.getCoords();
-        int py = p.getY();
-        int px = p.getX();
-        int dim = p.getDimension();
-
-        for (int y = 0; y < dim; y++) {
-            for (int x = 0; x < dim; x++) {
-                if (pieceCoords[y][x] == 0) {
-                    continue;
-                }
-                this.board[py - dim + y][px + x] = pieceCoords[y][x];
-            }
-        }
-    }
-
+    */
+    
     public void dropRows() {
         for (int y = this.height - 1; y >= 0; y--) {
             for (int x = 0; x < this.width; x++) {
@@ -83,7 +71,17 @@ public class Board {
             this.board[y][x] = 0;
         }
     }
-
+    
+    public int[][] getBoardCopy() {
+        int[][] copy = new int[height][width];
+        for (int y = 0; y < this.height; y++) {
+            for (int x = 0; x < this.width; x++) {
+                copy[y][x] = this.board[y][x];
+            }
+        }
+        return copy;
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -112,5 +110,4 @@ public class Board {
         sb.append("+");
         return sb.toString();
     }
-
 }

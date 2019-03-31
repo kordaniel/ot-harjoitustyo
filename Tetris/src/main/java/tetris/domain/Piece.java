@@ -18,7 +18,7 @@ public abstract class Piece {
 
     public Piece(String name, int dimension, int maxOrientations, int initialX) {
         this.orientation = 0;
-        this.isFinished = false;
+        //this.isFinished = false;
 
         this.type = name;
         this.maxOrientations = maxOrientations;
@@ -36,7 +36,7 @@ public abstract class Piece {
     public void moveDown() {
         this.y++;
     }
-
+    
     public void moveLeft() {
         this.x--;
     }
@@ -44,7 +44,7 @@ public abstract class Piece {
     public void moveRight() {
         this.x++;
     }
-
+    
     public int getX() {
         return this.x;
     }
@@ -56,7 +56,7 @@ public abstract class Piece {
     public int getDimension() {
         return this.dimension;
     }
-
+    /*
     public boolean getIsFinished() {
         return this.isFinished;
     }
@@ -64,7 +64,8 @@ public abstract class Piece {
     public void setFinished(boolean finished) {
         this.isFinished = finished;
     }
-
+    */
+    
     public void rotateLeft() {
         if (this.orientation != 0) {
             this.orientation--;
@@ -76,7 +77,10 @@ public abstract class Piece {
     public void rotateRight() {
         this.orientation = (this.orientation + 1) % this.maxOrientations;
     }
-
+    
+    /**
+     * DEBUGGING METHOD that prints the 2d-array representation of the piece
+     */
     public void print() {
         System.out.println("");
         System.out.println("Piece type: " + this.type);
