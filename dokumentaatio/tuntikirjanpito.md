@@ -10,4 +10,5 @@
 | 30.3  | 4h   | Pelilogiikan sekä luokkien mietiskelyä, alustavat luokat luotu|
 | 30.3  | 3h   | Jatkettu pelilogiikan parissa, luotu Game-luokka jossa ylläpidetään pelin tilaa|
 | 31.1  | 1h   | Luotu alustava luokka tekstikäyttöliittymää varten, helpottaa sovelluksen kehittämistä|
-| Yht   | 16h   | |
+| 31.1  | 1h   | Pelilogiikan kehittelyä, Game-luokka käyttää Board & Piece luokkia|
+| Yht   | 17h   | |
