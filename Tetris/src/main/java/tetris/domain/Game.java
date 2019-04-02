@@ -58,7 +58,7 @@ public class Game {
         }
         
         this.currentPiece.moveDown();
-        this.moveLeft();
+        //this.moveLeft();
         this.setPiece();
     }
 

@@ -52,6 +52,12 @@ public class TextUI implements Userinterface {
             } catch (Exception e) {
                 System.out.println("virhe: " + e);
             }
+            String input = this.askUser("> ");
+            if (input.equals("w")) System.out.println("ylös");
+            else if (input.equals("a")) System.out.println("vasen");
+            else if (input.equals("d")) System.out.println("oikea");
+            else if (input.equals("s")) System.out.println("alas");
+            else return;
         }
     }
 
