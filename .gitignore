@@ -5,3 +5,4 @@
 Tetris/target
 *.log
 /Tetris/nbproject/
+*.DS_Store
