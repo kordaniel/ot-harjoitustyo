@@ -1,36 +1,31 @@
 package tetris.domain;
 
-import java.util.Arrays;
-
 public abstract class Piece {
 
-    private String type;
+    private final String TYPE;
+    private final int MAX_ORIENTATIONS;
+    private final int SIZE;
+    
     private int orientation;
-
-    private int maxOrientations;
-    private int dimension;
-    protected int[][][] coords;
+    protected int[][][] pieceCoordinates;
 
     private int y;
     private int x;
 
-    private boolean isFinished;
-
-    public Piece(String name, int dimension, int maxOrientations, int initialX) {
+    public Piece(String name, int size, int maxOrientations, int initialX) {
         this.orientation = 0;
-        //this.isFinished = false;
 
-        this.type = name;
-        this.maxOrientations = maxOrientations;
-        this.dimension = dimension;
-        this.coords = new int[maxOrientations][dimension][dimension];
+        this.TYPE = name;
+        this.MAX_ORIENTATIONS = maxOrientations;
+        this.SIZE = size;
+        this.pieceCoordinates = new int[maxOrientations][size][size];
 
-        this.y = dimension;
+        this.y = size;
         this.x = initialX;
     }
-
+    
     public int[][] getCoords() {
-        return this.coords[this.orientation];
+        return this.pieceCoordinates[this.orientation];
     }
 
     public void moveDown() {
@@ -53,42 +48,20 @@ public abstract class Piece {
         return this.y;
     }
 
-    public int getDimension() {
-        return this.dimension;
-    }
-    /*
-    public boolean getIsFinished() {
-        return this.isFinished;
+    public int getSize() {
+        return this.SIZE;
     }
 
-    public void setFinished(boolean finished) {
-        this.isFinished = finished;
-    }
-    */
-    
     public void rotateLeft() {
         if (this.orientation != 0) {
             this.orientation--;
         } else {
-            this.orientation = this.maxOrientations - 1;
+            this.orientation = this.MAX_ORIENTATIONS - 1;
         }
     }
 
     public void rotateRight() {
-        this.orientation = (this.orientation + 1) % this.maxOrientations;
+        this.orientation = (this.orientation + 1) % this.MAX_ORIENTATIONS;
     }
     
-    /**
-     * DEBUGGING METHOD that prints the 2d-array representation of the piece
-     */
-    public void print() {
-        System.out.println("");
-        System.out.println("Piece type: " + this.type);
-        System.out.println("y/x: (" + y + "," + x + ")");
-
-        System.out.println("**********-- " + this.orientation + " --**********");
-        for (int y = 0; y < this.coords[this.orientation].length; y++) {
-            System.out.println(Arrays.toString(this.coords[this.orientation][y]));
-        }
-    }
 }

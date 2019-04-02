@@ -1,5 +1,6 @@
 package tetris;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -58,60 +59,12 @@ public class Main /*extends Application*/ {
     
     public static void main(String[] args) {
         //launch(args);
+        
         Game game = new Game(18, 10);
         Scanner scanner = new Scanner(System.in);
         
         Userinterface ui = new TextUI(scanner, game);
         ui.start();
-
-
-
-        //Board b = new Board(10,18);
-        //System.out.println(b);
-        //b.clearRows();
         
-        //b.dropRows();
-        
-        //Game g = new Game(18, 10);
-        //g.addPiece();
-        
-        
-        
-        /*
-        Piece p = new PieceI(3);
-        p.print();
-        p.rotateLeft();
-        p.print();
-        p.rotateLeft();
-        p.print();
-        p.rotateLeft();
-        p.print();
-        p.rotateLeft();
-        p.print();
-        p.rotateLeft();
-        p.print();
-        p.rotateLeft();
-        p.print();
-        p.rotateLeft();
-        p.print();
-        System.out.println("****");
-        System.out.println("****");
-        p = new PieceI(3);
-        p.print();
-        p.rotateRight();
-        p.print();
-        p.rotateRight();
-        p.print();
-        p.rotateRight();
-        p.print();
-        p.rotateRight();
-        p.print();
-        p.rotateRight();
-        p.print();
-        p.rotateRight();
-        p.print();
-        p.rotateRight();
-        p.print();
-        */
     }
 }

@@ -5,11 +5,9 @@ public class Game {
     private int height, width;
     private Board board;
     private int[][] boardInPlay;
-    private int laskuri;
     private Piece currentPiece;
 
     public Game(int height, int width) {
-        this.laskuri = 0;
         this.height = height;
         this.width = width;
         this.board = new Board(height, width);
@@ -17,11 +15,7 @@ public class Game {
     }
 
     public void addPiece() {
-        if (this.laskuri % 2 == 0) {
-            this.currentPiece = new PieceI(5);
-        } else {
-            this.currentPiece = new PieceT(3);
-        }
+        this.currentPiece = new PieceT(4);
     }
     
     public void rotatePiece() {
@@ -36,7 +30,9 @@ public class Game {
         if (this.currentPiece == null) {
             return;
         }
+        
         this.currentPiece.moveRight();
+        
     }
     
     public void moveLeft() {
@@ -48,17 +44,11 @@ public class Game {
     }
     
     public void advanceGame() {
-        this.laskuri++;
-        if (this.laskuri % 5 == 0) {
-            this.addPiece();
-        }
-        
         if (this.currentPiece == null) {
             return;
         }
         
         this.currentPiece.moveDown();
-        //this.moveLeft();
         this.setPiece();
     }
 
@@ -67,7 +57,7 @@ public class Game {
         int[][] pieceCoords = this.currentPiece.getCoords();
         int py = this.currentPiece.getY();
         int px = this.currentPiece.getX();
-        int dim = this.currentPiece.getDimension();
+        int dim = this.currentPiece.getSize();
         
         for (int dy = 0; dy < dim; dy++) {
             for (int dx = 0; dx < dim; dx++) {

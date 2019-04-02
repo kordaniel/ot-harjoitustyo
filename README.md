@@ -8,6 +8,47 @@ Tähän repositorioon pyrin totetuttamaan klassisen tetris-pelin kloonin.
 [Vaatimusmäärittely](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
 
+## Komentorivitoiminnot
+Kaikki komennot on suoritettava hakemistossa Tetris, ei repositorion juuressa.
+
+### Sovelluksen suorittaminen konsolissa, mavenin avulla
+Komennon  
+
+```
+mvn exec:java -Dexec.mainClass=tetris.Main
+```
+suorittaminen käynnistää sovelluksen  
+
+### Testaus
+Testit suoritetaan komennolla  
+
+```
+mvn test
+```
+
+Testikattavuusraportti luodaan komennolla  
+
+```
+mvn jacoco:report
+```
+Raportti tallentuu index.html -tiedostona hakemistoon target/site/jacoco/  
+
+## Suoritettavan jarin generointi
+Komento  
+
+```
+mvn package
+```
+generoi hakemistoon target suoritettavan jar-tiedoston Tetris-1.0-SNAPSHOT.jar  
+
+
+## Checkstyle
+Tiedoston [checkstyle.xml] (https://github.com/kordaniel/ot-harjoitustyo/blob/master/Tetris/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
+Raportti tallentuu checkstyle.html -tiedostona hakemistoon target/site/
+
 ### Tehtävät
 Linkki | Sisältö
 -------|--------

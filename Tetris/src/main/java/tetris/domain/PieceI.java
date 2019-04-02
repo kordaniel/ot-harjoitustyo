@@ -9,26 +9,26 @@ public class PieceI extends Piece {
         this.SYMBOL = 1;
         this.initializeCoords();
     }
-
+    
     private void initializeCoords() {
-        super.coords[0][3][1] = this.SYMBOL;
-        super.coords[0][2][1] = this.SYMBOL;
-        super.coords[0][1][1] = this.SYMBOL;
-        super.coords[0][0][1] = this.SYMBOL;
+        super.pieceCoordinates[0][3][1] = this.SYMBOL;
+        super.pieceCoordinates[0][2][1] = this.SYMBOL;
+        super.pieceCoordinates[0][1][1] = this.SYMBOL;
+        super.pieceCoordinates[0][0][1] = this.SYMBOL;
 
-        super.coords[1][3][0] = this.SYMBOL;
-        super.coords[1][3][1] = this.SYMBOL;
-        super.coords[1][3][2] = this.SYMBOL;
-        super.coords[1][3][3] = this.SYMBOL;
+        super.pieceCoordinates[1][3][0] = this.SYMBOL;
+        super.pieceCoordinates[1][3][1] = this.SYMBOL;
+        super.pieceCoordinates[1][3][2] = this.SYMBOL;
+        super.pieceCoordinates[1][3][3] = this.SYMBOL;
 
-        super.coords[2][3][2] = this.SYMBOL;
-        super.coords[2][2][2] = this.SYMBOL;
-        super.coords[2][1][2] = this.SYMBOL;
-        super.coords[2][0][2] = this.SYMBOL;
+        super.pieceCoordinates[2][3][2] = this.SYMBOL;
+        super.pieceCoordinates[2][2][2] = this.SYMBOL;
+        super.pieceCoordinates[2][1][2] = this.SYMBOL;
+        super.pieceCoordinates[2][0][2] = this.SYMBOL;
 
-        super.coords[3][3][0] = this.SYMBOL;
-        super.coords[3][3][1] = this.SYMBOL;
-        super.coords[3][3][2] = this.SYMBOL;
-        super.coords[3][3][3] = this.SYMBOL;
+        super.pieceCoordinates[3][3][0] = this.SYMBOL;
+        super.pieceCoordinates[3][3][1] = this.SYMBOL;
+        super.pieceCoordinates[3][3][2] = this.SYMBOL;
+        super.pieceCoordinates[3][3][3] = this.SYMBOL;
     }
 }

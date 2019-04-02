@@ -17,8 +17,9 @@ public class TextUI implements Userinterface {
         this.commands = new TreeMap<>();
 
         commands.put("1", "Play");
-        commands.put("2", "Set Player name");
-        commands.put("3", "High Scores");
+        //NOT IMPLEMENTED
+        //commands.put("2", "Set Player name");
+        //commands.put("3", "High Scores");
         commands.put("q", "Quit");
         
         this.game = game;
@@ -38,26 +39,46 @@ public class TextUI implements Userinterface {
                 this.playGame();
             } else if (command.equals("q")) {
                 break;
+            } else {
+                System.out.println("unrecognized command!");
             }
-
         }
     }
     
     private void playGame() {
+        this.game.addPiece();
+        
         while (true) {
-            game.advanceGame();
+            this.game.advanceGame();
             System.out.println(this.game);
+            
             try {
                 Thread.sleep(500);
             } catch (Exception e) {
                 System.out.println("virhe: " + e);
             }
-            String input = this.askUser("> ");
-            if (input.equals("w")) System.out.println("ylös");
-            else if (input.equals("a")) System.out.println("vasen");
-            else if (input.equals("d")) System.out.println("oikea");
-            else if (input.equals("s")) System.out.println("alas");
-            else return;
+            
+            String input = this.askUser("[w||a|s|d|q(exit game)]> ");
+            switch (input) {
+                case "w":
+                    this.game.rotatePiece();
+                    break;
+                case "a":
+                    this.game.moveLeft();
+                    break;
+                case "s":
+                    System.out.println("alas");
+                    System.out.println("not implemented");
+                    break;
+                case "d":
+                    this.game.moveRight();
+                    break;
+                case "q":
+                    return;
+                default:
+                    System.out.println("unrecognized command!");
+                    break;
+            }
         }
     }
 
@@ -72,7 +93,7 @@ public class TextUI implements Userinterface {
 
     /**
      * Prints the given string and prints an additional row with an string
-     * consisting of only the character '-' of matching length.
+     * consisting of only the character '-' with matching length.
      *
      * @param str String to be printed
      */
@@ -87,8 +108,8 @@ public class TextUI implements Userinterface {
     }
 
     /**
-     * Prints the string given as parameter and then waits for the user input,
-     * which is then returned
+     * Prints the string given as parameter and then waits for 
+     * input from user, which is then returned
      *
      * @param question
      * @return
