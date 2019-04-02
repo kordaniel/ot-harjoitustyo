@@ -1,0 +1,1 @@
+Tehtävässä 1 on virhe luokkakaaviossa. Peliruutu pitäisi olla merkittynä 40, tähden sijasta sekä pelaaja vastaavast 2..8, tähden sijasta. Tästä oli puhetta kurssin TG-ryhmässä, minä en ollut tietoinen että näin saa merkitä luokkakaavioon. Jätän tämän vain kommenttina tähän vaikka tietysti pitäisi piirtää koko luokkakaavio uudelleen
