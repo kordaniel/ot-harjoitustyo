@@ -43,7 +43,7 @@ generoi hakemistoon target suoritettavan jar-tiedoston Tetris-1.0-SNAPSHOT.jar
 
 
 ## Checkstyle
-Tiedoston [checkstyle.xml] (https://github.com/kordaniel/ot-harjoitustyo/blob/master/Tetris/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+Tiedoston [checkstyle.xml](https://github.com/kordaniel/ot-harjoitustyo/blob/master/Tetris/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
