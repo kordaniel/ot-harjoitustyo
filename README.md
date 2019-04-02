@@ -1,5 +1,5 @@
 # Tetris
-Tähän repositorioon pyrin totetuttamaan klassisen tetris-pelin kloonin. Peli on minun harjoitustyö HY:n 2019 kevään kurssille ohjelmistotekniikka.
+Tähän repositorioon pyrin totetuttamaan klassisen tetris-pelin kloonin. Peli on minun harjoitustyö HY:n 2019 kevään kurssille _ohjelmistotekniikka_.
 
 ## Sovelluksen tämänhetkinen tila
 Aloitin sovelluksen kehittämisen hieman väärin, sillä aloitin projektin tutustumalla JavaFX:ään sekä kokeilemalla miten tekisin käyttöliittymän sen avulla. Tähän päädyin sen takia, koska en ole koskenut JavaFX:ään ohja:n jälkeen, minkä suoritin viime keväällä ja halusin hieman harjoitella sen käyttöä. Sovelluksella on tällä hetkellä kaksi JavaFX luokkaa, joissa siis on vain ja ainoastaan hahmotelmia, näitä en kuitenkaan halua poistaa tässä vaiheessa, sillä uskon niistä olevan hyötä myöhemmässä vaiheessa, kunhan saan pelilogiikan hieman valmiimmaksi. Tällä hetkellä siis sovellus avautuu yksinkertaiseen tekstikäyttöliittymään, mitä olen käyttänyt pelilogiikan testaamiseen. Tarkoituksenani olisi, että ensi viikolla peli jo pyörisi "oikein", eli JavaFX:n avulla.
@@ -14,7 +14,7 @@ Ketterässä ohjelmistokehityksessä pitäisi aina olla suoritettava sovellus, m
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
 
 ## Komentorivitoiminnot
-Kaikki komennot on suoritettava hakemistossa Tetris, ei repositorion juuressa.
+Kaikki komennot on suoritettava hakemistossa _Tetris_, ei repositorion juuressa.
 
 ### Sovelluksen suorittaminen konsolissa, mavenin avulla
 Komennon  
@@ -36,7 +36,7 @@ Testikattavuusraportti luodaan komennolla
 ```
 mvn jacoco:report
 ```
-Raportti tallentuu index.html -tiedostona hakemistoon target/site/jacoco/  
+Raportti tallentuu index.html -tiedostona hakemistoon _target/site/jacoco/_
 
 ## Suoritettavan jarin generointi
 Komento  
@@ -44,7 +44,7 @@ Komento
 ```
 mvn package
 ```
-generoi hakemistoon target suoritettavan jar-tiedoston Tetris-1.0-SNAPSHOT.jar  
+generoi hakemistoon _target_ suoritettavan jar-tiedoston Tetris-1.0-SNAPSHOT.jar  
 
 
 ## Checkstyle
@@ -52,19 +52,4 @@ Tiedoston [checkstyle.xml](https://github.com/kordaniel/ot-harjoitustyo/blob/mas
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
-Raportti tallentuu checkstyle.html -tiedostona hakemistoon target/site/
-
-### Tehtävät
-Linkki | Sisältö
--------|--------
-[Viikko1](http://github.com/kordaniel/ot-harjoitustyo/tree/master/laskarit/viikko1)|Viikko 1
-[Viikko2](http://github.com/kordaniel/ot-harjoitustyo/tree/master/laskarit/viikko2)|Viikko 2
-
-### Viikko 1
-[gitlog.txt](https://github.com/kordaniel/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)  
-[komentorivi.txt](https://github.com/kordaniel/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-### Viikko 2
-[Maksukortti](https://github.com/kordaniel/ot-harjoitustyo/blob/master/laskarit/viikko2/Maksukortti)  
-[Unicafe](https://github.com/kordaniel/ot-harjoitustyo/blob/master/laskarit/viikko2/Unicafe)  
-[testikattavuus.jpg](https://github.com/kordaniel/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.jpg)
+Raportti tallentuu checkstyle.html -tiedostona hakemistoon _target/site/_
