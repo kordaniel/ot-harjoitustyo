@@ -1,7 +1,5 @@
 package tetris.domain;
 
-import java.util.Arrays;
-
 public class Game {
 
     private int height, width;
