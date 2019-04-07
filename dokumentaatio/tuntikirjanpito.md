@@ -12,6 +12,7 @@
 | 31.1  | 1h   | Luotu alustava luokka tekstikäyttöliittymää varten, helpottaa sovelluksen kehittämistä|
 | 31.1  | 1h   | Pelilogiikan kehittelyä, Game-luokka käyttää Board & Piece luokkia|
 | 02.4  | 2h   | Luotu testit luokalle PieceI|
-| 01.4  | 3h   | JavaFX otettu käyttöön|
-| 01.4  | 1h   | Pelilogiikan kehittelyä sekä yhteensovittamistasta GUI:hin|
-| Yht   | 23h  | |
+| 06.4  | 3h   | JavaFX otettu käyttöön|
+| 06.4  | 1h   | Pelilogiikan kehittelyä sekä yhteensovittamistasta GUI:hin|
+| 07.4  | 2h   | Pelilogiikan kehittelyä sekä luotu testit luokalle PieceT| 
+| Yht   | 25h  | |
