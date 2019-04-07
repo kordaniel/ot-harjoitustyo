@@ -1,7 +1,5 @@
 package tetris.domain;
 
-import java.util.Arrays;
-
 public class Board {
 
     private int height;
@@ -31,6 +29,42 @@ public class Board {
         this.board = new int[this.height][this.width];
     }
     */
+    
+    public boolean pieceCanMoveLeft(Piece p) {
+        return this.pieceCanGo(p, p.getY(), p.getX() - 1);
+    }
+    
+    public boolean pieceCanMoveRight(Piece p) {
+        return this.pieceCanGo(p, p.getY(), p.getX() + 1);
+    }
+    
+    public boolean pieceCanMoveDown(Piece p) {
+        return this.pieceCanGo(p, p.getY() + 1, p.getX());
+    }
+    
+    private boolean pieceCanGo(Piece p, int y, int x) {
+        int dim = p.getSize();
+
+        if (y < 0 || x < 0
+                || y - 1 == this.height
+                || x - 1 + dim == this.width) {
+            return false;
+        }
+        
+        int[][] pieceCoords = p.getCoords();
+        
+        for (int dy = 0; dy < dim; dy++) {
+            for (int dx = 0; dx < dim; dx++) {
+                if (pieceCoords[dy][dx] == 0) {
+                    continue;
+                } else if (this.board[y - dim + dy][x + dx] != 0) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
     
     public void dropRows() {
         for (int y = this.height - 1; y >= 0; y--) {
@@ -82,6 +116,23 @@ public class Board {
         return copy;
     }
     
+    public void addPieceToBoard(Piece p) {
+        int dim = p.getSize();
+        int py = p.getY();
+        int px = p.getX();
+        int[][] pieceCoords = p.getCoords();
+        
+        for (int dy = 0; dy < dim; dy++) {
+            for (int dx = 0; dx < dim; dx++) {
+                if (pieceCoords[dy][dx] == 0) {
+                    continue;
+                } 
+                
+                this.board[py - dim + dy][px + dx] = pieceCoords[dy][dx];
+            }
+        }
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -110,4 +161,5 @@ public class Board {
         sb.append("+");
         return sb.toString();
     }
+    
 }

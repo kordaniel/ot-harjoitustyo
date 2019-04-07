@@ -186,11 +186,11 @@ public class PieceITest {
             return false;
         }
         
-        if (arr1.length > 0 && arr1[0].length != arr2[0].length) {
-            return false;
-        }
-        
         for (int y = 0; y < arr1.length; y++) {
+            if (arr1[y].length != arr2[y].length ) {
+                return false;
+            }
+            
             for (int x = 0; x < arr1[y].length; x++) {
                 if (arr1[y][x] != arr2[y][x]) {
                     return false;

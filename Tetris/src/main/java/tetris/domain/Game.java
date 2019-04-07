@@ -1,5 +1,7 @@
 package tetris.domain;
 
+import java.util.Random;
+
 public class Game {
 
     private int height, width;
@@ -15,7 +17,13 @@ public class Game {
     }
 
     public void addPiece() {
-        this.currentPiece = new PieceT(4);
+        Random r = new Random();
+        int n = r.nextInt(2);
+        if (n == 0) {
+            this.currentPiece = new PieceI(4);
+        } else if (n == 1) {
+            this.currentPiece = new PieceT(4);
+        }
     }
     
     public void rotatePiece() {
@@ -27,16 +35,17 @@ public class Game {
     }
     
     public void moveRight() {
-        if (this.currentPiece == null) {
+        if (this.currentPiece == null
+                || !this.board.pieceCanMoveRight(this.currentPiece)) {
             return;
         }
         
         this.currentPiece.moveRight();
-        
     }
     
     public void moveLeft() {
-        if (this.currentPiece == null) {
+        if (this.currentPiece == null
+                || !this.board.pieceCanMoveLeft(this.currentPiece)) {
             return;
         }
         
@@ -48,11 +57,21 @@ public class Game {
             return;
         }
         
-        this.currentPiece.moveDown();
-        this.setPiece();
+        System.out.println("**************************");
+        System.out.println("Piece set to y: " + this.currentPiece.getY());
+        if (this.board.pieceCanMoveDown(currentPiece)) {
+            this.currentPiece.moveDown();
+        } else {
+            this.board.addPieceToBoard(this.currentPiece);
+            addPiece();
+        }
+        System.out.println("Piece set to y: " + this.currentPiece.getY());
+        System.out.println("**************************");
+        
+        this.addPieceToBoardInPlay();
     }
 
-    public void setPiece() {
+    private void addPieceToBoardInPlay() {
         this.boardInPlay = this.board.getBoardCopy();
         int[][] pieceCoords = this.currentPiece.getCoords();
         int py = this.currentPiece.getY();
@@ -67,6 +86,36 @@ public class Game {
                 this.boardInPlay[py - dim + dy][px + dx] = pieceCoords[dy][dx];
             }
         }
+    }
+    
+    public int[][] getBoardInPlay() {
+        /*
+        boolean whichOn = false;
+        if (whichOn) {
+            this.boardInPlay[3][2] = 2;
+            this.boardInPlay[3][3] = 2;
+            this.boardInPlay[3][4] = 2;
+            this.boardInPlay[4][3] = 2;
+            
+            this.boardInPlay[14][7] = 0;
+            this.boardInPlay[15][7] = 0;
+            this.boardInPlay[16][7] = 0;
+            this.boardInPlay[17][7] = 0;
+        } else {
+            this.boardInPlay[3][2] = 0;
+            this.boardInPlay[3][3] = 0;
+            this.boardInPlay[3][4] = 0;
+            this.boardInPlay[4][3] = 0;
+            
+            
+            this.boardInPlay[14][7] = 1;
+            this.boardInPlay[15][7] = 1;
+            this.boardInPlay[16][7] = 1;
+            this.boardInPlay[17][7] = 1;
+        }
+        whichOn = !whichOn;
+        */
+        return this.boardInPlay;
     }
     
     @Override
