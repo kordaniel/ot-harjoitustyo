@@ -50,10 +50,18 @@ public class Main extends Application {
         */
         
         scene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.LEFT) gameStatus.moveLeft();
-            if (event.getCode() == KeyCode.RIGHT) gameStatus.moveRight();
-            if (event.getCode() == KeyCode.UP) gameStatus.rotatePiece();
-            if (event.getCode() == KeyCode.DOWN) gameStatus.moveDown();
+            if (event.getCode() == KeyCode.LEFT) {
+                gameStatus.moveLeft();
+            }
+            if (event.getCode() == KeyCode.RIGHT) {
+                gameStatus.moveRight();
+            }
+            if (event.getCode() == KeyCode.UP) {
+                gameStatus.rotatePiece();
+            }
+            if (event.getCode() == KeyCode.DOWN) {
+                gameStatus.moveDown();
+            }
         });
         stage.setScene(scene);
         stage.setTitle("TETRIS beta v0.01");
@@ -63,13 +71,15 @@ public class Main extends Application {
             //10^9 ns = 1 sec =>
             //60 updates per second =>
             //one update per 16666667 ns
-            private long sleepNanoSeconds = 16_666_667;
+            private long sleepNanoSeconds = 16_666_667 / 2;
             private long prevNanoTime = System.nanoTime();
             private int refreshes = 0;
             
             @Override
             public void handle(long currentNanoTime) {
-                if (currentNanoTime - prevNanoTime < sleepNanoSeconds) return;
+                if (currentNanoTime - prevNanoTime < sleepNanoSeconds) {
+                    return;
+                }
                 
                 if (refreshes >= 15) {
                     gameStatus.advanceGame();

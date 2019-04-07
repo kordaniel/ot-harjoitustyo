@@ -3,6 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import tetris.domain.Piece;
 import tetris.domain.PieceT;
+
 public class PieceTTest {
 
     Piece tetrisPiece;
@@ -15,7 +16,7 @@ public class PieceTTest {
         tetrisPiece = new PieceT(2);
     }
 
-@Test
+    @Test
     public void pieceHasCorrectSize() {
         assertEquals(3, tetrisPiece.getSize());
     }

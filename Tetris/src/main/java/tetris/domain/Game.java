@@ -18,11 +18,13 @@ public class Game {
 
     public void addPiece() {
         Random r = new Random();
-        int n = r.nextInt(2);
+        int n = r.nextInt(3);
         if (n == 0) {
             this.currentPiece = new PieceI(4);
         } else if (n == 1) {
             this.currentPiece = new PieceT(4);
+        } else {
+            this.currentPiece = new PieceJ(4);
         }
     }
     
