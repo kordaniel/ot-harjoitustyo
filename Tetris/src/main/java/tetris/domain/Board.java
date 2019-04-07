@@ -11,24 +11,7 @@ public class Board {
         this.height = height;
 
         this.board = new int[height][width];
-
-    /*
-    //SET INITIAL PIECES FOR TESTING PURPOSES
-    for (int i = 0; i < this.width; i++) {
-      this.board[i][i] = 1;
-      this.board[i][this.width-1-i] = 2;
     }
-    for (int x = 0; x < this.width; x++) {
-      this.board[4][x] = 3;
-    }
-    */
-    }
-    
-    /*
-    public void resetBoard() {
-        this.board = new int[this.height][this.width];
-    }
-    */
     
     public boolean pieceCanMoveLeft(Piece p) {
         return this.pieceCanGo(p, p.getY(), p.getX() - 1);
@@ -45,11 +28,11 @@ public class Board {
     private boolean pieceCanGo(Piece p, int y, int x) {
         int dim = p.getSize();
 
-        if (y < 0 || x < 0
-                || y - 1 == this.height
-                || x - 1 + dim == this.width) {
-            return false;
-        }
+        //if (y < 0 || x < 0
+        //        || y - 1 == this.height
+        //        || x - 1 + dim == this.width) {
+        //    return false;
+        //}
         
         int[][] pieceCoords = p.getCoords();
         
@@ -57,7 +40,12 @@ public class Board {
             for (int dx = 0; dx < dim; dx++) {
                 if (pieceCoords[dy][dx] == 0) {
                     continue;
-                } else if (this.board[y - dim + dy][x + dx] != 0) {
+                }
+                if (y - dim + dy < 0
+                        || (x + dx < 0)
+                        || (y - dim + dy >= this.height)
+                        || (x + dx >= this.width)
+                        || this.board[y - dim + dy][x + dx] != 0) {
                     return false;
                 }
             }
@@ -88,16 +76,20 @@ public class Board {
         this.dropCoordinate(x, y + 1, symbol);
     }
 
-    public void clearRows() {
+    public boolean clearRows() {
+        boolean boardChanged = false;
+        
         for (int y = this.height - 1; y >= 0; y--) {
             for (int x = 0; x < this.width; x++) {
                 if (this.board[y][x] == 0) {
                     break;
                 } else if (x == this.width - 1) {
                     clearRow(y);
+                    boardChanged = true;
                 }
             }
         }
+        return boardChanged;
     }
 
     public void clearRow(int y) {

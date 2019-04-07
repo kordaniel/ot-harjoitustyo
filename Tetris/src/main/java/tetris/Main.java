@@ -2,6 +2,8 @@ package tetris;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -34,23 +36,25 @@ public class Main extends Application {
         main.setCenter(menu.getScene());
         
         Scene scene = new Scene(main);
+        /*
+        Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
+        
         
         scene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.LEFT) {
-                gameStatus.moveLeft();
-            }
-            if (event.getCode() == KeyCode.UP) {
-                gameStatus.rotatePiece();
-            }
-            if (event.getCode() == KeyCode.RIGHT) {
-                gameStatus.moveRight();
-            }
-            if (event.getCode() == KeyCode.DOWN) {
-                System.out.println("ALAAAAAAS");
-            }
+            pressedKeys.put(event.getCode(), Boolean.TRUE);
         });
         
+        scene.setOnKeyReleased(event -> {
+            pressedKeys.put(event.getCode(), Boolean.FALSE);
+        });
+        */
         
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.LEFT) gameStatus.moveLeft();
+            if (event.getCode() == KeyCode.RIGHT) gameStatus.moveRight();
+            if (event.getCode() == KeyCode.UP) gameStatus.rotatePiece();
+            if (event.getCode() == KeyCode.DOWN) gameStatus.moveDown();
+        });
         stage.setScene(scene);
         stage.setTitle("TETRIS beta v0.01");
         
@@ -67,14 +71,28 @@ public class Main extends Application {
             public void handle(long currentNanoTime) {
                 if (currentNanoTime - prevNanoTime < sleepNanoSeconds) return;
                 
-                if (refreshes >= 20) {
+                if (refreshes >= 15) {
                     gameStatus.advanceGame();
                     refreshes = 0;
                 }
                 refreshes++;
                 
-                gameScene.updateBoard();
+                /*
+                if (pressedKeys.getOrDefault(KeyCode.LEFT, Boolean.FALSE)) {
+                    gameStatus.moveLeft();
+                }
+                if (pressedKeys.getOrDefault(KeyCode.RIGHT, Boolean.FALSE)) {
+                    gameStatus.moveRight();
+                }
+                if (pressedKeys.getOrDefault(KeyCode.UP, Boolean.FALSE)) {
+                    gameStatus.rotatePiece();
+                }
+                if (pressedKeys.getOrDefault(KeyCode.DOWN, Boolean.FALSE)) {
+                    gameStatus.moveDown();
+                }*/
                 
+                
+                gameScene.updateBoard();
                 this.prevNanoTime = currentNanoTime;
             }
         }.start();

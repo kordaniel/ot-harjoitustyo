@@ -21,7 +21,7 @@ public class GameScene {
     
     private int width = 10;
     private int height = 18;
-    private int size = 15;
+    private int size = 25;
 
     private Rectangle[][] rectangleboard;
     private Color[] colors;
@@ -32,9 +32,9 @@ public class GameScene {
         this.parent = parent;
         this.rectangleboard = new Rectangle[height][width];
         
-        this.colors = new Color[] { Color.CYAN, Color.ROYALBLUE, 
+        this.colors = new Color[] {  
             Color.SALMON, Color.TURQUOISE, Color.SPRINGGREEN, Color.BLUEVIOLET,
-            Color.BROWN, Color.CORAL, Color.BISQUE };
+            Color.BROWN, Color.CORAL, Color.BISQUE, Color.DARKBLUE, Color.BLACK };//Color.CYAN, Color.ROYALBLUE };
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -61,15 +61,16 @@ public class GameScene {
     public void updateBoard() {        
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                if (gameStatus.getBoardInPlay()[y][x] != 0) {
-                    rectangleboard[y][x].setFill(this.colors[7]);
+                int coord = this.gameStatus.getBoardInPlay()[y][x];
+                if (coord != 0) {
+                    rectangleboard[y][x].setFill(this.colors[coord]);
                     continue;
                 } 
 
                 if ((y % 2 == 0 && x % 2 == 1) || (y % 2 == 1 && x % 2 == 0)) {
-                    rectangleboard[y][x].setFill(this.colors[0]);
+                    rectangleboard[y][x].setFill(this.colors[7]);
                 } else {
-                    rectangleboard[y][x].setFill(this.colors[1]);
+                    rectangleboard[y][x].setFill(this.colors[8]);
                 }
             }
         }

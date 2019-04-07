@@ -52,21 +52,33 @@ public class Game {
         this.currentPiece.moveLeft();
     }
     
+    public void moveDown() {
+        if (this.currentPiece == null
+                || !this.board.pieceCanMoveDown(this.currentPiece)) {
+            return;
+        }
+        
+        this.currentPiece.moveDown();
+    }
+    
     public void advanceGame() {
         if (this.currentPiece == null) {
             return;
         }
         
-        System.out.println("**************************");
-        System.out.println("Piece set to y: " + this.currentPiece.getY());
+        //System.out.println("**************************");
+        //System.out.println("Piece set to y: " + this.currentPiece.getY());
         if (this.board.pieceCanMoveDown(currentPiece)) {
             this.currentPiece.moveDown();
         } else {
             this.board.addPieceToBoard(this.currentPiece);
+            while (this.board.clearRows()) {
+                this.board.dropRows();
+            }
             addPiece();
         }
-        System.out.println("Piece set to y: " + this.currentPiece.getY());
-        System.out.println("**************************");
+        //System.out.println("Piece set to y: " + this.currentPiece.getY());
+        //System.out.println("**************************");
         
         this.addPieceToBoardInPlay();
     }
@@ -89,32 +101,6 @@ public class Game {
     }
     
     public int[][] getBoardInPlay() {
-        /*
-        boolean whichOn = false;
-        if (whichOn) {
-            this.boardInPlay[3][2] = 2;
-            this.boardInPlay[3][3] = 2;
-            this.boardInPlay[3][4] = 2;
-            this.boardInPlay[4][3] = 2;
-            
-            this.boardInPlay[14][7] = 0;
-            this.boardInPlay[15][7] = 0;
-            this.boardInPlay[16][7] = 0;
-            this.boardInPlay[17][7] = 0;
-        } else {
-            this.boardInPlay[3][2] = 0;
-            this.boardInPlay[3][3] = 0;
-            this.boardInPlay[3][4] = 0;
-            this.boardInPlay[4][3] = 0;
-            
-            
-            this.boardInPlay[14][7] = 1;
-            this.boardInPlay[15][7] = 1;
-            this.boardInPlay[16][7] = 1;
-            this.boardInPlay[17][7] = 1;
-        }
-        whichOn = !whichOn;
-        */
         return this.boardInPlay;
     }
     
