@@ -1,15 +1,28 @@
 package tetris.domain;
 
 import java.util.Random;
+import tetris.domain.piece.PieceJ;
+import tetris.domain.piece.PieceI;
+import tetris.domain.piece.Piece;
+import tetris.domain.piece.PieceT;
+import tetris.domain.piece.PieceL;
+import tetris.domain.piece.PieceO;
+import tetris.domain.piece.PieceS;
+import tetris.domain.piece.PieceZ;
 
 public class Game {
 
-    private int height, width;
+    private Random rand;
     private Board board;
+    
+    private int height; 
+    private int width;
     private int[][] boardInPlay;
+    
     private Piece currentPiece;
-
+    
     public Game(int height, int width) {
+        this.rand = new Random();
         this.height = height;
         this.width = width;
         this.board = new Board(height, width);
@@ -17,14 +30,32 @@ public class Game {
     }
 
     public void addPiece() {
-        Random r = new Random();
-        int n = r.nextInt(3);
-        if (n == 0) {
-            this.currentPiece = new PieceI(4);
-        } else if (n == 1) {
-            this.currentPiece = new PieceT(4);
-        } else {
-            this.currentPiece = new PieceJ(4);
+        int n = rand.nextInt(7);
+        int xCoord = this.width / 2;
+        switch (n) {
+            case 0:
+                this.currentPiece = new PieceT(4);
+                break;
+            case 1:
+                this.currentPiece = new PieceO(4);
+                break;
+            case 2:
+                this.currentPiece = new PieceI(4);
+                break;
+            case 3:
+                this.currentPiece = new PieceJ(4);
+                break;
+            case 4:
+                this.currentPiece = new PieceL(4);
+                break;
+            case 5:
+                this.currentPiece = new PieceZ(4);
+                break;
+            case 6:
+                this.currentPiece = new PieceS(4);
+                break;
+            default:
+                break;
         }
     }
     

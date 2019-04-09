@@ -32,9 +32,9 @@ public class GameScene {
         this.parent = parent;
         this.rectangleboard = new Rectangle[height][width];
         
-        this.colors = new Color[] {  
-            Color.SALMON, Color.TURQUOISE, Color.SPRINGGREEN, Color.BLUEVIOLET,
-            Color.BROWN, Color.CORAL, Color.BISQUE, Color.DARKBLUE, Color.BLACK };//Color.CYAN, Color.ROYALBLUE };
+        this.colors = new Color[] {
+            Color.TEAL, Color.STEELBLUE, Color.SPRINGGREEN, Color.BLUEVIOLET,
+            Color.BROWN, Color.CORAL, Color.BISQUE, Color.THISTLE, Color.WHITESMOKE };
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -68,9 +68,9 @@ public class GameScene {
                 } 
 
                 if ((y % 2 == 0 && x % 2 == 1) || (y % 2 == 1 && x % 2 == 0)) {
-                    rectangleboard[y][x].setFill(this.colors[7]);
+                    rectangleboard[y][x].setFill(this.colors[0]);
                 } else {
-                    rectangleboard[y][x].setFill(this.colors[8]);
+                    rectangleboard[y][x].setFill(this.colors[1]);
                 }
             }
         }

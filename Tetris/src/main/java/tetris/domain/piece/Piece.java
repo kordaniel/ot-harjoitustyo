@@ -1,4 +1,4 @@
-package tetris.domain;
+package tetris.domain.piece;
 
 public abstract class Piece {
 
@@ -11,7 +11,15 @@ public abstract class Piece {
 
     private int y;
     private int x;
-
+    
+    /**
+     * Piece is always constructed with Y-coord equal to the size
+     * of the piece (piece is placed on top of the grid)
+     * @param name name of the constructed piece, for example I,O,Z...
+     * @param size size of the 2d coordinate grid
+     * @param maxOrientations amount of orientations the piece has
+     * @param initialX the initial X-coordinate for the constructed piece
+     */
     public Piece(String name, int size, int maxOrientations, int initialX) {
         this.orientation = 0;
 
@@ -24,35 +32,35 @@ public abstract class Piece {
         this.x = initialX;
     }
     
-    public int[][] getCoords() {
+    final public int[][] getCoords() {
         return this.pieceCoordinates[this.orientation];
     }
 
-    public void moveDown() {
+    final public void moveDown() {
         this.y++;
     }
     
-    public void moveLeft() {
+    final public void moveLeft() {
         this.x--;
     }
 
-    public void moveRight() {
+    final public void moveRight() {
         this.x++;
     }
     
-    public int getX() {
+    final public int getX() {
         return this.x;
     }
 
-    public int getY() {
+    final public int getY() {
         return this.y;
     }
 
-    public int getSize() {
+    final public int getSize() {
         return this.SIZE;
     }
 
-    public void rotateLeft() {
+    final public void rotateLeft() {
         if (this.orientation != 0) {
             this.orientation--;
         } else {
@@ -60,7 +68,7 @@ public abstract class Piece {
         }
     }
 
-    public void rotateRight() {
+    final public void rotateRight() {
         this.orientation = (this.orientation + 1) % this.MAX_ORIENTATIONS;
     }
     

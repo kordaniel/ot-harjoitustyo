@@ -1,5 +1,7 @@
 package tetris.domain;
 
+import tetris.domain.piece.Piece;
+
 public class Board {
 
     private int height;

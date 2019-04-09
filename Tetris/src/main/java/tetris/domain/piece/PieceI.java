@@ -1,4 +1,6 @@
-package tetris.domain;
+package tetris.domain.piece;
+
+import tetris.domain.piece.Piece;
 
 public class PieceI extends Piece {
 
@@ -6,7 +8,7 @@ public class PieceI extends Piece {
 
     public PieceI(int initialX) {
         super("I", 4, 4, initialX);
-        this.SYMBOL = 1;
+        this.SYMBOL = 4;
         this.initializeCoords();
     }
     

@@ -1,4 +1,4 @@
-package tetris.domain;
+package tetris.domain.piece;
 
 public class PieceT extends Piece {
 
