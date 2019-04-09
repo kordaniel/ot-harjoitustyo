@@ -16,5 +16,5 @@
 | 06.4  | 1h   | Pelilogiikan kehittelyä sekä yhteensovittamistasta GUI:hin|
 | 07.4  | 2h   | Pelilogiikan kehittelyä sekä luotu testit luokalle PieceT| 
 | 07.4  | 0.5h | Luotu uusi luokka PieceJ sekä sille testit|
-| 09.4  | 4.5h | Luotu luokat Piece[L|O|S|Z] sekä testit näille kaikille, pieniä muutoksia pelilogiikkaan sekä GUIhin|
+| 09.4  | 4.5h | Luotu luokat Piece[L,O,S,Z] sekä testit näille kaikille, pieniä muutoksia pelilogiikkaan sekä GUIhin|
 | Yht   | 30h| |
