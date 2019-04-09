@@ -1,7 +1,5 @@
 package tetris.domain.piece;
 
-import tetris.domain.piece.Piece;
-
 public class PieceI extends Piece {
 
     private final int SYMBOL;

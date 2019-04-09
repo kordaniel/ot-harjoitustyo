@@ -1,29 +1,33 @@
+package piece;
+
+
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tetris.domain.piece.Piece;
-import tetris.domain.piece.PieceZ;
+import tetris.domain.piece.PieceS;
 
-public class PieceZTest {
+public class PieceSTest {
     
     int[][] expectedUprightCoords;
     int[][] expectedTiltedCoords;
     Piece tetrisPiece;
     
-    public PieceZTest() {
+    public PieceSTest() {
         expectedUprightCoords = new int[][]
                 {{0,0,0},
-                 {7,7,0},
-                 {0,7,7}};
+                 {0,8,8},
+                 {8,8,0}};
         expectedTiltedCoords = new int[][]
-                {{0,0,7},
-                 {0,7,7},
-                 {0,7,0}};
+                {{8,0,0},
+                 {8,8,0},
+                 {0,8,0}};
     }
     
     @Before
     public void setUp() {
-        tetrisPiece = new PieceZ(4);
+        tetrisPiece = new PieceS(4);
     }
     
     @Test
@@ -75,6 +79,14 @@ public class PieceZTest {
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
         assertArrayEquals(expectedUprightCoords, tetrisPiece.getCoords());
+    }
+    
+    @Test
+    public void pieceCanBeRotatedRightThreeTimes() {
+        tetrisPiece.rotateRight();
+        tetrisPiece.rotateRight();
+        tetrisPiece.rotateRight();
+        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoords());
     }
     
     @Test

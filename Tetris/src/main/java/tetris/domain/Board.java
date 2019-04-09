@@ -127,33 +127,4 @@ public class Board {
         }
     }
     
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("+");
-        for (int i = 0; i < this.width; i++) {
-            sb.append("-");
-        }
-        sb.append("+\n");
-
-        for (int y = 0; y < this.height; y++) {
-            sb.append("|");
-            for (int x = 0; x < this.width; x++) {
-                if (this.board[y][x] != 0) {
-                    sb.append(this.board[y][x]);
-                } else {
-                    sb.append(" ");
-                }
-            }
-            sb.append("|\n");
-        }
-
-        sb.append("+");
-        for (int i = 0; i < this.width; i++) {
-            sb.append("-");
-        }
-        sb.append("+");
-        return sb.toString();
-    }
-    
 }

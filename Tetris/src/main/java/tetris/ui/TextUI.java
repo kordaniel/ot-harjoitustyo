@@ -46,7 +46,7 @@ public class TextUI implements Userinterface {
     }
     
     private void playGame() {
-        this.game.addPiece();
+        this.game.setNewPiece();
         
         while (true) {
             this.game.advanceGame();

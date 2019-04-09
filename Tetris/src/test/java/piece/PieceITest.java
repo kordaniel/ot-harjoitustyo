@@ -1,59 +1,65 @@
+package piece;
+
+
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tetris.domain.piece.Piece;
-import tetris.domain.piece.PieceT;
+import tetris.domain.piece.PieceI;
 
-public class PieceTTest {
-
+public class PieceITest {
+    
     Piece tetrisPiece;
     
-    public PieceTTest() {
+    public PieceITest() {
     }
     
     @Before
     public void setUp() {
-        tetrisPiece = new PieceT(2);
+        tetrisPiece = new PieceI(4);
     }
-
+    
     @Test
     public void pieceHasCorrectSize() {
-        assertEquals(3, tetrisPiece.getSize());
+        assertEquals(4, tetrisPiece.getSize());
     }
     @Test
     public void construcedPieceHasCorrectYPosition() {
-        assertEquals(3, tetrisPiece.getY());
+        assertEquals(4, tetrisPiece.getY());
     }
     
     @Test
     public void constructedPieceHasCorrectXPosition() {
-        assertEquals(2, tetrisPiece.getX());
+        assertEquals(4, tetrisPiece.getX());
     }
     
     @Test
     public void pieceCanBeMovedToTheLeft() {
         tetrisPiece.moveLeft();
-        assertEquals(1, tetrisPiece.getX());
+        assertEquals(3, tetrisPiece.getX());
     }
     
     @Test
     public void pieceCanBeMovedToTheRight() {
         tetrisPiece.moveRight();
-        assertEquals(3, tetrisPiece.getX());
+        assertEquals(5, tetrisPiece.getX());
     }
     
     @Test
     public void pieceCanBeMovedDown() {
         tetrisPiece.moveDown();
-        assertEquals(4, tetrisPiece.getY());
+        assertEquals(5, tetrisPiece.getY());
     }
 
     @Test
     public void pieceIsConstructedWithRightCoords() {
         int[][] expectedCoords = 
-           {{0,0,0},
-            {2,2,2},
-            {0,2,0}};
+           {{0,4,0,0},
+            {0,4,0,0},
+            {0,4,0,0},
+            {0,4,0,0}};
 
         assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
     }
@@ -61,9 +67,10 @@ public class PieceTTest {
     @Test
     public void pieceCanBeRotatedRightOneTime() {
         int[][] expectedCoords =
-            {{0,0,2},
-             {0,2,2},
-             {0,0,2}};
+            {{0,0,0,0},
+             {0,0,0,0},
+             {0,0,0,0},
+             {4,4,4,4}};
         
         tetrisPiece.rotateRight();
         
@@ -73,9 +80,10 @@ public class PieceTTest {
     @Test
     public void pieceCanBeRotatedRightTwoTimes() {
         int[][] expectedCoords =
-            {{0,0,0},
-             {0,2,0},
-             {2,2,2}};
+            {{0,0,4,0},
+             {0,0,4,0},
+             {0,0,4,0},
+             {0,0,4,0}};
         
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
@@ -86,9 +94,10 @@ public class PieceTTest {
     @Test
     public void pieceCanBeRotatedRightThreeTimes() {
         int[][] expectedCoords =
-            {{2,0,0},
-             {2,2,0},
-             {2,0,0}};
+            {{0,0,0,0},
+             {0,0,0,0},
+             {0,0,0,0},
+             {4,4,4,4}};
         
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
@@ -100,9 +109,10 @@ public class PieceTTest {
     @Test
     public void pieceCanBeRotatedRightFourTimes() {
         int[][] expectedCoords = 
-           {{0,0,0},
-            {2,2,2},
-            {0,2,0}};
+           {{0,4,0,0},
+            {0,4,0,0},
+            {0,4,0,0},
+            {0,4,0,0}};
 
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
@@ -115,9 +125,10 @@ public class PieceTTest {
     @Test
     public void pieceCanBeRotatedLeftOneTime() {
         int[][] expectedCoords =
-            {{2,0,0},
-             {2,2,0},
-             {2,0,0}};
+            {{0,0,0,0},
+             {0,0,0,0},
+             {0,0,0,0},
+             {4,4,4,4}};
         
         tetrisPiece.rotateLeft();
         
@@ -127,9 +138,10 @@ public class PieceTTest {
     @Test
     public void pieceCanBeRotatedLeftTwoTimes() {
         int[][] expectedCoords =
-            {{0,0,0},
-             {0,2,0},
-             {2,2,2}};
+            {{0,0,4,0},
+             {0,0,4,0},
+             {0,0,4,0},
+             {0,0,4,0}};
         
         tetrisPiece.rotateLeft();
         tetrisPiece.rotateLeft();
@@ -140,9 +152,10 @@ public class PieceTTest {
     @Test
     public void pieceCanBeRotatedLeftThreeTimes() {
         int[][] expectedCoords =
-            {{0,0,2},
-             {0,2,2},
-             {0,0,2}};
+            {{0,0,0,0},
+             {0,0,0,0},
+             {0,0,0,0},
+             {4,4,4,4}};
         
         tetrisPiece.rotateLeft();
         tetrisPiece.rotateLeft();
@@ -154,9 +167,10 @@ public class PieceTTest {
     @Test
     public void pieceCanBeRotatedLeftFourTimes() {
         int[][] expectedCoords = 
-           {{0,0,0},
-            {2,2,2},
-            {0,2,0}};
+           {{0,4,0,0},
+            {0,4,0,0},
+            {0,4,0,0},
+            {0,4,0,0}};
 
         tetrisPiece.rotateLeft();
         tetrisPiece.rotateLeft();
