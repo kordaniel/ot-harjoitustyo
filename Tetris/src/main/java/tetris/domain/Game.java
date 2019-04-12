@@ -60,7 +60,8 @@ public class Game {
     }
     
     public void rotatePiece() {
-        if (this.currentPiece == null) {
+        if (this.currentPiece == null
+                || !this.board.pieceCanBeRotated(this.currentPiece)) {
             return;
         }
         

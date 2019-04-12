@@ -52,7 +52,7 @@ public class Main extends Application {
             }
         });
         stage.setScene(scene);
-        stage.setTitle("TETRIS beta v0.01");
+        stage.setTitle("TETRIS beta v0.09");
         
         gameStatus.setNewPiece();
         new AnimationTimer() {

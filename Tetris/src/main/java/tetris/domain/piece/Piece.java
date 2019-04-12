@@ -35,6 +35,10 @@ public abstract class Piece {
     final public int[][] getCoords() {
         return this.pieceCoordinates[this.orientation];
     }
+    
+    final public int[][] getCoordsForNextOrientation() {
+        return this.pieceCoordinates[getNextOrientation()];
+    }
 
     final public void moveDown() {
         this.y++;
@@ -60,16 +64,12 @@ public abstract class Piece {
         return this.SIZE;
     }
 
-    final public void rotateLeft() {
-        if (this.orientation != 0) {
-            this.orientation--;
-        } else {
-            this.orientation = this.MAX_ORIENTATIONS - 1;
-        }
-    }
-
     final public void rotateRight() {
-        this.orientation = (this.orientation + 1) % this.MAX_ORIENTATIONS;
+        this.orientation = getNextOrientation();
+    }
+    
+    final private int getNextOrientation() {
+        return (this.orientation + 1) % this.MAX_ORIENTATIONS;
     }
     
 }

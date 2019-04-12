@@ -16,25 +16,49 @@ public class Board {
     }
     
     public boolean pieceCanMoveLeft(Piece p) {
-        return this.pieceCanGo(p, p.getY(), p.getX() - 1);
+        return pieceCanGoCoords(p.getCoords(), p.getY(), p.getX() - 1);
+        //return this.pieceCanGo(p, p.getY(), p.getX() - 1);
     }
     
     public boolean pieceCanMoveRight(Piece p) {
-        return this.pieceCanGo(p, p.getY(), p.getX() + 1);
+        return pieceCanGoCoords(p.getCoords(), p.getY(), p.getX() + 1);
+        //return this.pieceCanGo(p, p.getY(), p.getX() + 1);
     }
     
     public boolean pieceCanMoveDown(Piece p) {
-        return this.pieceCanGo(p, p.getY() + 1, p.getX());
+        return pieceCanGoCoords(p.getCoords(), p.getY() + 1, p.getX());
+        //return this.pieceCanGo(p, p.getY() + 1, p.getX());
     }
     
+    public boolean pieceCanBeRotated(Piece p) {
+        return pieceCanGoCoords(p.getCoordsForNextOrientation(), p.getY(), p.getX());
+    }
+    
+    private  boolean pieceCanGoCoords(int[][] pieceCoords, int y, int x) {
+        int pieceSize = pieceCoords.length;
+        
+        for (int dy = 0; dy < pieceSize; dy++) {
+            for (int dx = 0; dx < pieceSize; dx++) {
+                if (pieceCoords[dy][dx] == 0) {
+                    continue;
+                }
+                if (y - pieceSize + dy < 0
+                        || x + dx < 0
+                        || y - pieceSize + dy >= this.height
+                        || x + dx >= this.width) {
+                    return false;
+                }
+                if (this.board[y - pieceSize + dy][x + dx] != 0) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    /*
     private boolean pieceCanGo(Piece p, int y, int x) {
         int dim = p.getSize();
-
-        //if (y < 0 || x < 0
-        //        || y - 1 == this.height
-        //        || x - 1 + dim == this.width) {
-        //    return false;
-        //}
         
         int[][] pieceCoords = p.getCoords();
         
@@ -55,7 +79,7 @@ public class Board {
         
         return true;
     }
-    
+    */
     public void dropRows() {
         for (int y = this.height - 1; y >= 0; y--) {
             for (int x = 0; x < this.width; x++) {

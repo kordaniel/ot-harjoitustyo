@@ -121,7 +121,7 @@ public class PieceITest {
         
         assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
     }
-
+    /*
     @Test
     public void pieceCanBeRotatedLeftOneTime() {
         int[][] expectedCoords =
@@ -179,5 +179,5 @@ public class PieceITest {
         
         assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
     }
-    
+    */
 }

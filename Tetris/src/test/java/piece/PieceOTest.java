@@ -74,7 +74,7 @@ public class PieceOTest {
         tetrisPiece.rotateRight();
         assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
     }
-    
+    /*
     @Test
     public void pieceCanBeRotatedLeftOneTimes() {
         tetrisPiece.rotateLeft();
@@ -87,5 +87,5 @@ public class PieceOTest {
         tetrisPiece.rotateLeft();
         assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
     }
-    
+    */
 }
