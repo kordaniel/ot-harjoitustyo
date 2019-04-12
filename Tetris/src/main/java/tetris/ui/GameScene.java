@@ -24,6 +24,7 @@ public class GameScene {
     private int size = 25;
 
     private Rectangle[][] rectangleboard;
+    private Rectangle[][] rectangleNextPiece;
     private Color[] colors;
     
     public GameScene(BorderPane parent, Game gameStatus) {
@@ -31,6 +32,7 @@ public class GameScene {
 
         this.parent = parent;
         this.rectangleboard = new Rectangle[height][width];
+        this.rectangleNextPiece = new Rectangle[4][4];
         
         this.colors = new Color[] {
             Color.TEAL, Color.STEELBLUE, Color.SPRINGGREEN, Color.BLUEVIOLET,
@@ -56,9 +58,26 @@ public class GameScene {
             }
         }
         
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                rectangleNextPiece[y][x] = new Rectangle();
+                rectangleNextPiece[y][x].setX(x * size);
+                rectangleNextPiece[y][x].setY(y * size);
+                rectangleNextPiece[y][x].setWidth(size);
+                rectangleNextPiece[y][x].setHeight(size);
+
+                
+                rectangleNextPiece[y][x].setFill(Color.ANTIQUEWHITE);
+                rectangleNextPiece[y][x].setStroke(Color.TRANSPARENT);
+                rectangleNextPiece[y][x].setStrokeType(StrokeType.INSIDE);
+                rectangleNextPiece[y][x].setStrokeWidth(1);
+            }
+        }
+        
     }
     
-    public void updateBoard() {        
+    public void updateBoard() {
+        
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int coord = this.gameStatus.getBoardInPlay()[y][x];
@@ -71,6 +90,32 @@ public class GameScene {
                     rectangleboard[y][x].setFill(this.colors[0]);
                 } else {
                     rectangleboard[y][x].setFill(this.colors[1]);
+                }
+            }
+        }
+        
+        int[][] nextPieceCoords = this.gameStatus.getNextPieceCoords();
+        if (nextPieceCoords == null) return;
+        
+        for (int y = 0; y < 4; y++) {
+            if (y >= nextPieceCoords.length) {
+                for (int x = 0; x < 4; x++) {
+                    rectangleNextPiece[y][x].setFill(Color.ANTIQUEWHITE);
+                }
+                continue;
+            }
+            
+            for (int x = 0; x < 4; x++) {
+                if (x >= nextPieceCoords[y].length) {
+                    for (; x < 4; x++) {
+                        rectangleNextPiece[y][x].setFill(Color.ANTIQUEWHITE);
+                    }
+                    continue;
+                }
+                if (nextPieceCoords[y][x] == 0) {
+                    rectangleNextPiece[y][x].setFill(Color.ANTIQUEWHITE);
+                } else {
+                    rectangleNextPiece[y][x].setFill(this.colors[nextPieceCoords[y][x]]);
                 }
             }
         }
@@ -101,8 +146,9 @@ public class GameScene {
         
         GridPane nextPiece = new GridPane();
         nextPiece.setStyle("-fx-grid-lines-visible: true;");
-        for (int y = 0; y < 3; y++) {
-            for (int x = 0; x < 3; x++) {
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                /*
                 Rectangle r = new Rectangle();
                 r.setX(x * size);
                 r.setY(y * size);
@@ -118,8 +164,8 @@ public class GameScene {
 
                 r.setStroke(Color.TRANSPARENT);
                 r.setStrokeType(StrokeType.INSIDE);
-                r.setStrokeWidth(1);
-                nextPiece.add(r, x, y);
+                r.setStrokeWidth(1);*/
+                nextPiece.add(rectangleNextPiece[y][x], x, y);
             }
         }
         

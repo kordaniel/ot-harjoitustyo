@@ -13,7 +13,19 @@ import tetris.ui.MenuScene;
 public class Main extends Application {
     
     @Override
-    public void start(Stage stage) {
+    public void init() {
+        //suoritetaan ennen start():ia
+        //create daos
+        System.out.println("Tetris is starting... WELCOME!");
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Shutting down tetris!");
+    }
+    
+    @Override
+    public void start(Stage primaryStage) {
         Game gameStatus = new Game(18, 10);
         BorderPane main = new BorderPane();
         
@@ -24,18 +36,6 @@ public class Main extends Application {
         main.setCenter(menu.getScene());
         
         Scene scene = new Scene(main);
-        /*
-        Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
-        
-        
-        scene.setOnKeyPressed(event -> {
-            pressedKeys.put(event.getCode(), Boolean.TRUE);
-        });
-        
-        scene.setOnKeyReleased(event -> {
-            pressedKeys.put(event.getCode(), Boolean.FALSE);
-        });
-        */
         
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.LEFT) {
@@ -54,8 +54,8 @@ public class Main extends Application {
                 gameStatus.dropPiece();
             }
         });
-        stage.setScene(scene);
-        stage.setTitle("TETRIS beta v0.09");
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("TETRIS beta v0.09");
         
         gameStatus.initializeGame();
         new AnimationTimer() {
@@ -83,7 +83,14 @@ public class Main extends Application {
             }
         }.start();
         
-        stage.show();
+        primaryStage.show();
+        primaryStage.setOnCloseRequest(e -> {
+            //check if all done, daos etc
+            if (false) {
+                e.consume();
+            }
+        });
+        
     }
     
     public static void main(String[] args) {

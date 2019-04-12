@@ -18,5 +18,5 @@
 | 07.4  | 0.5h | Luotu uusi luokka PieceJ sekä sille testit|
 | 09.4  | 4.5h | Luotu luokat Piece[L,O,S,Z] sekä testit näille kaikille, pieniä muutoksia pelilogiikkaan sekä GUIhin|
 | 12.4  | 0.5h | Turhaa koodia poistettu, lisätty tarkistukset palan kääntöä varten|
-| 12.4  | 0.5h | Aloitettu seuraavana vuorossa olevan palan piirtoa (ei valmis)|
-| Yht   | 31h  | |
+| 12.4  | 1h   | Lisätty seuraavana vuorossa olevan palan esittäminen käyttöliittymään|
+| Yht   | 31.5 | |

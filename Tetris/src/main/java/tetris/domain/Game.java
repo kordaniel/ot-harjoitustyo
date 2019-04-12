@@ -155,4 +155,8 @@ public class Game {
         return this.boardInPlay;
     }
     
+    public int[][] getNextPieceCoords() {
+        return this.nextPiece.getCoords();
+    }
+    
 }
