@@ -88,7 +88,7 @@ public class GameScene {
         
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                    game.add(rectangleboard[y][x], x, y);
+                game.add(rectangleboard[y][x], x, y);
             }
         }
 
@@ -98,12 +98,36 @@ public class GameScene {
         btn.setOnAction((event) -> {
             this.parent.setCenter(this.menu.getScene());
         });
+        
+        GridPane nextPiece = new GridPane();
+        nextPiece.setStyle("-fx-grid-lines-visible: true;");
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 3; x++) {
+                Rectangle r = new Rectangle();
+                r.setX(x * size);
+                r.setY(y * size);
+                r.setWidth(size);
+                r.setHeight(size);
 
+                if ((y % 2 == 0 && x % 2 == 1) || (y % 2 == 1 && x % 2 == 0)) {
+                    //switch cols for debugging
+                    r.setFill(this.colors[1]);
+                } else {
+                    r.setFill(this.colors[0]);
+                }
+
+                r.setStroke(Color.TRANSPARENT);
+                r.setStrokeType(StrokeType.INSIDE);
+                r.setStrokeWidth(1);
+                nextPiece.add(r, x, y);
+            }
+        }
+        
         BorderPane border = new BorderPane();
 
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Next"));
-        vbox.getChildren().add(new Label("****"));
+        vbox.getChildren().add(nextPiece);
         vbox.getChildren().add(new Label("Level"));
         vbox.getChildren().add(new Label("4"));
         vbox.getChildren().add(new Label("Score"));

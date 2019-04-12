@@ -20,6 +20,7 @@ public class Game {
     private int[][] boardInPlay;
     
     private Piece currentPiece;
+    private Piece nextPiece;
     
     public Game(int height, int width) {
         this.rand = new Random();
@@ -29,30 +30,37 @@ public class Game {
         this.boardInPlay = this.board.getBoardCopy();
     }
 
-    public void setNewPiece() {
+    public void initializeGame() {
+        this.setNewPiece();
+        this.setNewPiece();
+    }
+    
+    private void setNewPiece() {
         int n = rand.nextInt(7);
-
+        
+        this.currentPiece = this.nextPiece;
+        
         switch (n) {
             case 0:
-                this.currentPiece = new PieceT(4);
+                this.nextPiece = new PieceT(4);
                 break;
             case 1:
-                this.currentPiece = new PieceO(4);
+                this.nextPiece = new PieceO(4);
                 break;
             case 2:
-                this.currentPiece = new PieceI(4);
+                this.nextPiece = new PieceI(4);
                 break;
             case 3:
-                this.currentPiece = new PieceJ(4);
+                this.nextPiece = new PieceJ(4);
                 break;
             case 4:
-                this.currentPiece = new PieceL(4);
+                this.nextPiece = new PieceL(4);
                 break;
             case 5:
-                this.currentPiece = new PieceZ(4);
+                this.nextPiece = new PieceZ(4);
                 break;
             case 6:
-                this.currentPiece = new PieceS(4);
+                this.nextPiece = new PieceS(4);
                 break;
             default:
                 break;
@@ -93,6 +101,15 @@ public class Game {
         }
         
         this.currentPiece.moveDown();
+    }
+    
+    public void dropPiece() {
+        if (this.currentPiece == null) {
+            return;
+        }
+        while (this.board.pieceCanMoveDown(this.currentPiece)) {
+            this.currentPiece.moveDown();
+        }
     }
     
     public void advanceGame() {

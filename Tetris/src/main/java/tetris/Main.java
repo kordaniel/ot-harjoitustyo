@@ -50,11 +50,14 @@ public class Main extends Application {
             if (event.getCode() == KeyCode.DOWN) {
                 gameStatus.moveDown();
             }
+            if (event.getCode() == KeyCode.X) {
+                gameStatus.dropPiece();
+            }
         });
         stage.setScene(scene);
         stage.setTitle("TETRIS beta v0.09");
         
-        gameStatus.setNewPiece();
+        gameStatus.initializeGame();
         new AnimationTimer() {
             //10^9 ns = 1 sec =>
             //60 updates per second =>
