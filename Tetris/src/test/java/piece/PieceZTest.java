@@ -69,6 +69,11 @@ public class PieceZTest {
     }
     
     @Test
+    public void pieceReturnsCorrectCoordsForNextOrientation() {
+        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoordsForNextOrientation());
+    }
+    
+    @Test
     public void pieceCanBeRotatedRightOneTime() {
         tetrisPiece.rotateRight();
         assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoords());

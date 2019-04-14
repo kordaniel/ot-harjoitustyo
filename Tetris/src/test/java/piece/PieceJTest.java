@@ -1,7 +1,5 @@
 package piece;
 
-
-
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -62,6 +60,15 @@ public class PieceJTest {
             {5,5,0}};
 
         assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
+    }
+    
+    @Test
+    public void pieceReturnsCorrectCoordsForNextOrientation() {
+        int[][] expectedCoords =
+            {{0,0,0},
+             {5,0,0},
+             {5,5,5}};
+        assertArrayEquals(expectedCoords, tetrisPiece.getCoordsForNextOrientation());
     }
     
     @Test

@@ -1,7 +1,5 @@
 package piece;
 
-
-
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -66,6 +64,11 @@ public class PieceSTest {
     @Test
     public void pieceIsConstructedWithRightCoords() {
         assertArrayEquals(expectedUprightCoords, tetrisPiece.getCoords());
+    }
+    
+    @Test
+    public void pieceReturnsCorrectCoordsForNextOrientation() {
+        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoordsForNextOrientation());
     }
     
     @Test

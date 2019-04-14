@@ -21,7 +21,7 @@ public class GameScene {
     
     private int width = 10;
     private int height = 18;
-    private int size = 25;
+    private int size = 30;
 
     private Rectangle[][] rectangleboard;
     private Rectangle[][] rectangleNextPiece;
@@ -141,6 +141,7 @@ public class GameScene {
         Button btn = new Button("Back to menu");
 
         btn.setOnAction((event) -> {
+            this.gameStatus.stopGame();
             this.parent.setCenter(this.menu.getScene());
         });
         
@@ -187,6 +188,7 @@ public class GameScene {
         border.setCenter(game);
         border.setRight(vbox);
 
+        gameStatus.startGame();
         return border;
     }
 }

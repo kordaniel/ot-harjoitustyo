@@ -62,6 +62,15 @@ public class PieceLTest {
     }
     
     @Test
+    public void pieceReturnsCorrectCoordsForNextOrientation() {
+        int[][] expectedCoords =
+            {{0,0,0},
+             {6,6,6},
+             {6,0,0}};
+        assertArrayEquals(expectedCoords, tetrisPiece.getCoordsForNextOrientation());
+    }
+    
+    @Test
     public void pieceCanBeRotatedRightOneTime() {
         int[][] expectedCoords =
             {{0,0,0},

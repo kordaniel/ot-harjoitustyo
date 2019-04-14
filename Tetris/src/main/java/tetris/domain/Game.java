@@ -22,12 +22,30 @@ public class Game {
     private Piece currentPiece;
     private Piece nextPiece;
     
+    private boolean isActive;
+    
     public Game(int height, int width) {
         this.rand = new Random();
         this.height = height;
         this.width = width;
         this.board = new Board(height, width);
         this.boardInPlay = this.board.getBoardCopy();
+        this.isActive = false;
+    }
+    
+    public void startGame() {
+        System.out.println("game starting");
+        initializeGame();
+        this.isActive = true;
+    }
+    
+    public void stopGame() {
+        System.out.println("game stopping");
+        this.isActive = false;
+    }
+    
+    public boolean getIsActive() {
+        return this.isActive;
     }
 
     public void initializeGame() {

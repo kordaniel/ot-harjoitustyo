@@ -1,7 +1,5 @@
 package piece;
 
-
-
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -63,6 +61,11 @@ public class PieceOTest {
     }
     
     @Test
+    public void pieceReturnsCorrectCoordsForNextOrientation() {
+        assertArrayEquals(expectedCoords, tetrisPiece.getCoordsForNextOrientation());
+    }
+    
+    @Test
     public void pieceCanBeRotatedRightOneTime() {
         tetrisPiece.rotateRight();
         assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
@@ -74,18 +77,5 @@ public class PieceOTest {
         tetrisPiece.rotateRight();
         assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
     }
-    /*
-    @Test
-    public void pieceCanBeRotatedLeftOneTimes() {
-        tetrisPiece.rotateLeft();
-        assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
-    }
     
-    @Test
-    public void pieceCanBeRotatedLeftTwoTimes() {
-        tetrisPiece.rotateLeft();
-        tetrisPiece.rotateLeft();
-        assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
-    }
-    */
 }

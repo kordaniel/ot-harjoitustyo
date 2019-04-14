@@ -68,7 +68,7 @@ public abstract class Piece {
         this.orientation = getNextOrientation();
     }
     
-    final private int getNextOrientation() {
+    final public int getNextOrientation() {
         return (this.orientation + 1) % this.MAX_ORIENTATIONS;
     }
     

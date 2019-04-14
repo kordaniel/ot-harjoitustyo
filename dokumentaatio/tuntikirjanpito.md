@@ -19,4 +19,5 @@
 | 09.4  | 4.5h | Luotu luokat Piece[L,O,S,Z] sekä testit näille kaikille, pieniä muutoksia pelilogiikkaan sekä GUIhin|
 | 12.4  | 0.5h | Turhaa koodia poistettu, lisätty tarkistukset palan kääntöä varten|
 | 12.4  | 1h   | Lisätty seuraavana vuorossa olevan palan esittäminen käyttöliittymään|
-| Yht   | 31.5 | |
+| 14.4  | 2h   | Lisätty luokkat vakioita sekä GUIlle asetuksia varten, kumpikaan ei käytössä vielä. Pari testiä Board-luokalle sekä pelilogiikan kehittelyä|
+| Yht   | 33.5 | |

@@ -9,15 +9,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import tetris.domain.Game;
 
 public class MenuScene {
 
     private BorderPane parent;
     private GameScene game;
+    private SettingScene settings;
     
-    public MenuScene(BorderPane parent, GameScene game) {
+    public MenuScene(BorderPane parent, GameScene game, SettingScene settings) {
         this.parent = parent;
         this.game = game;
+        this.settings = settings;
     }
     
     public Parent getScene() {
@@ -45,7 +48,12 @@ public class MenuScene {
             this.parent.setCenter(game.getScene());
         });
         
-        menu.getChildren().addAll(labelStart, labelSetName, labelHighSco, btn);
+        Button settingsButton = new Button("Settings");
+        settingsButton.setOnAction((event) -> {
+            this.parent.setCenter(settings.getScene());
+        });
+        
+        menu.getChildren().addAll(labelStart, labelSetName, labelHighSco, btn, settingsButton);
         
         asettelu.setCenter(menu);
         
