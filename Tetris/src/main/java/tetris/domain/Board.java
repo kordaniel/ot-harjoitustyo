@@ -8,11 +8,29 @@ public class Board {
     private int width;
     private final int[][] board;
 
-    public Board(int height, int width) {
-        this.width = width;
+    /**
+     * Constructor that allows the initializer to pass an 2d-array to be used as
+     * the board. This constructor should only be called from within the tests.
+     * @param boardArray 2 dimensional int array that holds the symbols on the boards
+     * @param height Height of the board
+     * @param width  Width of the board
+     */
+    public Board(int[][] boardArray, int height, int width) {
+        this.board = boardArray;
         this.height = height;
-
-        this.board = new int[height][width];
+        this.width = width;
+    }
+    
+    /**
+     * This is the only constructor that should be used from within
+     * the game logic.
+     * Creates an new empty tetris Board (2d integer array) with the
+     * size of the parameters passed to it.
+     * @param height Height of the board
+     * @param width Width of the board
+     */
+    public Board(int height, int width) {
+        this(new int[height][width], height, width);
     }
     
     public boolean pieceCanMoveLeft(Piece p) {

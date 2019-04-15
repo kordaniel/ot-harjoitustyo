@@ -58,8 +58,8 @@ public class Main extends Application {
             }
         });
         
-        primaryStage.setWidth(14*32);
-        primaryStage.setHeight(18*32);
+        primaryStage.setWidth(14 * 32);
+        primaryStage.setHeight(18 * 32);
         primaryStage.setScene(scene);
         primaryStage.setTitle("TETRIS beta v0.09");
         
