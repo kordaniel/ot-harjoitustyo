@@ -24,7 +24,7 @@ public class Board {
     /**
      * This is the only constructor that should be used from within
      * the game logic.
-     * Creates an new empty tetris Board (2d integer array) with the
+     * Creates a new empty tetris Board (2d integer array) with the
      * size of the parameters passed to it.
      * @param height Height of the board
      * @param width Width of the board
@@ -72,45 +72,56 @@ public class Board {
         return true;
     }
     
+    /**
+     * Checks all rows starting from the bottom of the board for filled
+     * rows. If the row is filled, clears it and moves all coordinates
+     * above the row down exactly one row. That is blocks may be
+     * left floating.
+     * 
+     */
     public void dropRows() {
-        do {            
-            for (int y = this.height - 1; y >= 0; y--) {
-                for (int x = 0; x < this.width; x++) {
-                    if (this.board[y][x] == 0) {
-                        continue;
-                    }
-                    int symbol = this.board[y][x];
-                    this.board[y][x] = 0;
-                    this.dropCoordinate(y, x, symbol);
-                }
-            }
-        } while (this.clearRows());
-    }
-
-    public void dropCoordinate(int y, int x, int symbol) {
-        if (y + 1 == this.height || this.board[y + 1][x] != 0) {
-            this.board[y][x] = symbol;
-            return;
-        }
-        this.dropCoordinate(y + 1, x, symbol);
-    }
-
-    public boolean clearRows() {
-        boolean boardChanged = false;
-        
         for (int y = this.height - 1; y >= 0; y--) {
-            for (int x = 0; x < this.width; x++) {
-                if (this.board[y][x] == 0) {
-                    break;
-                } else if (x == this.width - 1) {
-                    clearRow(y);
-                    boardChanged = true;
-                }
+            if (checkAndClearRow(y)) {
+                System.out.println("clearing row: " + y);
+                moveRowsAboveYDown(y);
+                y++;
             }
         }
-        return boardChanged;
+    }
+    
+    /**
+     * Move all coords above row y down exactly one row
+     * @param y lowest row that will be altered
+     */
+    private void moveRowsAboveYDown(int y) {
+        for (; y > 0; y--) {
+            for (int x = 0; x < this.width; x++) {
+                this.board[y][x] = this.board[y-1][x];
+                this.board[y-1][x] = 0;
+            }
+        }
+        
+    }
+    
+    /**
+     * Checks row and if it is an full row clears it
+     * @param y row to be checked
+     * @return true if row is cleared, false otherwise
+     */
+    private boolean checkAndClearRow(int y) {
+        for (int x = 0; x < this.width; x++) {
+            if (this.board[y][x] == 0) {
+                return false;
+            }
+        }
+        clearRow(y);
+        return true;
     }
 
+    /**
+     * Clears one full row. IE set's all of row y:s x-coordinates to 0
+     * @param y row to be cleared
+     */
     public void clearRow(int y) {
         for (int x = 0; x < this.width; x++) {
             this.board[y][x] = 0;

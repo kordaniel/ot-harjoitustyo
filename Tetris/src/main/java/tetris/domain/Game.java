@@ -135,20 +135,17 @@ public class Game {
             return;
         }
         
-        //System.out.println("**************************");
-        //System.out.println("Piece set to y: " + this.currentPiece.getY());
         if (this.board.pieceCanMoveDown(currentPiece)) {
             this.currentPiece.moveDown();
         } else {
             this.board.addPieceToBoard(this.currentPiece);
-            while (this.board.clearRows()) {
-                this.board.dropRows();
-            }
+            this.board.dropRows();
+            //this.board.dropRows();
+            //while (this.board.clearRows()) {
+            //    this.board.dropRows();
+            //}
             setNewPiece();
         }
-        //System.out.println("Piece set to y: " + this.currentPiece.getY());
-        //System.out.println("**************************");
-        
         this.addPieceToBoardInPlay();
     }
 
