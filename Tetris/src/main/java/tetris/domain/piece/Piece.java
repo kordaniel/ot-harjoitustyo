@@ -15,6 +15,9 @@ public abstract class Piece {
     private int y;
     private int x;
 
+    //NEED TO ADD TESTS FOR THIS METHOD. how to test random though?
+    //loop n times and check distribution of classes and that no nulls
+    //are returned..?
     /**
      * Factory method that returns an randomly chosen tetris Piece of
      * type I,J,L,O,S,Z,T that extends this abstract class of type Piece
@@ -43,9 +46,8 @@ public abstract class Piece {
     }
 
     /**
-     * Piece is always constructed with Y-coord equal to the size of the piece
-     * (piece is placed on top of the grid)
-     *
+     * Constructs a new Piece with the properties of values passed
+     * as parameters
      * @param name name of the constructed piece, for example I,O,Z...
      * @param size size of the 2d coordinate grid
      * @param maxOrientations amount of orientations the piece has

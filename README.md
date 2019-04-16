@@ -2,14 +2,17 @@
 Tähän repositorioon pyrin totetuttamaan klassisen tetris-pelin kloonin. Peli on minun harjoitustyö HY:n 2019 kevään kurssille _ohjelmistotekniikka_.
 
 ### Tämänviikkoinen "iteraatio"
-Peliä voi nyt pelata JavaFX:n kautta. Tietenkin bugeja on vielä reilusti enemmän kuin ominaisuuksia. mm. peli lähtee heti pyörimään kun pelin käynnistää. Ruudun kokoa ei ole asetettu mitenkään, joten jos haluaa testata peliä, niin sitä pitää itse suurentaa vetämällä. En ole vielä lisännyt tarkistuksia palikoiden pyörittämiseen, joten jos testaatte, niin kannattaa varautua siihen että reunoilla tehdyt pyöräytykset menevät taulukon ulkopuolelle. Eteenpäin sanoi mummo lumihangessa!  
+Pelilogiikka alkaa olemaan kunnossa, palan saa tiputettua painamalla x-näppäintä. Settings näkymästä ei sitten pääse pois sulkematta sovellusta, koko käyttöliittymä pitää refaktoroida jossain vaiheessa. Tämän viikon aikana olen myös lisännyt joitain luokkia, peli ei vielä vain ole siinä vaiheessa, että niille olisi käyttöä. Seuraavien viikkojen aikana olisi tarkoitus toteuttaa ne sekä ottaa käyttöön. 
 
-Myöskin checkstyle-raportissa on yhteensä 12 erroria, mutta 10 niistä johtuu vakioiden nimeämisestä CAPS:eilla sekä yhdestä Mainissa olevasta käyttöliittymän JavaFX start()-metodista..  
+Checkstyle-raportissa on jonkin verran virheitä, mutta ne johtuvat vakioiden nimeämisestä ALL_CAPS-tyylillä sekä yhdestä Mainissa olevasta käyttöliittymän JavaFX start()-metodista.. Pyrkimyksenä olisi refaktoroida se ui-pakkauksen alle.  
 
 ### Dokumentaatio
 [Vaatimusmäärittely](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Arkkitehtuurikuvaus](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)  
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
+
+## Releaset
+[Viikko 5](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Komentorivitoiminnot
 Kaikki komennot on suoritettava hakemistossa _Tetris_, ei repositorion juuressa.
