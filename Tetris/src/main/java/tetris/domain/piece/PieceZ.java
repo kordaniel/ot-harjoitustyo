@@ -9,7 +9,7 @@ public class PieceZ extends Piece {
      * @param initialX Initial X-coordinate of the constructed piece
      */
     public PieceZ(int initialX) {
-        super("Z", 3, 2, initialX);
+        super("Z", 3, 2, 1, initialX);
         this.SYMBOL = 7;
         this.initializeCoords();
     }

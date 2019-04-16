@@ -35,7 +35,7 @@ public class PieceSTest {
     
     @Test
     public void construcedPieceHasCorrectYPosition() {
-        assertEquals(3, tetrisPiece.getY());
+        assertEquals(1, tetrisPiece.getY());
     }
     
     @Test
@@ -58,7 +58,7 @@ public class PieceSTest {
     @Test
     public void pieceCanBeMovedDown() {
         tetrisPiece.moveDown();
-        assertEquals(4, tetrisPiece.getY());
+        assertEquals(2, tetrisPiece.getY());
     }
 
     @Test
@@ -91,18 +91,4 @@ public class PieceSTest {
         tetrisPiece.rotateRight();
         assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoords());
     }
-    /*
-    @Test
-    public void pieceCanBeRotatedLeftOneTime() {
-        tetrisPiece.rotateLeft();
-        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoords());
-    }
-    
-    @Test
-    public void pieceCanBeRotatedLeftTwoTimes() {
-        tetrisPiece.rotateLeft();
-        tetrisPiece.rotateLeft();
-        assertArrayEquals(expectedUprightCoords, tetrisPiece.getCoords());
-    }
-    */
 }

@@ -29,7 +29,7 @@ public class PieceOTest {
     
     @Test
     public void constructedPieceHasCorrectYPosition() {
-        assertEquals(2, tetrisPiece.getY());
+        assertEquals(1, tetrisPiece.getY());
     }
     
     @Test
@@ -52,7 +52,7 @@ public class PieceOTest {
     @Test
     public void pieceCanBeMovedDown() {
         tetrisPiece.moveDown();
-        assertEquals(3, tetrisPiece.getY());
+        assertEquals(2, tetrisPiece.getY());
     }
     
     @Test

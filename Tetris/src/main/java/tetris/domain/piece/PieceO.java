@@ -5,7 +5,7 @@ public class PieceO extends Piece {
     private final int SYMBOL;
 
     public PieceO(int initialX) {
-        super("O", 2, 1, initialX);
+        super("O", 2, 1, 1, initialX);
         this.SYMBOL = 3;
         this.initializeCoords();
     }

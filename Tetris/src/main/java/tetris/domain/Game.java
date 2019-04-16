@@ -106,10 +106,6 @@ public class Game {
         } else {
             this.board.addPieceToBoard(this.currentPiece);
             this.board.dropRows();
-            //this.board.dropRows();
-            //while (this.board.clearRows()) {
-            //    this.board.dropRows();
-            //}
             setNewPiece();
         }
         this.addPieceToBoardInPlay();
@@ -120,10 +116,10 @@ public class Game {
         int[][] pieceCoords = this.currentPiece.getCoords();
         int py = this.currentPiece.getY();
         int px = this.currentPiece.getX();
-        int dim = this.currentPiece.getSize();
+        int dim = this.currentPiece.getSize() - 1;
         
-        for (int dy = 0; dy < dim; dy++) {
-            for (int dx = 0; dx < dim; dx++) {
+        for (int dy = 0; dy <= dim; dy++) {
+            for (int dx = 0; dx <= dim; dx++) {
                 if (pieceCoords[dy][dx] == 0) {
                     continue;
                 }

@@ -49,9 +49,11 @@ public abstract class Piece {
      * @param name name of the constructed piece, for example I,O,Z...
      * @param size size of the 2d coordinate grid
      * @param maxOrientations amount of orientations the piece has
+     * @param initialY the initial Y-coordinate for the constructed piece
      * @param initialX the initial X-coordinate for the constructed piece
      */
-    public Piece(String name, int size, int maxOrientations, int initialX) {
+    public Piece(String name, int size, int maxOrientations,
+            int initialY, int initialX) {
         this.orientation = 0;
 
         this.TYPE = name;
@@ -59,7 +61,7 @@ public abstract class Piece {
         this.SIZE = size;
         this.pieceCoordinates = new int[maxOrientations][size][size];
 
-        this.y = size;
+        this.y = initialY;
         this.x = initialX;
     }
 

@@ -50,10 +50,10 @@ public class Board {
     }
     
     private  boolean pieceCanGoCoords(int[][] pieceCoords, int y, int x) {
-        int pieceSize = pieceCoords.length;
+        int pieceSize = pieceCoords.length - 1;
         
-        for (int dy = 0; dy < pieceSize; dy++) {
-            for (int dx = 0; dx < pieceSize; dx++) {
+        for (int dy = 0; dy <= pieceSize; dy++) {
+            for (int dx = 0; dx <= pieceSize; dx++) {
                 if (pieceCoords[dy][dx] == 0) {
                     continue;
                 }
@@ -138,7 +138,7 @@ public class Board {
     }
     
     public void addPieceToBoard(Piece p) {
-        int dim = p.getSize();
+        int dim = p.getSize() - 1;
         int py = p.getY();
         int px = p.getX();
         int[][] pieceCoords = p.getCoords();
@@ -147,12 +147,11 @@ public class Board {
             return;
         }
         
-        for (int dy = 0; dy < dim; dy++) {
-            for (int dx = 0; dx < dim; dx++) {
+        for (int dy = 0; dy <= dim; dy++) {
+            for (int dx = 0; dx <= dim; dx++) {
                 if (pieceCoords[dy][dx] == 0) {
                     continue;
                 } 
-                
                 this.board[py - dim + dy][px + dx] = pieceCoords[dy][dx];
             }
         }

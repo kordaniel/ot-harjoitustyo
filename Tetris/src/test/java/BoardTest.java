@@ -3,7 +3,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import tetris.domain.Board;
 import tetris.domain.piece.PieceI;
+import tetris.domain.piece.PieceJ;
+import tetris.domain.piece.PieceL;
 import tetris.domain.piece.PieceO;
+import tetris.domain.piece.PieceS;
+import tetris.domain.piece.PieceT;
+import tetris.domain.piece.PieceZ;
 
 public class BoardTest {
     
@@ -55,13 +60,79 @@ public class BoardTest {
     }
     
     @Test
-    public void tetrisPieceCanBeAddedToBoard() {
+    public void pieceTIsSpawnedAtRightCoords() {
+        int[][] expectedResult = {
+            {0,2,2,2},
+            {0,0,2,0},
+            {0,0,0,0},
+            {0,0,0,0}};
+        tetrisBoard.addPieceToBoard(new PieceT(1));
+        assertArrayEquals(expectedResult, tetrisBoard.getBoardCopy());
+    }
+    
+    @Test
+    public void pieceOIsSpawnedAtRightCoords() {
         int[][] expectedResult = {
             {0,3,3,0},
             {0,3,3,0},
             {0,0,0,0},
             {0,0,0,0}};
         tetrisBoard.addPieceToBoard(new PieceO(1));
+        assertArrayEquals(expectedResult, tetrisBoard.getBoardCopy());
+    }
+    
+    @Test
+    public void pieceIsSpawnedAtRightCoords() {
+        int[][] expectedResult = {
+            {0,0,4,0},
+            {0,0,4,0},
+            {0,0,4,0},
+            {0,0,4,0}};
+        tetrisBoard.addPieceToBoard(new PieceI(1));
+        assertArrayEquals(expectedResult, tetrisBoard.getBoardCopy());
+    }
+    
+    @Test
+    public void pieceJIsSpawnedAtRightCoords() {
+        int[][] expectedResult = {
+            {0,0,5,0},
+            {0,0,5,0},
+            {0,5,5,0},
+            {0,0,0,0}};
+        tetrisBoard.addPieceToBoard(new PieceJ(1));
+        assertArrayEquals(expectedResult, tetrisBoard.getBoardCopy());
+    }
+    
+    @Test
+    public void pieceLIsSpawnedAtRightCoords() {
+        int[][] expectedResult = {
+            {0,6,0,0},
+            {0,6,0,0},
+            {0,6,6,0},
+            {0,0,0,0}};
+        tetrisBoard.addPieceToBoard(new PieceL(1));
+        assertArrayEquals(expectedResult, tetrisBoard.getBoardCopy());
+    }
+    
+    @Test
+    public void pieceZIsSpawnedAtRightCoords() {
+        int[][] expectedResult = {
+            {0,7,7,0},
+            {0,0,7,7},
+            {0,0,0,0},
+            {0,0,0,0}};
+        tetrisBoard.addPieceToBoard(new PieceZ(1));
+        assertArrayEquals(expectedResult, tetrisBoard.getBoardCopy());
+    }
+    
+    @Test
+    public void pieceSIsSpawnedAtRightCoords() {
+        int[][] expectedResult = {
+            {0,0,8,8},
+            {0,8,8,0},
+            {0,0,0,0},
+            {0,0,0,0}};
+        tetrisBoard.addPieceToBoard(new PieceS(1));
         assertArrayEquals(expectedResult, tetrisBoard.getBoardCopy());
     }
     

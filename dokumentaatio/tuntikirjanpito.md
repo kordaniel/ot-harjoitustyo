@@ -20,5 +20,6 @@
 | 12.4  | 0.5h | Turhaa koodia poistettu, lisätty tarkistukset palan kääntöä varten|
 | 12.4  | 1h   | Lisätty seuraavana vuorossa olevan palan esittäminen käyttöliittymään|
 | 14.4  | 2h   | Lisätty luokkat vakioita sekä GUIlle asetuksia varten, kumpikaan ei käytössä vielä. Pari testiä Board-luokalle sekä pelilogiikan kehittelyä|
-| 16.4  | 3h   | Peliloogiikkaa muutettu, nyt käytössä normaali tetriksen rivien tyhjennys/palojen tippuminen [wikipedia](https://en.wikipedia.org/wiki/Tetris). Eli palat/koordinaatit voivat jäädä "leijailemaan". Lisätty testejä Board-luokalle|
-| Yht   | 36.5 | |
+| 16.4  | 3h   | Peliloogiikkaa muutettu, nyt käytössä normaali tetriksen rivien tyhjennys/palojen tippuminen, [wikipedia](https://en.wikipedia.org/wiki/Tetris). Eli palat/koordinaatit voivat jäädä "leijailemaan". Lisätty testejä Board-luokalle|
+| 16.4  | 2h   | Kaikki eri tetrispalikat ilmestyvät nyt oikealle y-koordinaatille eli taulukon ylälaitaan. Luotu testit tätä varten. Korjattu bugeja Board-luokasta, liittyen palojen koordinaattien laskentaan suhteessa taulukkoon|
+| Yht   | 38.5 | |
