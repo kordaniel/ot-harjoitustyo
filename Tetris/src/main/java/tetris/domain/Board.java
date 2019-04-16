@@ -95,8 +95,8 @@ public class Board {
     private void moveRowsAboveYDown(int y) {
         for (; y > 0; y--) {
             for (int x = 0; x < this.width; x++) {
-                this.board[y][x] = this.board[y-1][x];
-                this.board[y-1][x] = 0;
+                this.board[y][x] = this.board[y - 1][x];
+                this.board[y - 1][x] = 0;
             }
         }
         

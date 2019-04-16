@@ -22,8 +22,7 @@ public abstract class Piece {
      * @return new Piece
      */
     public static Piece createNewRandomTetrisPiece(int initialX) {
-        int n = RANDOM.nextInt(7);
-        switch (n) {
+        switch (RANDOM.nextInt(7)) {
             case 0:
                 return new PieceT(initialX);
             case 1:
