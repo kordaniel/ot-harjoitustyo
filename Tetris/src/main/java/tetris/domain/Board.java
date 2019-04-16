@@ -82,7 +82,6 @@ public class Board {
     public void dropRows() {
         for (int y = this.height - 1; y >= 0; y--) {
             if (checkAndClearRow(y)) {
-                System.out.println("clearing row: " + y);
                 moveRowsAboveYDown(y);
                 y++;
             }

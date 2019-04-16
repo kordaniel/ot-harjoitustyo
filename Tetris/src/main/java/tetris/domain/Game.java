@@ -1,18 +1,9 @@
 package tetris.domain;
 
-import java.util.Random;
-import tetris.domain.piece.PieceJ;
-import tetris.domain.piece.PieceI;
 import tetris.domain.piece.Piece;
-import tetris.domain.piece.PieceT;
-import tetris.domain.piece.PieceL;
-import tetris.domain.piece.PieceO;
-import tetris.domain.piece.PieceS;
-import tetris.domain.piece.PieceZ;
 
 public class Game {
 
-    private Random rand;
     private Board board;
     
     private int height; 
@@ -25,7 +16,6 @@ public class Game {
     private boolean isActive;
     
     public Game(int height, int width) {
-        this.rand = new Random();
         this.height = height;
         this.width = width;
         this.board = new Board(height, width);
@@ -54,34 +44,10 @@ public class Game {
     }
     
     private void setNewPiece() {
-        int n = rand.nextInt(7);
-        
         this.currentPiece = this.nextPiece;
-        
-        switch (n) {
-            case 0:
-                this.nextPiece = new PieceT(4);
-                break;
-            case 1:
-                this.nextPiece = new PieceO(4);
-                break;
-            case 2:
-                this.nextPiece = new PieceI(4);
-                break;
-            case 3:
-                this.nextPiece = new PieceJ(4);
-                break;
-            case 4:
-                this.nextPiece = new PieceL(4);
-                break;
-            case 5:
-                this.nextPiece = new PieceZ(4);
-                break;
-            case 6:
-                this.nextPiece = new PieceS(4);
-                break;
-            default:
-                break;
+        this.nextPiece = Piece.createNewRandomTetrisPiece(4);
+        if (this.nextPiece == null) {
+            throw new Error("PieceFactory returned null!!");
         }
     }
     
