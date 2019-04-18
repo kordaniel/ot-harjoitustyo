@@ -33,6 +33,10 @@ public class Board {
         this(new int[height][width], height, width);
     }
     
+    public boolean pieceCanBeSpawned(Piece p) {
+        return pieceCanGoCoords(p.getCoords(), p.getY(), p.getX());
+    }
+    
     public boolean pieceCanMoveLeft(Piece p) {
         return pieceCanGoCoords(p.getCoords(), p.getY(), p.getX() - 1);
     }
@@ -77,15 +81,18 @@ public class Board {
      * rows. If the row is filled, clears it and moves all coordinates
      * above the row down exactly one row. That is blocks may be
      * left floating.
-     * 
+     * @return total amount of rows cleared
      */
-    public void dropRows() {
+    public int dropRows() {
+        int clearedRows = 0;
         for (int y = this.height - 1; y >= 0; y--) {
             if (checkAndClearRow(y)) {
+                clearedRows++;
                 moveRowsAboveYDown(y);
                 y++;
             }
         }
+        return clearedRows;
     }
     
     /**

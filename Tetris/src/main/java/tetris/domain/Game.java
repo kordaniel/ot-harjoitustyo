@@ -14,6 +14,7 @@ public class Game {
     private Piece nextPiece;
     
     private boolean isActive;
+    private Statistics gameStatistics;
     
     public Game(int height, int width) {
         this.height = height;
@@ -21,6 +22,7 @@ public class Game {
         this.board = new Board(height, width);
         this.boardInPlay = this.board.getBoardCopy();
         this.isActive = false;
+        this.gameStatistics = new Statistics();
     }
     
     public void startGame() {
@@ -44,6 +46,9 @@ public class Game {
     }
     
     private void setNewPiece() {
+        if (this.nextPiece != null
+                && !this.board.pieceCanBeSpawned(nextPiece))
+            System.out.println("game over MAAN");
         this.currentPiece = this.nextPiece;
         this.nextPiece = Piece.createNewRandomTetrisPiece(4);
         if (this.nextPiece == null) {
@@ -105,7 +110,10 @@ public class Game {
             this.currentPiece.moveDown();
         } else {
             this.board.addPieceToBoard(this.currentPiece);
-            this.board.dropRows();
+            int rowsCleared = this.board.dropRows();
+            gameStatistics.incrementClearedLines(rowsCleared);
+            System.out.println("total rows cleared: " + 
+                    gameStatistics.getClearedLinesNum());
             setNewPiece();
         }
         this.addPieceToBoardInPlay();
