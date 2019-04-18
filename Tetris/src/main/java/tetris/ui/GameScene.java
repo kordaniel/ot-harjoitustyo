@@ -35,9 +35,23 @@ public class GameScene {
         this.rectangleNextPiece = new Rectangle[4][4];
         
         this.colors = new Color[] {
-            Color.TEAL, Color.STEELBLUE, Color.SPRINGGREEN, Color.BLUEVIOLET,
-            Color.BROWN, Color.CORAL, Color.BISQUE, Color.THISTLE, Color.WHITESMOKE };
-
+            Color.rgb(45, 63, 81), //bgcol1
+            Color.rgb(36, 51, 65), //bgcol2
+            Color.rgb(172, 77, 155).brighter(), // T
+            Color.rgb(247, 211, 25).brighter(), // O
+            Color.rgb(55, 199, 239).brighter(), // I
+            Color.rgb(90, 101, 172).brighter(), // J
+            Color.rgb(238, 121, 35).brighter(), // L
+            Color.rgb(238, 31, 41).brighter(),  // Z
+            Color.rgb(70, 182, 69).brighter()   // S
+        };
+        System.out.println("R: " + colors[0].getRed());
+        System.out.println("G: " + colors[0].getGreen());
+        System.out.println("B: " + colors[0].getBlue());
+        System.out.println("---");
+        System.out.println("R: " + colors[1].getRed());
+        System.out.println("G: " + colors[1].getGreen());
+        System.out.println("B: " + colors[1].getBlue());
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 rectangleboard[y][x] = new Rectangle();
@@ -52,9 +66,9 @@ public class GameScene {
                     rectangleboard[y][x].setFill(this.colors[1]);
                 }
 
-                rectangleboard[y][x].setStroke(Color.TRANSPARENT);
+                rectangleboard[y][x].setStroke(Color.rgb(59, 83, 104));
                 rectangleboard[y][x].setStrokeType(StrokeType.INSIDE);
-                rectangleboard[y][x].setStrokeWidth(1);
+                rectangleboard[y][x].setStrokeWidth(2);
             }
         }
         
@@ -128,7 +142,6 @@ public class GameScene {
 
     public Parent getScene() {
         GridPane game = new GridPane();
-        //game.setStyle("-fx-background-color: cyan; -fx-grid-lines-visible: true;");
         game.setStyle("-fx-grid-lines-visible: true;");
         
         for (int y = 0; y < height; y++) {
