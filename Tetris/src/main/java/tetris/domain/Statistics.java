@@ -42,4 +42,8 @@ public class Statistics {
         return clearedLinesNum;
     }
     
+    public String getClearedLinesAsString() {
+        return Integer.toString(clearedLinesNum);
+    }
+    
 }

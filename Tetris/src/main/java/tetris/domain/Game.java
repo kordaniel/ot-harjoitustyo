@@ -1,5 +1,9 @@
 package tetris.domain;
 
+import java.io.File;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import tetris.Constants;
 import tetris.domain.piece.Piece;
 
 public class Game {
@@ -16,7 +20,23 @@ public class Game {
     private boolean isActive;
     private Statistics gameStatistics;
     
+    //TEMPORARILY IN THIS CLASS
+    //all sounds downloaded from https://freesound.org
+    Media sndFxTurn;
+    Media sndFxClear;
+    MediaPlayer mediaPlayerTurn;
+    MediaPlayer mediaPlayerClear;
+    
     public Game(int height, int width) {
+        sndFxTurn = new Media(
+                Constants.FILE_SNDFX_TURN_PIECE.toURI().toString());
+        sndFxClear = new Media(
+                Constants.FILE_SNDFX_CLEAR_ROWS.toURI().toString());
+        mediaPlayerTurn = new MediaPlayer(this.sndFxTurn);
+        mediaPlayerClear = new MediaPlayer(this.sndFxClear);
+        //mediaPlayerTurn.setCycleCount(Integer.MAX_VALUE);
+        //mediaPlayerClear.setCycleCount(Integer.MAX_VALUE);
+        
         this.height = height;
         this.width = width;
         this.board = new Board(height, width);
@@ -61,7 +81,8 @@ public class Game {
                 || !this.board.pieceCanBeRotated(this.currentPiece)) {
             return;
         }
-        
+        //plays only one time, how to reset player to beginning
+        //mediaPlayerTurn.play();
         this.currentPiece.rotateRight();
     }
     
@@ -114,6 +135,11 @@ public class Game {
             gameStatistics.incrementClearedLines(rowsCleared);
             System.out.println("total rows cleared: " + 
                     gameStatistics.getClearedLinesNum());
+            
+            //plays only one time...
+//            if (rowsCleared >= 2) {
+//                mediaPlayerClear.play();
+//            }
             setNewPiece();
         }
         this.addPieceToBoardInPlay();
@@ -142,6 +168,10 @@ public class Game {
     
     public int[][] getNextPieceCoords() {
         return this.nextPiece.getCoords();
+    }
+    
+    public Statistics getStatistics() {
+        return this.gameStatistics;
     }
     
 }

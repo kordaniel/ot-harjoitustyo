@@ -1,5 +1,6 @@
 package tetris;
 
+import java.io.File;
 import javafx.scene.paint.Color;
 
 public class Constants {
@@ -28,4 +29,13 @@ public class Constants {
         Color.rgb(238, 31, 41).brighter(),  // Z
         Color.rgb(70, 182, 69).brighter()   // S
     };
+    
+    // SOUNDS
+    // all sounds downloaded from https://freesound.org
+    public static final File FILE_BG_MUSIC =
+            new File("src/main/resources/sounds/bg_music.wav");
+    public static final File FILE_SNDFX_CLEAR_ROWS =
+            new File("src/main/resources/sounds/clear_row.wav");
+    public static final File FILE_SNDFX_TURN_PIECE =
+            new File("src/main/resources/sounds/turn_piece.wav");
 }

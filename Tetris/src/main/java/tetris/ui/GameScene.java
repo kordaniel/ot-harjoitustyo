@@ -1,6 +1,5 @@
 package tetris.ui;
 
-import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -8,9 +7,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
+import tetris.Constants;
 import tetris.domain.Game;
 
 public class GameScene {
@@ -24,38 +26,32 @@ public class GameScene {
     private int width = 10;
     private int height = 18;
     private int size = 30;
-
-    private Rectangle[][] rectangleboard;
-    private Rectangle[][] rectangleNextPiece;
+    
     private Color[] colors;
     
+    private Rectangle[][] rectangleboard;
+    private Rectangle[][] rectangleNextPiece;
+    private Label rowsCleared;
+    
+    //TEMP
+    Media music;
+    MediaPlayer sfxbgMusic;
+    
+    
     public GameScene(BorderPane parent, Game gameStatus) {
+        this. music = new Media(
+                Constants.FILE_BG_MUSIC.toURI().toString());
+        this.sfxbgMusic  = new MediaPlayer(music);
+        sfxbgMusic.setCycleCount(Integer.MAX_VALUE);
+        sfxbgMusic.play();
         this.gameStatus = gameStatus;
 
         this.parent = parent;
         this.rectangleboard = new Rectangle[height][width];
         this.rectangleNextPiece = new Rectangle[4][4];
         
-        this.colors = new Color[] {
-            Color.rgb(45, 63, 81), //bgcol1
-            Color.rgb(36, 51, 65), //bgcol2
-            Color.rgb(172, 77, 155).brighter(), // T
-            Color.rgb(247, 211, 25).brighter(), // O
-            Color.rgb(55, 199, 239).brighter(), // I
-            Color.rgb(90, 101, 172).brighter(), // J
-            Color.rgb(238, 121, 35).brighter(), // L
-            Color.rgb(238, 31, 41).brighter(),  // Z
-            Color.rgb(70, 182, 69).brighter()   // S
-        };
-        Color test = Color.rgb(45, 63, 81);
-        System.out.println(test.getRed());
-        System.out.println(test.getGreen());
-        System.out.println(test.getBlue());
-        System.out.println("");
-        test = test.invert();
-        System.out.println(test.getRed());
-        System.out.println(test.getGreen());
-        System.out.println(test.getBlue());
+        this.colors = Constants.GAME_DEFAULT_COLORS;
+        
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 rectangleboard[y][x] = new Rectangle();
@@ -99,6 +95,8 @@ public class GameScene {
     }
     
     public void updateBoard() {
+        rowsCleared.setText(
+                gameStatus.getStatistics().getClearedLinesAsString());
         
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -165,7 +163,7 @@ public class GameScene {
         
         game.setStyle("-fx-grid-lines-visible: true;");
         game.setCursor(Cursor.NONE);
-        
+        //game.setRotate(180);
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 game.add(rectangleboard[y][x], x, y);
@@ -185,34 +183,17 @@ public class GameScene {
         nextPiece.setCursor(Cursor.NONE);
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
-                /*
-                Rectangle r = new Rectangle();
-                r.setX(x * size);
-                r.setY(y * size);
-                r.setWidth(size);
-                r.setHeight(size);
-
-                if ((y % 2 == 0 && x % 2 == 1) || (y % 2 == 1 && x % 2 == 0)) {
-                    //switch cols for debugging
-                    r.setFill(this.colors[1]);
-                } else {
-                    r.setFill(this.colors[0]);
-                }
-
-                r.setStroke(Color.TRANSPARENT);
-                r.setStrokeType(StrokeType.INSIDE);
-                r.setStrokeWidth(1);*/
                 nextPiece.add(rectangleNextPiece[y][x], x, y);
             }
         }
         
         BorderPane border = new BorderPane();
-
+        rowsCleared = new Label("0");
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Next"));
         vbox.getChildren().add(nextPiece);
         vbox.getChildren().add(new Label("Level"));
-        vbox.getChildren().add(new Label("4"));
+        vbox.getChildren().add(rowsCleared);
         vbox.getChildren().add(new Label("Score"));
         vbox.getChildren().add(new Label("16"));
         vbox.getChildren().add(new Label("High Score"));
