@@ -30,6 +30,8 @@ public class Main extends Application {
         Game gameStatus = new Game(18, 10);
         
         BorderPane main = new BorderPane();
+        main.setStyle("-fx-background-color: rgb(210, 192, 174);");
+        
         
         GameScene gameScene = new GameScene(main, gameStatus);
         SettingScene settingsScene = new SettingScene(main);
@@ -61,16 +63,19 @@ public class Main extends Application {
         primaryStage.setWidth(14 * 32);
         primaryStage.setHeight(18 * 32);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("TETRIS beta v0.09");
+        primaryStage.setTitle("TETRIS beta v. " + Constants.VERSION);
         
         
         new AnimationTimer() {
             //10^9 ns = 1 sec =>
             //60 updates per second =>
             //one update per 16666667 ns
-            private long sleepNanoSeconds = 16_666_667 / 2;
+            private long sleepNanoSeconds = 16_666_667/2; //should be 120fps?
             private long prevNanoTime = System.nanoTime();
             private int refreshes = 0;
+            
+            long frameStartNanoTime = System.nanoTime();
+            double framesDrawn = 0.0;
             
             @Override
             public void handle(long currentNanoTime) {
@@ -81,15 +86,22 @@ public class Main extends Application {
                 if (currentNanoTime - prevNanoTime < sleepNanoSeconds) {
                     return;
                 }
+                if (framesDrawn == 120) {
+                    System.out.println("fps: " + 
+                            (framesDrawn / ((currentNanoTime - frameStartNanoTime) / 1000000000)));
+                    frameStartNanoTime = System.nanoTime();
+                    framesDrawn = 0.0;
+                }
                 
                 if (refreshes >= 15) {
                     gameStatus.advanceGame();
                     refreshes = 0;
                 }
-                refreshes++;
                 
                 gameScene.updateBoard();
                 this.prevNanoTime = currentNanoTime;
+                refreshes++;
+                framesDrawn++;
             }
         }.start();
         

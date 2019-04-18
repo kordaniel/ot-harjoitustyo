@@ -1,5 +1,7 @@
 package tetris.ui;
 
+import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -45,13 +47,15 @@ public class GameScene {
             Color.rgb(238, 31, 41).brighter(),  // Z
             Color.rgb(70, 182, 69).brighter()   // S
         };
-        System.out.println("R: " + colors[0].getRed());
-        System.out.println("G: " + colors[0].getGreen());
-        System.out.println("B: " + colors[0].getBlue());
-        System.out.println("---");
-        System.out.println("R: " + colors[1].getRed());
-        System.out.println("G: " + colors[1].getGreen());
-        System.out.println("B: " + colors[1].getBlue());
+        Color test = Color.rgb(45, 63, 81);
+        System.out.println(test.getRed());
+        System.out.println(test.getGreen());
+        System.out.println(test.getBlue());
+        System.out.println("");
+        test = test.invert();
+        System.out.println(test.getRed());
+        System.out.println(test.getGreen());
+        System.out.println(test.getBlue());
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 rectangleboard[y][x] = new Rectangle();
@@ -79,12 +83,16 @@ public class GameScene {
                 rectangleNextPiece[y][x].setY(y * size);
                 rectangleNextPiece[y][x].setWidth(size);
                 rectangleNextPiece[y][x].setHeight(size);
-
                 
-                rectangleNextPiece[y][x].setFill(Color.ANTIQUEWHITE);
-                rectangleNextPiece[y][x].setStroke(Color.TRANSPARENT);
+                if ((y % 2 == 0 && x % 2 == 1) || (y % 2 == 1 && x % 2 == 0)) {
+                    rectangleboard[y][x].setFill(this.colors[0]);
+                } else {
+                    rectangleboard[y][x].setFill(this.colors[1]);
+                }
+                
+                rectangleNextPiece[y][x].setStroke(Color.rgb(59, 83, 104));
                 rectangleNextPiece[y][x].setStrokeType(StrokeType.INSIDE);
-                rectangleNextPiece[y][x].setStrokeWidth(1);
+                rectangleNextPiece[y][x].setStrokeWidth(2);
             }
         }
         
@@ -114,7 +122,11 @@ public class GameScene {
         for (int y = 0; y < 4; y++) {
             if (y >= nextPieceCoords.length) {
                 for (int x = 0; x < 4; x++) {
-                    rectangleNextPiece[y][x].setFill(Color.ANTIQUEWHITE);
+                    if ((y % 2 == 0 && x % 2 == 1) || (y % 2 == 1 && x % 2 == 0)) {
+                        rectangleNextPiece[y][x].setFill(this.colors[0]);
+                    } else {
+                        rectangleNextPiece[y][x].setFill(this.colors[1]);
+                    }
                 }
                 continue;
             }
@@ -122,12 +134,20 @@ public class GameScene {
             for (int x = 0; x < 4; x++) {
                 if (x >= nextPieceCoords[y].length) {
                     for (; x < 4; x++) {
-                        rectangleNextPiece[y][x].setFill(Color.ANTIQUEWHITE);
+                        if ((y % 2 == 0 && x % 2 == 1) || (y % 2 == 1 && x % 2 == 0)) {
+                            rectangleNextPiece[y][x].setFill(this.colors[0]);
+                        } else {
+                            rectangleNextPiece[y][x].setFill(this.colors[1]);
+                        }
                     }
                     continue;
                 }
                 if (nextPieceCoords[y][x] == 0) {
-                    rectangleNextPiece[y][x].setFill(Color.ANTIQUEWHITE);
+                    if ((y % 2 == 0 && x % 2 == 1) || (y % 2 == 1 && x % 2 == 0)) {
+                        rectangleNextPiece[y][x].setFill(this.colors[0]);
+                    } else {
+                        rectangleNextPiece[y][x].setFill(this.colors[1]);
+                    }
                 } else {
                     rectangleNextPiece[y][x].setFill(this.colors[nextPieceCoords[y][x]]);
                 }
@@ -142,7 +162,9 @@ public class GameScene {
 
     public Parent getScene() {
         GridPane game = new GridPane();
+        
         game.setStyle("-fx-grid-lines-visible: true;");
+        game.setCursor(Cursor.NONE);
         
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -160,6 +182,7 @@ public class GameScene {
         
         GridPane nextPiece = new GridPane();
         nextPiece.setStyle("-fx-grid-lines-visible: true;");
+        nextPiece.setCursor(Cursor.NONE);
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
                 /*
