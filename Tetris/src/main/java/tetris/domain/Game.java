@@ -17,6 +17,7 @@ public class Game {
     private Piece currentPiece;
     private Piece nextPiece;
     
+    private boolean isStarted;
     private boolean isActive;
     private Statistics gameStatistics;
     
@@ -39,21 +40,36 @@ public class Game {
         
         this.height = height;
         this.width = width;
+        //initializeGame();
         this.board = new Board(height, width);
         this.boardInPlay = this.board.getBoardCopy();
+        this.isStarted = false;
         this.isActive = false;
         this.gameStatistics = new Statistics();
     }
     
     public void startGame() {
-        System.out.println("game starting");
         initializeGame();
-        this.isActive = true;
+        isStarted = true;
+        isActive = true;
     }
     
     public void stopGame() {
-        System.out.println("game stopping");
-        this.isActive = false;
+        isActive = false;
+        isStarted = false;
+    }
+    
+    /**
+     * Pauses the game, switches isActive boolean if the game is started
+     * and returns true. Otherwise only returns false.
+     * @return - false if this isActive didn't change, true otherwise
+     */
+    public boolean pauseGame() {
+        if (!isStarted) {
+            return false;
+        }
+        isActive = !isActive;
+        return true;
     }
     
     public boolean getIsActive() {
@@ -61,6 +77,10 @@ public class Game {
     }
 
     public void initializeGame() {
+        //this.board = new Board(height, width);
+        //this.boardInPlay = this.board.getBoardCopy();
+        //this.isStarted = false;
+        //this.isActive = false;
         this.setNewPiece();
         this.setNewPiece();
     }
@@ -133,8 +153,6 @@ public class Game {
             this.board.addPieceToBoard(this.currentPiece);
             int rowsCleared = this.board.dropRows();
             gameStatistics.incrementClearedLines(rowsCleared);
-            System.out.println("total rows cleared: " + 
-                    gameStatistics.getClearedLinesNum());
             
             //plays only one time...
 //            if (rowsCleared >= 2) {

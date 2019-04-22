@@ -2,21 +2,25 @@ package tetris;
 
 import java.io.File;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class Constants {
     
-    public static final double VERSION = 0.5;
+    public static final double VERSION = 0.6;
     
     // GAME
     public static final int BOARD_DEFAULT_HEIGHT = 18;
     public static final int BOARD_DEFAULT_WIDTH = 10;
     
     //UI
-    public static final int RECTANGLE_DEFAULT_SIZE = 30;
+    public static final int RECTANGLE_DEFAULT_SIZE = 35;
     public static final int WINDOW_DEFAULT_WIDTH =
             (BOARD_DEFAULT_WIDTH + 4) * (RECTANGLE_DEFAULT_SIZE + 2);
     public static final int WINDOWS_DEFAULT_HEIGHT =
             BOARD_DEFAULT_HEIGHT * (RECTANGLE_DEFAULT_SIZE + 2);
+    
+    public static final Font DEFAULT_FONT_LABEL = Font.font("Monospaced", 32);
+    
     //COLORS
     public static final Color[] GAME_DEFAULT_COLORS = new Color[] {
         Color.rgb(45, 63, 81), // Background color 1
@@ -29,6 +33,8 @@ public class Constants {
         Color.rgb(238, 31, 41).brighter(),  // Z
         Color.rgb(70, 182, 69).brighter()   // S
     };
+    
+    public static final String DEFAULT_BG_COLOR_CSS = "rgb(210, 192, 174)";
     
     // SOUNDS
     // all sounds downloaded from https://freesound.org

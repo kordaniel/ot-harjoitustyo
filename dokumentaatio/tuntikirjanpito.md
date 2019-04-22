@@ -23,4 +23,5 @@
 | 16.4  | 3h   | Peliloogiikkaa muutettu, nyt käytössä normaali tetriksen rivien tyhjennys/palojen tippuminen, [wikipedia](https://en.wikipedia.org/wiki/Tetris). Eli palat/koordinaatit voivat jäädä "leijailemaan". Lisätty testejä Board-luokalle|
 | 16.4  | 2h   | Kaikki eri tetrispalikat ilmestyvät nyt oikealle y-koordinaatille eli taulukon ylälaitaan. Luotu testit tätä varten. Korjattu bugeja Board-luokasta, liittyen palojen koordinaattien laskentaan suhteessa taulukkoon|
 | 18.4  | 0.5h | Lisätty Statistics luokka ja sen avulla tyhjennettyjen rivien laskenta|
-| Yht   | 39h  | |
+| 22.4  | 4h   | JavaFX:n opiskelua, käyttöliittymän refaktorointia, taustamusiikin alustava lisäys, tyhjennettyjen rivien näyttäminen, pelin pausettaminen, tod.näk jotain unohdettuakin|
+| Yht   | 43h  | |

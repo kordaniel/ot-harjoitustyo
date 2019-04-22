@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 public class SettingScene {
     
     private BorderPane parent;
-    private MenuScene menu;
+    private MenuView menu;
     
     public SettingScene(BorderPane parent) {
         this.parent = parent;

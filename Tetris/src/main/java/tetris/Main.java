@@ -2,47 +2,32 @@ package tetris;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import tetris.domain.Game;
-import tetris.ui.GameScene;
-import tetris.ui.MenuScene;
-import tetris.ui.SettingScene;
+import tetris.ui.GameView;
+import tetris.ui.MenuView;
 
 public class Main extends Application {
     
-    @Override
-    public void init() {
-        //suoritetaan ennen start():ia
-        //create daos
-        System.out.println("Tetris is starting... WELCOME!");
-    }
+    Game gameStatus;
     
-    @Override
-    public void stop() {
-        System.out.println("Shutting down tetris!");
-    }
+    Scene root;
     
-    @Override
-    public void start(Stage primaryStage) {
-        Game gameStatus = new Game(18, 10);
-        
-        BorderPane main = new BorderPane();
+    BorderPane main;
+    MenuView menuView;
+    GameView gameView;
+    
+    private void createRootScene() {
+        main = new BorderPane();
         main.setStyle("-fx-background-color: rgb(210, 192, 174);");
+        main.setPadding(new Insets(7, 7, 7, 7));
         
-        
-        GameScene gameScene = new GameScene(main, gameStatus);
-        SettingScene settingsScene = new SettingScene(main);
-        MenuScene menu = new MenuScene(main, gameScene, settingsScene);
-        gameScene.setMenu(menu);
-        
-        main.setCenter(menu.getScene());
-        
-        Scene scene = new Scene(main);
-        
-        scene.setOnKeyPressed(event -> {
+        root = new Scene(main);
+        root.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.LEFT) {
                 gameStatus.moveLeft();
             }
@@ -55,14 +40,55 @@ public class Main extends Application {
             if (event.getCode() == KeyCode.DOWN) {
                 gameStatus.moveDown();
             }
-            if (event.getCode() == KeyCode.X) {
+            if (event.getCode() == KeyCode.SPACE) {   
                 gameStatus.dropPiece();
             }
         });
         
-        primaryStage.setWidth(14 * 32);
-        primaryStage.setHeight(18 * 32);
-        primaryStage.setScene(scene);
+    }
+    
+    private void createMenuScene() {
+        menuView = new MenuView(main);
+    }
+    
+    private void createGameScene() {
+        gameView = new GameView(main, gameStatus);
+    }
+    
+    @Override
+    public void init() {
+        //suoritetaan ennen start():ia
+        //create daos
+        System.out.println("Tetris is starting... WELCOME!");
+        gameStatus = new Game(Constants.BOARD_DEFAULT_HEIGHT,
+                                Constants.BOARD_DEFAULT_WIDTH);
+        createRootScene();
+        createMenuScene();
+        createGameScene();
+        
+        menuView.registerHandlerForLabelPlay(gameView.getScene());
+        menuView.registerVolumeHandler(gameView);
+        gameView.registerHandlerForLabelBackToMenu(menuView.getScene());
+        
+        main.setCenter(menuView.getScene());
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Shutting down tetris!");
+    }
+    
+    @Override
+    public void start(Stage primaryStage) {
+        
+        primaryStage.setResizable(false);
+        primaryStage.setWidth((Constants.BOARD_DEFAULT_WIDTH + 4) *
+                Constants.RECTANGLE_DEFAULT_SIZE + 21);
+        primaryStage.setHeight(Constants.BOARD_DEFAULT_HEIGHT *
+                Constants.RECTANGLE_DEFAULT_SIZE + 36);
+        
+        
+        primaryStage.setScene(root);
         primaryStage.setTitle("TETRIS beta v. " + Constants.VERSION);
         
         
@@ -87,10 +113,10 @@ public class Main extends Application {
                     return;
                 }
                 if (framesDrawn == 120) {
-                    System.out.println("fps: " + 
-                            (framesDrawn / ((currentNanoTime - frameStartNanoTime) / 1000000000)));
-                    frameStartNanoTime = System.nanoTime();
-                    framesDrawn = 0.0;
+                    //System.out.println("fps: " + 
+                    //        (framesDrawn / ((currentNanoTime - frameStartNanoTime) / 1000000000)));
+                    //frameStartNanoTime = System.nanoTime();
+                    //framesDrawn = 0.0;
                 }
                 
                 if (refreshes >= 15) {
@@ -98,7 +124,7 @@ public class Main extends Application {
                     refreshes = 0;
                 }
                 
-                gameScene.updateBoard();
+                gameView.updateView();
                 this.prevNanoTime = currentNanoTime;
                 refreshes++;
                 framesDrawn++;
