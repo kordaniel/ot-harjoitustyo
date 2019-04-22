@@ -1,13 +1,10 @@
 package tetris.ui;
 
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -21,9 +18,6 @@ public class MenuView {
     private Label labelPlayGame;
     private Label labelSettings;
     private Label labelHighScores;
-
-    //TEMP TEST
-    Slider sliderVol;
     
     public MenuView(BorderPane parent) {
         this.parent = parent;
@@ -44,36 +38,14 @@ public class MenuView {
         labelQuitApp.setOnMouseClicked(event -> {
             Platform.exit();
         });
-        
-        //MOVE TO SETTINGS, with handler
-        sliderVol = new Slider(0, 1, 0.2);
-        //sliderVol.setMin(0);
-        //sliderVol.setMax(1);
-        //sliderVol.setValue(1);
-        sliderVol.setShowTickLabels(true);
-        sliderVol.setShowTickMarks(true);
-        sliderVol.setMajorTickUnit(0.5);
-        sliderVol.setMinorTickCount(5);
-        sliderVol.setBlockIncrement(0.02);
-        
+
         menuView.getChildren().addAll(
                 labelPlayGame,
                 labelSettings,
                 labelHighScores,
-                sliderVol,
                 labelQuitApp);
     }
 
-    public void registerVolumeHandler(GameView gv) {
-        sliderVol.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, 
-                    Number oldValue, Number newValue) {
-                gv.setVolume(newValue.doubleValue());
-            }
-        });
-    }
-    
     public void registerHandlerForLabelPlay(Parent gameScene) {
         this.labelPlayGame.setOnMouseClicked(event -> {
             this.parent.setCenter(gameScene);

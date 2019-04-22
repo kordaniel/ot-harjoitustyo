@@ -78,9 +78,9 @@ public class Main extends Application {
         
         menuView.registerHandlerForLabelPlay(gameView.getScene());
         menuView.registerHandlerForLabelSettings(settingsView.getScene());
-        menuView.registerVolumeHandler(gameView);
         
         settingsView.registerHandlerForButtonBackToMenu(menuView.getScene());
+        settingsView.registerHandlerForVolumeSlider(gameView);
         
         gameView.registerHandlerForLabelBackToMenu(menuView.getScene());
         

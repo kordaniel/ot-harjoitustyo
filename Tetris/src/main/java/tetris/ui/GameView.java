@@ -59,7 +59,7 @@ public class GameView {
         this.sfxbgMusic  = new MediaPlayer(music);
         sfxbgMusic.setCycleCount(Integer.MAX_VALUE);
         
-        sfxbgMusic.setVolume(0.2);
+        sfxbgMusic.setVolume(0.15);
         sfxbgMusic.play();
         //TEMP
 

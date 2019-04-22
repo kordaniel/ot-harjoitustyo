@@ -1,10 +1,13 @@
 package tetris.ui;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -17,6 +20,7 @@ public class SettingsView {
     
     private GridPane settingsView;
     private Button buttonBackToMenu;
+    private Slider sliderVolume;
     
     public SettingsView(BorderPane parent) {
         this.parent = parent;
@@ -37,8 +41,19 @@ public class SettingsView {
         TextField textFieldPlayerName = new TextField();
         settingsView.add(textFieldPlayerName, 1, 1);
         
+        Label labelVolume = new Label("Music volume:");
+        settingsView.add(labelVolume, 0, 2);
+        
+        sliderVolume = new Slider(0, 1, 0.15);
+        sliderVolume.setShowTickLabels(true);
+        sliderVolume.setShowTickMarks(true);
+        sliderVolume.setMajorTickUnit(0.5);
+        sliderVolume.setMinorTickCount(5);
+        sliderVolume.setBlockIncrement(0.02);
+        settingsView.add(sliderVolume, 1, 2);
+        
         buttonBackToMenu = new Button("Back to menu");
-        settingsView.add(buttonBackToMenu, 1, 2, 1, 1);
+        settingsView.add(buttonBackToMenu, 1, 3, 1, 1);
         
     }
     
@@ -49,6 +64,16 @@ public class SettingsView {
     public void registerHandlerForButtonBackToMenu(Parent mainMenu) {
         this.buttonBackToMenu.setOnAction(event -> {
             this.parent.setCenter(mainMenu);
+        });
+    }
+    
+    public void registerHandlerForVolumeSlider(GameView gameView) {
+        sliderVolume.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                    Number oldValue, Number newValue) {
+                gameView.setVolume(newValue.doubleValue());
+            }
         });
     }
 }
