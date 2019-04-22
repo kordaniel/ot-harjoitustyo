@@ -1,5 +1,6 @@
 package tetris.ui;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
@@ -16,9 +17,9 @@ public class MenuView {
 
     private BorderPane parent;
     
-    private VBox menu;
+    private VBox menuView;
     private Label labelPlayGame;
-    private Label labelSetName;
+    private Label labelSettings;
     private Label labelHighScores;
 
     //TEMP TEST
@@ -27,17 +28,22 @@ public class MenuView {
     public MenuView(BorderPane parent) {
         this.parent = parent;
 
-        menu = new VBox(10);
-        menu.setPadding(new Insets(15, 20, 15, 20));
-        menu.setAlignment(Pos.CENTER);
+        menuView = new VBox(10);
+        menuView.setPadding(new Insets(15, 20, 15, 20));
+        menuView.setAlignment(Pos.CENTER);
 
         labelPlayGame = new Label("Play");
-        labelSetName = new Label("Set name");
+        labelSettings = new Label("Set name");
         labelHighScores = new Label("High Scores");
+        Label labelQuitApp = new Label("Quit");
 
-        labelPlayGame.setFont(Constants.DEFAULT_FONT_LABEL);
-        labelSetName.setFont(Constants.DEFAULT_FONT_LABEL);
-        labelHighScores.setFont(Constants.DEFAULT_FONT_LABEL);
+        labelPlayGame.setFont(Constants.DEFAULT_FONT_BOLD);
+        labelSettings.setFont(Constants.DEFAULT_FONT_BOLD);
+        labelHighScores.setFont(Constants.DEFAULT_FONT_BOLD);
+        labelQuitApp.setFont(Constants.DEFAULT_FONT);
+        labelQuitApp.setOnMouseClicked(event -> {
+            Platform.exit();
+        });
         
         //MOVE TO SETTINGS, with handler
         sliderVol = new Slider(0, 1, 0.2);
@@ -50,7 +56,12 @@ public class MenuView {
         sliderVol.setMinorTickCount(5);
         sliderVol.setBlockIncrement(0.02);
         
-        menu.getChildren().addAll(labelPlayGame, labelSetName, labelHighScores, sliderVol);
+        menuView.getChildren().addAll(
+                labelPlayGame,
+                labelSettings,
+                labelHighScores,
+                sliderVol,
+                labelQuitApp);
     }
 
     public void registerVolumeHandler(GameView gv) {
@@ -69,9 +80,9 @@ public class MenuView {
         });
     }
 
-    public void registerHandlerForLabelSetName(Parent settingsScene) {
-        this.labelSetName.setOnMouseClicked(event -> {
-            System.out.println("testi");
+    public void registerHandlerForLabelSettings(Parent settingsScene) {
+        this.labelSettings.setOnMouseClicked(event -> {
+            this.parent.setCenter(settingsScene);
         });
     }
 
@@ -82,6 +93,6 @@ public class MenuView {
     }
 
     public Parent getScene() {
-        return menu;
+        return menuView;
     }
 }

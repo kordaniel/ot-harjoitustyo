@@ -77,18 +77,21 @@ public class Game {
     }
 
     public void initializeGame() {
-        //this.board = new Board(height, width);
-        //this.boardInPlay = this.board.getBoardCopy();
-        //this.isStarted = false;
-        //this.isActive = false;
+        this.board = new Board(height, width);
+        this.boardInPlay = this.board.getBoardCopy();
+        this.isStarted = false;
+        this.isActive = false;
         this.setNewPiece();
         this.setNewPiece();
     }
     
     private void setNewPiece() {
         if (this.nextPiece != null
-                && !this.board.pieceCanBeSpawned(nextPiece))
-            System.out.println("game over MAAN");
+                && !this.board.pieceCanBeSpawned(nextPiece)) {
+            this.stopGame();
+            return;
+        }
+            
         this.currentPiece = this.nextPiece;
         this.nextPiece = Piece.createNewRandomTetrisPiece(4);
         if (this.nextPiece == null) {

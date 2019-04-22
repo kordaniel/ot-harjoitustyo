@@ -24,4 +24,5 @@
 | 16.4  | 2h   | Kaikki eri tetrispalikat ilmestyvät nyt oikealle y-koordinaatille eli taulukon ylälaitaan. Luotu testit tätä varten. Korjattu bugeja Board-luokasta, liittyen palojen koordinaattien laskentaan suhteessa taulukkoon|
 | 18.4  | 0.5h | Lisätty Statistics luokka ja sen avulla tyhjennettyjen rivien laskenta|
 | 22.4  | 4h   | JavaFX:n opiskelua, käyttöliittymän refaktorointia, taustamusiikin alustava lisäys, tyhjennettyjen rivien näyttäminen, pelin pausettaminen, tod.näk jotain unohdettuakin|
-| Yht   | 43h  | |
+| 22.4  | 1h   | GUI:n asetusnäkymän refaktorointia|
+| Yht   | 44h  | |

@@ -3,6 +3,7 @@ package tetris;
 import java.io.File;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class Constants {
     
@@ -19,7 +20,9 @@ public class Constants {
     public static final int WINDOWS_DEFAULT_HEIGHT =
             BOARD_DEFAULT_HEIGHT * (RECTANGLE_DEFAULT_SIZE + 2);
     
-    public static final Font DEFAULT_FONT_LABEL = Font.font("Monospaced", 32);
+    public static final Font DEFAULT_FONT = Font.font("Monospaced", 32);
+    public static final Font DEFAULT_FONT_BOLD =
+            Font.font("Monospaced", FontWeight.BOLD, 32);
     
     //COLORS
     public static final Color[] GAME_DEFAULT_COLORS = new Color[] {

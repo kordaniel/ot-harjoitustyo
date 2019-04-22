@@ -3,7 +3,9 @@ package tetris.ui;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -32,6 +34,7 @@ public class GameView {
     private Rectangle[][] rectangleboard;
     private Rectangle[][] rectangleNextPiece;
     
+    //Scene gameScene;
     private BorderPane view;
     private GridPane gameRectangle;
     private GridPane nextPieceRectangle;
@@ -125,6 +128,10 @@ public class GameView {
     public Parent getScene() {
         return view;
     }
+    /*
+    public Scene getRealScene() {
+        return gameScene;
+    }*/
     
     public void registerHandlerForLabelBackToMenu(Parent menuScene) {
         this.labelBackToMenu.setOnMouseClicked(event -> {
@@ -199,8 +206,30 @@ public class GameView {
     
     private void initializeView() {
         view = new BorderPane();
+        
         view.setCenter(gameRectangle);
         view.setRight(gameViewMenu);
+        
+        /* PERHAPS AN OWN SCENE FOR THE GAMEVIEW..?
+        gameScene = new Scene(view);
+        
+        gameScene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.LEFT) {
+                gameStatus.moveLeft();
+            }
+            if (event.getCode() == KeyCode.RIGHT) {
+                gameStatus.moveRight();
+            }
+            if (event.getCode() == KeyCode.UP) {
+                gameStatus.rotatePiece();
+            }
+            if (event.getCode() == KeyCode.DOWN) {
+                gameStatus.moveDown();
+            }
+            if (event.getCode() == KeyCode.SPACE) {   
+                gameStatus.dropPiece();
+            }
+        }); */
     }
     
     private void initializeGameViewMenu() {
@@ -288,7 +317,7 @@ public class GameView {
     }
     
     private void styleLabelShowInfo(Label l) {
-        l.setFont(Font.font("Monospaced", FontWeight.BOLD, 24));
+        l.setFont(Font.font("Monospaced", FontWeight.MEDIUM, 24));
     }
     
 }

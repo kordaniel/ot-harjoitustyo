@@ -10,16 +10,19 @@ import javafx.stage.Stage;
 import tetris.domain.Game;
 import tetris.ui.GameView;
 import tetris.ui.MenuView;
+import tetris.ui.SettingsView;
 
 public class Main extends Application {
     
     Game gameStatus;
     
     Scene root;
+    //Scene gameScene;
     
     BorderPane main;
     MenuView menuView;
     GameView gameView;
+    SettingsView settingsView;
     
     private void createRootScene() {
         main = new BorderPane();
@@ -27,6 +30,7 @@ public class Main extends Application {
         main.setPadding(new Insets(7, 7, 7, 7));
         
         root = new Scene(main);
+        
         root.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.LEFT) {
                 gameStatus.moveLeft();
@@ -53,6 +57,11 @@ public class Main extends Application {
     
     private void createGameScene() {
         gameView = new GameView(main, gameStatus);
+        //gameScene = gameView.getRealScene();
+    }
+    
+    private void createSettingsScene() {
+        settingsView = new SettingsView(main);
     }
     
     @Override
@@ -65,9 +74,14 @@ public class Main extends Application {
         createRootScene();
         createMenuScene();
         createGameScene();
+        createSettingsScene();
         
         menuView.registerHandlerForLabelPlay(gameView.getScene());
+        menuView.registerHandlerForLabelSettings(settingsView.getScene());
         menuView.registerVolumeHandler(gameView);
+        
+        settingsView.registerHandlerForButtonBackToMenu(menuView.getScene());
+        
         gameView.registerHandlerForLabelBackToMenu(menuView.getScene());
         
         main.setCenter(menuView.getScene());
@@ -89,6 +103,7 @@ public class Main extends Application {
         
         
         primaryStage.setScene(root);
+        //primaryStage.setScene(gameScene);
         primaryStage.setTitle("TETRIS beta v. " + Constants.VERSION);
         
         
