@@ -1,9 +1,10 @@
 package tetris.dao;
 
 import java.util.List;
+import tetris.domain.Score;
 
 public interface ScoreDao {
     
-    List<String> getAll();
+    List<Score> getAll();
     
 }

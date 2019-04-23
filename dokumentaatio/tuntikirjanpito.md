@@ -25,4 +25,5 @@
 | 18.4  | 0.5h | Lisätty Statistics luokka ja sen avulla tyhjennettyjen rivien laskenta|
 | 22.4  | 4h   | JavaFX:n opiskelua, käyttöliittymän refaktorointia, taustamusiikin alustava lisäys, tyhjennettyjen rivien näyttäminen, pelin pausettaminen, tod.näk jotain unohdettuakin|
 | 22.4  | 1h   | GUI:n asetusnäkymän refaktorointia|
-| Yht   | 44h  | |
+| 22.4  | 2h   | GUI:n kanssa jatkettu, nyt on hieno popup! Pistelaskujärjestelmää sekä niiden tallentamista sqlite-kantaan aloitettu|
+| Yht   | 46h  | |

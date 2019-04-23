@@ -3,9 +3,8 @@ package tetris.ui;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
+import javafx.scene.control.PopupControl;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -41,8 +40,12 @@ public class GameView {
     private VBox gameViewMenu;
     
     private Label labelRowsCleared;
+    private Label labelCurrentScoreShow;
     private Label labelPauseGame;
     private Label labelBackToMenu;
+    
+    private Label popupLabel;
+    private PopupControl popup;
     
     //TEMP
     Media music;
@@ -76,11 +79,14 @@ public class GameView {
         initializeNextPieceRectangle();
         initializeGameViewMenu();
         initializeView();
+        initializePopup();
     }
     
     public void updateView() {
         labelRowsCleared.setText(
                 gameStatus.getStatistics().getClearedLinesAsString());
+        labelCurrentScoreShow.setText(
+                gameStatus.getStatistics().getTotalScoreAsString());
         
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -123,15 +129,12 @@ public class GameView {
                 }
             }
         }
+        
     }
     
     public Parent getScene() {
         return view;
     }
-    /*
-    public Scene getRealScene() {
-        return gameScene;
-    }*/
     
     public void registerHandlerForLabelBackToMenu(Parent menuScene) {
         this.labelBackToMenu.setOnMouseClicked(event -> {
@@ -209,27 +212,14 @@ public class GameView {
         
         view.setCenter(gameRectangle);
         view.setRight(gameViewMenu);
-        
-        /* PERHAPS AN OWN SCENE FOR THE GAMEVIEW..?
-        gameScene = new Scene(view);
-        
-        gameScene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.LEFT) {
-                gameStatus.moveLeft();
-            }
-            if (event.getCode() == KeyCode.RIGHT) {
-                gameStatus.moveRight();
-            }
-            if (event.getCode() == KeyCode.UP) {
-                gameStatus.rotatePiece();
-            }
-            if (event.getCode() == KeyCode.DOWN) {
-                gameStatus.moveDown();
-            }
-            if (event.getCode() == KeyCode.SPACE) {   
-                gameStatus.dropPiece();
-            }
-        }); */
+    }
+    
+    private void initializePopup() {
+        popupLabel = new Label("ERROR in app");
+        popupLabel.setFont(Font.font("Monospaced", FontWeight.BOLD, 64));
+        popupLabel.setTextFill(Color.RED);
+        popup = new PopupControl();
+        popup.getScene().setRoot(popupLabel);
     }
     
     private void initializeGameViewMenu() {
@@ -248,7 +238,7 @@ public class GameView {
         Label labelCurrentScore = new Label("Score");
         styleLabelHeading(labelCurrentScore, false);
         
-        Label labelCurrentScoreShow = new Label("0");
+        labelCurrentScoreShow = new Label("0");
         styleLabelShowInfo(labelCurrentScoreShow);
         
         Label labelHighScore = new Label("High Score");
@@ -305,6 +295,21 @@ public class GameView {
             labelPauseGame.setText("PAUSE game");
         } else {
             labelPauseGame.setText("CONTINUE\n  game");
+        }
+        
+        if (!gameStatus.getIsActive()) {
+            showPopup("PAUSED");
+        } else {
+            if (popup.isShowing()) {
+                popup.hide();
+            }
+        }
+    }
+    
+    private void showPopup(String text) {
+        if (!popup.isShowing()) {
+            popupLabel.setText(text);
+            popup.show(gameRectangle.getScene().getWindow());
         }
     }
     

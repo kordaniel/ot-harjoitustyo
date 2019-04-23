@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import tetris.domain.Score;
 
 public class FileScoreDao implements ScoreDao {
 
@@ -29,13 +30,15 @@ public class FileScoreDao implements ScoreDao {
     }
     
     @Override
-    public List<String> getAll() {
-        List<String> scoreList = new ArrayList<>();
+    public List<Score> getAll() {
+        /*List<String> scoreList = new ArrayList<>();
         scoreList.add("123");
         scoreList.add("321");
         scoreList.add("tekstiä");
         
         return scoreList;
+        */
+        return null;
     }
     
 }
