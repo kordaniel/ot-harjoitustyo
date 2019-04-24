@@ -1,5 +1,6 @@
 package tetris;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javafx.animation.AnimationTimer;
@@ -74,9 +75,15 @@ public class Main extends Application {
     public void init() {
         //suoritetaan ennen start():ia
         //create daos
-        ScoreDatabase db = new ScoreDatabase("scores.db");
+        ScoreDatabase db = new ScoreDatabase(Constants.SCORE_DB_URI);
         ScoreDao scoreDao = new SqlScoreDao(db);
+        List<Score> sc = new ArrayList<>();
+        sc.add(new Score("Paavo", 1231));
+        sc.add(new Score("Heikki", 121121));
+        scoreDao.saveAll(sc);
+        
         List<Score> allScores = scoreDao.getAll();
+        
         Collections.sort(allScores);
         for (Score score : allScores) {
             System.out.println(score);

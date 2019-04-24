@@ -31,15 +31,43 @@ public class SqlScoreDao implements ScoreDao {
                         new Score(rs.getString("name"), rs.getInt("score"))
                 );
             }
-            //try with resources, not needed?
-            //stmt.close();
-            //rs.close();
-            
         } catch (SQLException e) {
             System.out.println("SQL exception occured while fetching scores: "
                 + e.getMessage());
         }
+        
         return allScores;
+    }
+
+    @Override
+    public void saveAll(List<Score> scores) {
+        if (scores == null) {
+            return;
+        }
+        deleteScores();
+        
+        try (Connection conn = db.getConnection()) {
+            PreparedStatement stmt = null;
+            for (Score score : scores) {
+                stmt = conn.prepareStatement(
+                        "INSERT INTO Score (name, score)"
+                        + " values (?, ?)");
+                stmt.setString(1, score.getUsername());
+                stmt.setInt(2, score.getScore());
+                stmt.executeUpdate();
+            }
+        } catch (Exception e) {
+            System.out.println("Error saving scores: " + e.getMessage());
+        }
+    }
+    
+    public void deleteScores() {
+        try (Connection conn = db.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM Score");
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQL Exception when deleting scores: " + e.getMessage());
+        }
     }
     
 }

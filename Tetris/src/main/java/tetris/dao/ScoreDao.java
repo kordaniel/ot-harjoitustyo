@@ -6,5 +6,5 @@ import tetris.domain.Score;
 public interface ScoreDao {
     
     List<Score> getAll();
-    
+    void saveAll(List<Score> scores);
 }

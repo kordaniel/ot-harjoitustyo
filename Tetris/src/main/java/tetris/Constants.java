@@ -9,6 +9,9 @@ public class Constants {
     
     public static final double VERSION = 0.6;
     
+    // DATABASE URI
+    public static final String SCORE_DB_URI = "src/main/resources/db/scores.db";
+    
     // GAME
     public static final int BOARD_DEFAULT_HEIGHT = 18;
     public static final int BOARD_DEFAULT_WIDTH = 10;
