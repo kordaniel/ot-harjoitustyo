@@ -12,10 +12,12 @@ Testauksesta sen verran, että testikattavuus on tippunut reilusti koska koodin 
 
 #### Javadocista
 Seuraavat neljä luokkaa on dokumentoitu javadocilla:
-```Database
+```
+Database
 Board
 User
-Piece```
+Piece
+```
 Sekä myös ```Game``` luokka osittain
 
 ### Dokumentaatio
