@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import tetris.dao.Dao;
 import tetris.dao.ScoreDao;
 import tetris.database.Database;
+import tetris.domain.User;
 import tetris.logic.Game;
 import tetris.logic.Highscores;
 import tetris.ui.GameView;
@@ -22,6 +23,7 @@ public class Main extends Application {
     //maybe make some of these static and use them in other views?
     Dao scoreDao;
     Highscores highscores;
+    User user;
     
     Game gameStatus;
     
@@ -64,11 +66,11 @@ public class Main extends Application {
     }
     
     private void createGameScene() {
-        gameView = new GameView(main, gameStatus);
+        gameView = new GameView(main, gameStatus, user);
     }
     
     private void createSettingsScene() {
-        settingsView = new SettingsView(main);
+        settingsView = new SettingsView(main, user);
     }
     
     private void createHighscoresScene() {
@@ -79,6 +81,8 @@ public class Main extends Application {
     public void init() {
         Database db = new Database(Constants.DATABASE_URI);
         scoreDao = new ScoreDao(db, "Score");
+        
+        user = new User();
         
         highscores = new Highscores(scoreDao.findAll());
         

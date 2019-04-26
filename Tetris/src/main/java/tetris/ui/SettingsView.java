@@ -9,21 +9,26 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import tetris.Constants;
+import tetris.domain.User;
 
 public class SettingsView {
     
     private BorderPane parent;
+    private User user;
     
     private GridPane settingsView;
     private Button buttonBackToMenu;
     private Slider sliderVolume;
     
-    public SettingsView(BorderPane parent) {
+    public SettingsView(BorderPane parent, User user) {
         this.parent = parent;
+        this.user = user;
         
         settingsView = new GridPane();
         settingsView.setAlignment(Pos.CENTER);
@@ -38,8 +43,16 @@ public class SettingsView {
         Label labelPlayerName = new Label("Name:");
         settingsView.add(labelPlayerName, 0, 1);
         
-        TextField textFieldPlayerName = new TextField();
+        TextField textFieldPlayerName = new TextField(this.user.getName());
+        textFieldPlayerName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                user.setName(textFieldPlayerName.getText());
+            }
+        });
         settingsView.add(textFieldPlayerName, 1, 1);
+        
+        Label labelInfo = new Label("Confirm new name\nwith pressing enter");
+        settingsView.add(labelInfo, 2, 1);
         
         Label labelVolume = new Label("Music volume:");
         settingsView.add(labelVolume, 0, 2);

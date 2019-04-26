@@ -27,7 +27,7 @@ public class MenuView {
         menuView.setAlignment(Pos.CENTER);
 
         labelPlayGame = new Label("Play");
-        labelSettings = new Label("Set name");
+        labelSettings = new Label("Settings");
         labelHighScores = new Label("High Scores");
         Label labelQuitApp = new Label("Quit");
 

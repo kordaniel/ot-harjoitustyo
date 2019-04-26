@@ -1,25 +1,30 @@
 package tetris.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import tetris.Constants;
 
 public class User {
     
     private String name;
-    private List<Score> scores;
     private boolean isAnonymous;
     
     public User(String name) {
         this.name = name;
-        this.scores = new ArrayList<>();
-        if (name != null && !name.equals("anonymous")) {
-            this.isAnonymous = false;
-        } else {
-            this.isAnonymous = true;
-        }
+        this.isAnonymous = name == null || name.equals(Constants.DEFAULT_ANON_PLAYER_NAME);
     }
     
     public User() {
-        this("anonymous");
+        this(Constants.DEFAULT_ANON_PLAYER_NAME);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public boolean getIsAnonymous() {
+        return this.isAnonymous;
     }
 }

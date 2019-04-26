@@ -16,13 +16,14 @@ import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import tetris.Constants;
+import tetris.domain.User;
 import tetris.logic.Game;
 
 public class GameView {
 
     private Game gameStatus;
     private BorderPane parent;
-    
+    private User user;
     
     private int height = Constants.BOARD_DEFAULT_HEIGHT;
     private int width = Constants.BOARD_DEFAULT_WIDTH;
@@ -41,6 +42,7 @@ public class GameView {
     
     private Label labelRowsCleared;
     private Label labelCurrentScoreShow;
+    private Label labelPlayerNameShow;
     private Label labelPauseGame;
     private Label labelBackToMenu;
     
@@ -55,7 +57,7 @@ public class GameView {
     }
     //TEMP
     
-    public GameView(BorderPane parent, Game gameStatus) {
+    public GameView(BorderPane parent, Game gameStatus, User user) {
         //TEMP, move to own class
         this.music = new Media(
                 Constants.FILE_BG_MUSIC.toURI().toString());
@@ -68,6 +70,7 @@ public class GameView {
 
         this.parent = parent;
         this.gameStatus = gameStatus;
+        this.user = user;
         
         this.rectangleboard = new Rectangle[height][width];
         this.rectangleNextPiece = new Rectangle[4][4];
@@ -87,6 +90,8 @@ public class GameView {
                 gameStatus.getStatistics().getClearedLinesAsString());
         labelCurrentScoreShow.setText(
                 gameStatus.getStatistics().getTotalScoreAsString());
+        
+        labelPlayerNameShow.setText(user.getName());
         
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -250,7 +255,7 @@ public class GameView {
         Label labelPlayerName = new Label("Player");
         styleLabelHeading(labelPlayerName, false);
         
-        Label labelPlayerNameShow = new Label("Marjo");
+        labelPlayerNameShow = new Label(user.getName());
         styleLabelShowInfo(labelPlayerNameShow);
         
         Label labelStartNewGame = new Label("Start new\n  game");

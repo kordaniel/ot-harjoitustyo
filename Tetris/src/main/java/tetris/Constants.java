@@ -39,7 +39,6 @@ public class Constants {
         Color.rgb(238, 31, 41).brighter(),  // Z
         Color.rgb(70, 182, 69).brighter()   // S
     };
-    
     public static final String DEFAULT_BG_COLOR_CSS = "rgb(210, 192, 174)";
     
     // SOUNDS
@@ -50,4 +49,7 @@ public class Constants {
             new File("src/main/resources/sounds/clear_row.wav");
     public static final File FILE_SNDFX_TURN_PIECE =
             new File("src/main/resources/sounds/turn_piece.wav");
+    
+    // USER
+    public static final String DEFAULT_ANON_PLAYER_NAME = "Noname";
 }
