@@ -1,5 +1,7 @@
 package tetris.domain;
 
+import tetris.Constants;
+
 public class Score extends AbstractIdObject implements Comparable<Score> {
     
     private String name;
@@ -12,7 +14,7 @@ public class Score extends AbstractIdObject implements Comparable<Score> {
     }
 
     public Score() {
-        this(null, "anonymous", 0);
+        this(null, Constants.DEFAULT_ANON_PLAYER_NAME, 0);
     }
     
     public int getScore() {

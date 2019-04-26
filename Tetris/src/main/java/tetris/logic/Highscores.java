@@ -14,7 +14,7 @@ public class Highscores {
         this.scoreAmountToKeep = 10;
     }
     
-    public void saveIfHighEnough(Score score) {
+    public void checkAndSaveIfHighEnough(Score score) {
         if (scoreIsHighEnoughToFitOnList(score)) {
             trimListSize();
             addHighscoreToList(score);
@@ -23,6 +23,17 @@ public class Highscores {
     
     public List<Score> getAll() {
         return this.highscores;
+    }
+    
+    public Score getHighScore() {
+        if (highscores.isEmpty()) {
+            return new Score();
+        }
+        return highscores.get(0);
+    }
+    
+    public String getHighScoreAsString() {
+        return Integer.toString(getHighScore().getScore());
     }
     
     private void addHighscoreToList(Score score) {

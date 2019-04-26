@@ -18,11 +18,13 @@ import javafx.scene.text.FontWeight;
 import tetris.Constants;
 import tetris.domain.User;
 import tetris.logic.Game;
+import tetris.logic.Highscores;
 
 public class GameView {
 
     private Game gameStatus;
     private BorderPane parent;
+    private Highscores highscores;
     private User user;
     
     private int height = Constants.BOARD_DEFAULT_HEIGHT;
@@ -42,6 +44,7 @@ public class GameView {
     
     private Label labelRowsCleared;
     private Label labelCurrentScoreShow;
+    private Label labelHighScoreShow;
     private Label labelPlayerNameShow;
     private Label labelPauseGame;
     private Label labelBackToMenu;
@@ -57,7 +60,7 @@ public class GameView {
     }
     //TEMP
     
-    public GameView(BorderPane parent, Game gameStatus, User user) {
+    public GameView(BorderPane parent, Game gameStatus, Highscores highscores, User user) {
         //TEMP, move to own class
         this.music = new Media(
                 Constants.FILE_BG_MUSIC.toURI().toString());
@@ -70,6 +73,7 @@ public class GameView {
 
         this.parent = parent;
         this.gameStatus = gameStatus;
+        this.highscores = highscores;
         this.user = user;
         
         this.rectangleboard = new Rectangle[height][width];
@@ -90,7 +94,7 @@ public class GameView {
                 gameStatus.getStatistics().getClearedLinesAsString());
         labelCurrentScoreShow.setText(
                 gameStatus.getStatistics().getTotalScoreAsString());
-        
+        labelHighScoreShow.setText(highscores.getHighScoreAsString());
         labelPlayerNameShow.setText(user.getName());
         
         for (int y = 0; y < height; y++) {
@@ -249,7 +253,7 @@ public class GameView {
         Label labelHighScore = new Label("High Score");
         styleLabelHeading(labelHighScore, false);
         
-        Label labelHighScoreShow = new Label("0000000");
+        labelHighScoreShow = new Label(this.highscores.getHighScoreAsString());
         styleLabelShowInfo(labelHighScoreShow);
         
         Label labelPlayerName = new Label("Player");

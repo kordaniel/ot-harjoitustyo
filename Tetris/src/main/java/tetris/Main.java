@@ -66,7 +66,7 @@ public class Main extends Application {
     }
     
     private void createGameScene() {
-        gameView = new GameView(main, gameStatus, user);
+        gameView = new GameView(main, gameStatus, highscores, user);
     }
     
     private void createSettingsScene() {
@@ -80,7 +80,7 @@ public class Main extends Application {
     @Override
     public void init() {
         Database db = new Database(Constants.DATABASE_URI);
-        scoreDao = new ScoreDao(db, "Score");
+        scoreDao = new ScoreDao(db, Constants.HIGHSCORE_TABLE_NAME);
         
         user = new User();
         

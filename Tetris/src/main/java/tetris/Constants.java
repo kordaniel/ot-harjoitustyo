@@ -12,6 +12,9 @@ public class Constants {
     // DATABASE URI
     public static final String DATABASE_URI = "src/main/resources/db/scores.db";
     
+    // DATABASE TABLES
+    public static final String HIGHSCORE_TABLE_NAME = "Score";
+    
     // GAME
     public static final int BOARD_DEFAULT_HEIGHT = 18;
     public static final int BOARD_DEFAULT_WIDTH = 10;
