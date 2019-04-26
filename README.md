@@ -10,6 +10,14 @@ Checkstylestä, laitoin päälle javadocin tarkistukset ja virheitä ilmestyi v�
 
 Testauksesta sen verran, että testikattavuus on tippunut reilusti koska koodin määrä on kasvanut reilusti tämän viikon aikana. Testien määrä on tarkalleen sama kuin viime viikolla, toki tästä varmaan pitää pisteitä vähentää :)
 
+#### Javadocista
+Seuraavat neljä luokkaa on dokumentoitu javadocilla:
+```Database
+Board
+User
+Piece```
+Sekä myös ```Game``` luokka osittain
+
 ### Dokumentaatio
 [Vaatimusmäärittely](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Arkkitehtuurikuvaus](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)  
