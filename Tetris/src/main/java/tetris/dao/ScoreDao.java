@@ -26,6 +26,18 @@ public class ScoreDao extends AbstractIdObjectDao<Score>{
         }
     }
     
+    @Override
+    public PreparedStatement createInsertStatement(Score score,
+            Connection conn) throws SQLException {
+        PreparedStatement stmt =
+                conn.prepareStatement("INSERT INTO "
+                        + tableName + " (name, score) values (?, ?)");
+        stmt.setString(1, score.getName());
+        stmt.setInt(2, score.getScore());
+        
+        return stmt;
+    }
+    
     private void createTableIfNeeded() {
         try (Connection conn = database.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
@@ -38,5 +50,5 @@ public class ScoreDao extends AbstractIdObjectDao<Score>{
                     + tableName + ". Exception: " + e.getMessage());
         }
     }
-    
+
 }

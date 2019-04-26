@@ -29,4 +29,5 @@
 | 24.4  | 1h   | scoredao tehty, sqlite-tietokannasta voi nyt hakea seka tallentaa lista kaikista pisteistä. sovellus olettaa, että src/main/resources/db-hakemisto on olemassa|
 | 25.4  | 1h   | tikape-materiaalin kertausta ja sen seurauksena paljon refaktorointia|
 | 25.4  | 1h   | Refaktorointi jatkuu, turhien luokkien poisto|
-| Yht   | 49h  | |
+| 26.4  | 0.5h | Highscores-luokka tehty|
+| Yht   | 49.5h  | |

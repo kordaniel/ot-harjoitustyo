@@ -31,9 +31,13 @@ public class Score extends AbstractIdObject implements Comparable<Score> {
         return name;
     }
     
+    public boolean isHigher(Score other) {
+        return compareTo(other) < 0;
+    }
+    
     @Override
-    public int compareTo(Score o) {
-        return o.score - this.score;
+    public int compareTo(Score other) {
+        return other.score - this.score;
     }
 
     @Override

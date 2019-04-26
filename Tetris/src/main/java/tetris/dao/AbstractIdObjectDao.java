@@ -21,6 +21,8 @@ public abstract class AbstractIdObjectDao<T extends AbstractIdObject>
     }
     
     public abstract T createFromRow(ResultSet resultSet);
+    public abstract PreparedStatement createInsertStatement(T score,
+            Connection conn) throws SQLException;
     
     @Override
     public T findOne(Integer key) {
@@ -66,7 +68,7 @@ public abstract class AbstractIdObjectDao<T extends AbstractIdObject>
                     conn.prepareStatement("DELETE FROM " + tableName);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Error when trying to delete all rows from"
+            System.err.println("Error when trying to delete all rows from "
                     + tableName + ". Exception: " + e.getMessage());
         }
     }
@@ -78,7 +80,21 @@ public abstract class AbstractIdObjectDao<T extends AbstractIdObject>
     
     @Override
     public void saveAll(List<T> scores) {
-        //
+        deleteAll();
+        
+        try (Connection connection = database.getConnection()) {
+            PreparedStatement stmt = null;
+            for (T score : scores) {
+                stmt = createInsertStatement(score, connection);
+
+                if (stmt != null) {
+                    stmt.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error when trying to save scores to table: "
+                    + tableName + ". Exception: " + e.getMessage());
+        }
     }
 
 }

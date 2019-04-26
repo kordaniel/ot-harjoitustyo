@@ -10,7 +10,9 @@ import javafx.stage.Stage;
 import tetris.dao.Dao;
 import tetris.dao.ScoreDao;
 import tetris.database.Database;
+import tetris.domain.Score;
 import tetris.logic.Game;
+import tetris.logic.Highscores;
 import tetris.ui.GameView;
 import tetris.ui.MenuView;
 import tetris.ui.SettingsView;
@@ -26,6 +28,9 @@ public class Main extends Application {
     MenuView menuView;
     GameView gameView;
     SettingsView settingsView;
+    
+    Dao scoreDao;
+    Highscores highscores;
     
     private void createRootScene() {
         main = new BorderPane();
@@ -72,9 +77,10 @@ public class Main extends Application {
         //suoritetaan ennen start():ia
         //create daos
         Database db = new Database(Constants.DATABASE_URI);
-        Dao scoreDao = new ScoreDao(db, "Score");
+        scoreDao = new ScoreDao(db, "Score");
         
-        System.out.println("Tetris is starting... WELCOME!");
+        highscores = new Highscores(scoreDao.findAll());
+        
         gameStatus = new Game(Constants.BOARD_DEFAULT_HEIGHT,
                                 Constants.BOARD_DEFAULT_WIDTH);
         
@@ -97,6 +103,7 @@ public class Main extends Application {
     @Override
     public void stop() {
         System.out.println("Shutting down tetris!");
+        scoreDao.saveAll(highscores.getAll());
     }
     
     @Override
