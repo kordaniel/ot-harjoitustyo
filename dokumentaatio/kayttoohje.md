@@ -3,16 +3,13 @@ Lataa uusin release [releaset](https://github.com/kordaniel/ot-harjoitustyo/rele
 
 ## Konfigurointi
 Sovellus olettaa, että hakemistot
-```src/main/resources/db
-```  
-```src/main/resources/sounds
-```  
+```src/main/resources/db```  
+```src/main/resources/sounds```  
 ovat olemassa ja releasen mukana tulevat wav-tiedostot ovat sijoitettu hakemistoon ../sounds
 
 ## Käynnistäminen
 Kun konfigurointi on tehty, niin sovellus voidaan ajaa suorittamalla komento:
-```java -jar ot-tetris.jar
-```  
+```java -jar ot-tetris.jar```  
 Sovellus luo automaattisesti sqlite3-tiedoston ```scores.db``` hakemistoon ../db
 
 ## Pelin käyttö
