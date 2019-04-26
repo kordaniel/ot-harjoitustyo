@@ -27,8 +27,8 @@ Sekä myös ```Game``` luokka osittain
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
 
 ## Releaset
-[Viikko 6](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko6)
-[Viikko 5](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko5)
+[Viikko 6](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko6)  
+[Viikko 5](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko5)  
 
 ## Komentorivitoiminnot
 Kaikki komennot on suoritettava hakemistossa _Tetris_, ei repositorion juuressa.
@@ -71,7 +71,7 @@ mvn jxr:jxr checkstyle:checkstyle
 ```
 Raportti tallentuu checkstyle.html -tiedostona hakemistoon _target/site/_
 
-## javadocin
+## Javadoc
 HTML-muotoisen Javadocin saa luotua komennolla
 ```
 mvn javadoc:javadoc
