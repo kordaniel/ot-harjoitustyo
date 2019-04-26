@@ -2,9 +2,13 @@
 Tähän repositorioon pyrin totetuttamaan klassisen tetris-pelin kloonin. Peli on minun harjoitustyö HY:n 2019 kevään kurssille _ohjelmistotekniikka_.
 
 ### Tämänviikkoinen "iteraatio"
-Pelilogiikka alkaa olemaan kunnossa, palan saa tiputettua painamalla x-näppäintä. Settings näkymästä ei sitten pääse pois sulkematta sovellusta, koko käyttöliittymä pitää refaktoroida jossain vaiheessa. Tämän viikon aikana olen myös lisännyt joitain luokkia, peli ei vielä vain ole siinä vaiheessa, että niille olisi käyttöä. Seuraavien viikkojen aikana olisi tarkoitus toteuttaa ne sekä ottaa käyttöön. 
+Peliin ilmestyi bugi jota en ole ehtinyt vielä selvittää: pistelasku toimii satunnaisesti. Viikon kohokohta on se, että sovellus tallentaa sekä lataa pisteet tietokannasta sekä käyttöliittymä on vihdoin refaktoroitu hieman parempaan kuntoon, vaikka se vielä onkin jossain määrin sekava.
 
-Checkstyle-raportissa on jonkin verran virheitä, mutta ne johtuvat vakioiden nimeämisestä ALL_CAPS-tyylillä sekä yhdestä Mainissa olevasta käyttöliittymän JavaFX start()-metodista.. Pyrkimyksenä olisi refaktoroida se ui-pakkauksen alle.  
+Itse pelistä, niin muuten alkaa olemaan kunnossa. Ainut mikä vielä pitää toteuttaa on pelin tasot eli levelit järkevästi sekä pelin nopeutuminen levelien kasvamisen myötä.
+
+Checkstylestä, laitoin päälle javadocin tarkistukset ja virheitä ilmestyi vähintään riittävästi. Miten siihen pitäisi suhtautua loppupalautuksen yhteydessä? Käsittääkseni ihan kaikkia metodeja/luokkia ei tarvitse kuitenkaan dokumentoida?
+
+Testauksesta sen verran, että testikattavuus on tippunut reilusti koska koodin määrä on kasvanut reilusti tämän viikon aikana. Testien määrä on tarkalleen sama kuin viime viikolla, toki tästä varmaan pitää pisteitä vähentää :)
 
 ### Dokumentaatio
 [Vaatimusmäärittely](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
@@ -12,6 +16,7 @@ Checkstyle-raportissa on jonkin verran virheitä, mutta ne johtuvat vakioiden ni
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
 
 ## Releaset
+[Viikko 6](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko6)
 [Viikko 5](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Komentorivitoiminnot
@@ -54,3 +59,10 @@ Tiedoston [checkstyle.xml](https://github.com/kordaniel/ot-harjoitustyo/blob/mas
 mvn jxr:jxr checkstyle:checkstyle
 ```
 Raportti tallentuu checkstyle.html -tiedostona hakemistoon _target/site/_
+
+## javadocin
+HTML-muotoisen Javadocin saa luotua komennolla
+```
+mvn javadoc:javadoc
+```
+Raportti tallentuu index.html-tiedostona hakemistoon _target/site/apidocs/_
