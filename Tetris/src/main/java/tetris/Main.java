@@ -87,7 +87,7 @@ public class Main extends Application {
         highscores = new Highscores(scoreDao.findAll());
         
         gameStatus = new Game(Constants.BOARD_DEFAULT_HEIGHT,
-                                Constants.BOARD_DEFAULT_WIDTH);
+                Constants.BOARD_DEFAULT_WIDTH, user, highscores);
         
         createRootScene();
         createMenuScene();
@@ -112,6 +112,9 @@ public class Main extends Application {
     @Override
     public void stop() {
         System.out.println("Shutting down tetris!");
+        if (!gameStatus.getStatistics().getIsSaved()) {
+            gameStatus.saveGameScore();
+        }
         scoreDao.saveAll(highscores.getAll());
     }
     
@@ -170,12 +173,12 @@ public class Main extends Application {
         }.start();
         
         primaryStage.show();
-        primaryStage.setOnCloseRequest(e -> {
-            //check if all done, daos etc
-            if (false) {
-                e.consume();
-            }
-        });
+        //primaryStage.setOnCloseRequest(e -> {
+        //    //check if all done, daos etc
+        //    if (false) {
+        //        e.consume();
+        //    }
+        //});
         
     }
     

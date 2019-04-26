@@ -5,11 +5,9 @@ import tetris.Constants;
 public class User {
     
     private String name;
-    private boolean isAnonymous;
     
     public User(String name) {
         this.name = name;
-        this.isAnonymous = name == null || name.equals(Constants.DEFAULT_ANON_PLAYER_NAME);
     }
     
     public User() {
@@ -24,7 +22,7 @@ public class User {
         this.name = name;
     }
     
-    public boolean getIsAnonymous() {
-        return this.isAnonymous;
+    public boolean isAnonymous() {
+        return name == null || name.equals(Constants.DEFAULT_ANON_PLAYER_NAME);
     }
 }

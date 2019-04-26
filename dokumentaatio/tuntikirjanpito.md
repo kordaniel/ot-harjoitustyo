@@ -30,4 +30,5 @@
 | 25.4  | 1h   | tikape-materiaalin kertausta ja sen seurauksena paljon refaktorointia|
 | 25.4  | 1h   | Refaktorointi jatkuu, turhien luokkien poisto|
 | 26.4  | 0.5h | Highscores-luokka tehty|
-| Yht   | 49.5h  | |
+| 26.4  | 2.5h | Pistelaskujärjestelmää kehitelty. Nyt sovellus lataa aina käynnistäessä pisteet sqlite-tietokannasta, sekä tallentaa ne suljettaessa. Kaikkien pelien pisteet myös tallennetaan, jos ne ovat riittävän korkeita sekä pelaaja on asettanut itselleen nimen|
+| Yht   | 52h  | |

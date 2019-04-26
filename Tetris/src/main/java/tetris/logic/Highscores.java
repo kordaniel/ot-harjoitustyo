@@ -14,6 +14,10 @@ public class Highscores {
         this.scoreAmountToKeep = 10;
     }
     
+    public void newScore(String name, int score) {
+        checkAndSaveIfHighEnough(new Score(null, name, score));
+    }
+    
     public void checkAndSaveIfHighEnough(Score score) {
         if (scoreIsHighEnoughToFitOnList(score)) {
             trimListSize();

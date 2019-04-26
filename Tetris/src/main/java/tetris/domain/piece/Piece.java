@@ -2,6 +2,12 @@ package tetris.domain.piece;
 
 import java.util.Random;
 
+/**
+ * Abstract class that provides all the fields and methods for all the 
+ * different Pieces. Classes that extends this class, should set the
+ * field SYMBOL and then initialize the coordinates.
+ * @author DanielKor
+ */
 public abstract class Piece {
 
     private static final Random RANDOM = new Random();
@@ -20,7 +26,7 @@ public abstract class Piece {
     //are returned..?
     /**
      * Factory method that returns an randomly chosen tetris Piece of
-     * type I,J,L,O,S,Z,T that extends this abstract class of type Piece
+     * type I,J,L,O,S,Z,T that extends this abstract class of type Piece.
      * @param initialX position
      * @return new Piece
      */

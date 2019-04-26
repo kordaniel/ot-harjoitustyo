@@ -97,6 +97,10 @@ public class GameView {
         labelHighScoreShow.setText(highscores.getHighScoreAsString());
         labelPlayerNameShow.setText(user.getName());
         
+        if (gameStatus.getIsOver()) {
+            showPopup("GAME OVER!");
+        }
+        
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int coord = this.gameStatus.getBoardInPlay()[y][x];
@@ -224,7 +228,7 @@ public class GameView {
     }
     
     private void initializePopup() {
-        popupLabel = new Label("ERROR in app");
+        popupLabel = new Label("ERROR in app"); // error if this text is seen
         popupLabel.setFont(Font.font("Monospaced", FontWeight.BOLD, 64));
         popupLabel.setTextFill(Color.RED);
         popup = new PopupControl();
@@ -265,6 +269,9 @@ public class GameView {
         Label labelStartNewGame = new Label("Start new\n  game");
         styleLabelHeading(labelStartNewGame, true);
         labelStartNewGame.setOnMouseClicked(event -> {
+            if (popup.isShowing()) {
+                popup.hide();
+            }
             gameStatus.startGame();
         });
         
@@ -302,16 +309,12 @@ public class GameView {
         }
         if (gameStatus.getIsActive()) {
             labelPauseGame.setText("PAUSE game");
-        } else {
-            labelPauseGame.setText("CONTINUE\n  game");
-        }
-        
-        if (!gameStatus.getIsActive()) {
-            showPopup("PAUSED");
-        } else {
             if (popup.isShowing()) {
                 popup.hide();
             }
+        } else {
+            labelPauseGame.setText("CONTINUE\n  game");
+            showPopup("PAUSED");
         }
     }
     

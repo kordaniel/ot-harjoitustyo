@@ -4,12 +4,16 @@ import tetris.domain.Board;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import tetris.Constants;
-import tetris.domain.Statistics;
+import tetris.domain.User;
 import tetris.domain.piece.Piece;
 
 public class Game {
 
     private Board board;
+    
+    private Statistics gameStatistics;
+    private User user;
+    private Highscores highscores;
     
     private int height; 
     private int width;
@@ -20,7 +24,7 @@ public class Game {
     
     private boolean isStarted;
     private boolean isActive;
-    private Statistics gameStatistics;
+    private boolean isOver;
     
     //TEMPORARILY IN THIS CLASS
     //all sounds downloaded from https://freesound.org
@@ -29,7 +33,7 @@ public class Game {
     MediaPlayer mediaPlayerTurn;
     MediaPlayer mediaPlayerClear;
     
-    public Game(int height, int width) {
+    public Game(int height, int width, User user, Highscores highscores) {
         sndFxTurn = new Media(
                 Constants.FILE_SNDFX_TURN_PIECE.toURI().toString());
         sndFxClear = new Media(
@@ -41,11 +45,16 @@ public class Game {
         
         this.height = height;
         this.width = width;
-        //initializeGame();
+        this.user = user;
+        this.highscores = highscores;
+
         this.board = new Board(height, width);
         this.boardInPlay = this.board.getBoardCopy();
+        
         this.isStarted = false;
         this.isActive = false;
+        this.isOver = false;
+        
         this.gameStatistics = new Statistics();
     }
     
@@ -58,6 +67,19 @@ public class Game {
     public void stopGame() {
         isActive = false;
         isStarted = false;
+    }
+    
+    public void finishGame() {
+        isOver = true;
+        stopGame();
+        saveGameScore();
+    }
+    
+    public void saveGameScore() {
+        if (!user.isAnonymous()) {
+            highscores.newScore(user.getName(), gameStatistics.getTotalScore());
+        }
+        gameStatistics.setIsSaved(true);
     }
     
     /**
@@ -74,30 +96,36 @@ public class Game {
     }
     
     public boolean getIsActive() {
-        return this.isActive;
+        return isActive;
+    }
+    
+    public boolean getIsOver() {
+        return isOver;
     }
 
     public void initializeGame() {
-        this.board = new Board(height, width);
-        this.boardInPlay = this.board.getBoardCopy();
-        this.isStarted = false;
-        this.isActive = false;
-        this.setNewPiece();
-        this.setNewPiece();
+        if (!gameStatistics.getIsSaved()) {
+            saveGameScore();
+        }
+        gameStatistics.reset();
+        board.reset();
+        boardInPlay = this.board.getBoardCopy();
+        isOver = false;
+        isStarted = false;
+        isActive = false;
+        setNewPiece();
+        setNewPiece();
     }
     
     private void setNewPiece() {
         if (this.nextPiece != null
                 && !this.board.pieceCanBeSpawned(nextPiece)) {
-            this.stopGame();
+            finishGame();
             return;
         }
             
         this.currentPiece = this.nextPiece;
         this.nextPiece = Piece.createNewRandomTetrisPiece(4);
-        if (this.nextPiece == null) {
-            throw new Error("PieceFactory returned null!!");
-        }
     }
     
     public void rotatePiece() {
