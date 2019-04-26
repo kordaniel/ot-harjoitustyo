@@ -57,7 +57,7 @@ public class GameView {
     
     public GameView(BorderPane parent, Game gameStatus) {
         //TEMP, move to own class
-        this. music = new Media(
+        this.music = new Media(
                 Constants.FILE_BG_MUSIC.toURI().toString());
         this.sfxbgMusic  = new MediaPlayer(music);
         sfxbgMusic.setCycleCount(Integer.MAX_VALUE);

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import tetris.database.Database;
 import tetris.domain.Score;
 
-public class ScoreDao extends AbstractIdObjectDao<Score>{
+public class ScoreDao extends AbstractIdObjectDao<Score> {
 
     public ScoreDao(Database database, String tableName) {
         super(database, tableName);

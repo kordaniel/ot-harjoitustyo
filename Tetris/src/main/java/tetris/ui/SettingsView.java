@@ -33,7 +33,7 @@ public class SettingsView {
         
         Text textTitle = new Text("Tetris settings");
         textTitle.setFont(Constants.DEFAULT_FONT_BOLD);
-        settingsView.add(textTitle, 0, 0, 2 ,1);
+        settingsView.add(textTitle, 0, 0, 2, 1);
         
         Label labelPlayerName = new Label("Name:");
         settingsView.add(labelPlayerName, 0, 1);

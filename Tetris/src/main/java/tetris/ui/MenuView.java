@@ -58,9 +58,9 @@ public class MenuView {
         });
     }
 
-    public void registerHandlerForLabelHighScores(Parent highScoreScene) {
-        this.labelHighScores.setOnMouseClicked((MouseEvent event) -> {
-            System.out.println("ei ole tuloksia, ei missään näin");
+    public void registerHandlerForLabelHighScores(Parent highscoresScene) {
+        this.labelHighScores.setOnMouseClicked(event -> {
+            this.parent.setCenter(highscoresScene);
         });
     }
 

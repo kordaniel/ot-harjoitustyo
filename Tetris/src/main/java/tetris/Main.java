@@ -10,27 +10,28 @@ import javafx.stage.Stage;
 import tetris.dao.Dao;
 import tetris.dao.ScoreDao;
 import tetris.database.Database;
-import tetris.domain.Score;
 import tetris.logic.Game;
 import tetris.logic.Highscores;
 import tetris.ui.GameView;
+import tetris.ui.HighscoresView;
 import tetris.ui.MenuView;
 import tetris.ui.SettingsView;
 
 public class Main extends Application {
     
+    //maybe make some of these static and use them in other views?
+    Dao scoreDao;
+    Highscores highscores;
+    
     Game gameStatus;
     
     Scene root;
-    //Scene gameScene;
-    
+
     BorderPane main;
     MenuView menuView;
     GameView gameView;
     SettingsView settingsView;
-    
-    Dao scoreDao;
-    Highscores highscores;
+    HighscoresView highscoresView;
     
     private void createRootScene() {
         main = new BorderPane();
@@ -56,7 +57,6 @@ public class Main extends Application {
                 gameStatus.dropPiece();
             }
         });
-        
     }
     
     private void createMenuScene() {
@@ -65,17 +65,18 @@ public class Main extends Application {
     
     private void createGameScene() {
         gameView = new GameView(main, gameStatus);
-        //gameScene = gameView.getRealScene();
     }
     
     private void createSettingsScene() {
         settingsView = new SettingsView(main);
     }
     
+    private void createHighscoresScene() {
+        highscoresView = new HighscoresView(main, highscores);
+    }
+    
     @Override
     public void init() {
-        //suoritetaan ennen start():ia
-        //create daos
         Database db = new Database(Constants.DATABASE_URI);
         scoreDao = new ScoreDao(db, "Score");
         
@@ -88,14 +89,18 @@ public class Main extends Application {
         createMenuScene();
         createGameScene();
         createSettingsScene();
+        createHighscoresScene();
         
         menuView.registerHandlerForLabelPlay(gameView.getScene());
         menuView.registerHandlerForLabelSettings(settingsView.getScene());
+        menuView.registerHandlerForLabelHighScores(highscoresView.getScene());
         
         settingsView.registerHandlerForButtonBackToMenu(menuView.getScene());
         settingsView.registerHandlerForVolumeSlider(gameView);
         
         gameView.registerHandlerForLabelBackToMenu(menuView.getScene());
+        
+        highscoresView.registerHandlerForButtonBackToMenu(menuView.getScene());
         
         main.setCenter(menuView.getScene());
     }
@@ -125,7 +130,7 @@ public class Main extends Application {
             //10^9 ns = 1 sec =>
             //60 updates per second =>
             //one update per 16666667 ns
-            private long sleepNanoSeconds = 16_666_667/2; //should be 120fps?
+            private long sleepNanoSeconds = 16_666_667/2; // should be 120fps?
             private long prevNanoTime = System.nanoTime();
             private int refreshes = 0;
             
