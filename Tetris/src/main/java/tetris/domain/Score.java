@@ -1,17 +1,18 @@
 package tetris.domain;
 
-public class Score implements Comparable<Score> {
+public class Score extends AbstractIdObject implements Comparable<Score> {
     
-    private String username;
+    private String name;
     private int score;
 
-    public Score(String username, int score) {
-        this.username = username;
+    public Score(Integer id, String name, int score) {
+        super(id);
+        this.name = name;
         this.score = score;
     }
 
     public Score() {
-        this("anonymous", 0);
+        this(null, "anonymous", 0);
     }
     
     public int getScore() {
@@ -22,12 +23,12 @@ public class Score implements Comparable<Score> {
         this.score = score;
     }
     
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
     
     @Override
@@ -37,7 +38,7 @@ public class Score implements Comparable<Score> {
 
     @Override
     public String toString() {
-        return this.username + ", score: " + this.score;
+        return this.name + ", score: " + this.score;
     }
     
 }

@@ -27,4 +27,6 @@
 | 22.4  | 1h   | GUI:n asetusnäkymän refaktorointia|
 | 22.4  | 2h   | GUI:n kanssa jatkettu, nyt on hieno popup! Pistelaskujärjestelmää sekä niiden tallentamista sqlite-kantaan aloitettu|
 | 24.4  | 1h   | scoredao tehty, sqlite-tietokannasta voi nyt hakea seka tallentaa lista kaikista pisteistä. sovellus olettaa, että src/main/resources/db-hakemisto on olemassa|
-| Yht   | 47h  | |
+| 25.4  | 1h   | tikape-materiaalin kertausta ja sen seurauksena paljon refaktorointia|
+| 25.4  | 1h   | Refaktorointi jatkuu, turhien luokkien poisto|
+| Yht   | 49h  | |

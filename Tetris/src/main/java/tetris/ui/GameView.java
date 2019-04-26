@@ -16,7 +16,7 @@ import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import tetris.Constants;
-import tetris.domain.Game;
+import tetris.logic.Game;
 
 public class GameView {
 

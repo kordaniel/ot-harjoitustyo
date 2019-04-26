@@ -1,8 +1,10 @@
-package tetris.domain;
+package tetris.logic;
 
+import tetris.domain.Board;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import tetris.Constants;
+import tetris.domain.Statistics;
 import tetris.domain.piece.Piece;
 
 public class Game {
