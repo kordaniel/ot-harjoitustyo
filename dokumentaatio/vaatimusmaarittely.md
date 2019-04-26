@@ -11,6 +11,7 @@ Peli aukeaa menunäkymään, josta valinnan mukaan voi asettaa itselleen nimimer
 * Pelaaja voi pelata tetristä
   * Ilman asetettua nimimerkkiä, jolloin peli ei tallenna mitään
   * Nimimerkin kanssa, jolloin mahdollinen huipputulos tallennetetaan huipputulosten listaan, jos pistemäärä riittävän korkea
+  * Pelin keskeyttäminen, "pause".
 * Pelinäkymässä näytetään
   * Itse pelitilanne
   * Seuraavaksi tuleva palikka
@@ -33,7 +34,6 @@ Peli aukeaa menunäkymään, josta valinnan mukaan voi asettaa itselleen nimimer
 * Sovellus voisi tallentaa eri nimimerkkien tilastoja, esim pelattujen pelien määrää, tuloksia, paljonko aikaa käyttäjä on käyttänyt pelin ääressä.  
 * Jos nimimerkki on jo "varattu", eli joku on joskus käyttänyt samaa nimimerkkiä, peli voisi kysyä varmistuksen siitä, haluaako käyttäjä käyttää syöttämäänsä nimimerkkiä vai kenties vaihtaa toiseen?  
 * Rekisteröitymismahdollisuus, henkilökohtaiset tiedot.
-* Pelin keskeyttäminen, "pause".
 * Keskeneräisen pelitilanteen tallennus ja mahdollisuus jatkaa myöhemmin.
 * Erilaisten palikoiden valitseminen/poisjättäminen pelistä.
 * Kaksinpeli

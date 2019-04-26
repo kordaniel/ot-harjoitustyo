@@ -21,6 +21,7 @@ Piece
 Sekä myös ```Game``` luokka osittain
 
 ### Dokumentaatio
+[Käyttöohje](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)  
 [Vaatimusmäärittely](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Arkkitehtuurikuvaus](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)  
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
