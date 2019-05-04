@@ -11,8 +11,7 @@ import java.util.Random;
 public abstract class Piece {
 
     private static final Random RANDOM = new Random();
-    private final String TYPE;
-    private final int MAX_ORIENTATIONS;
+    private final int maxOrientations;
     private final int SIZE;
 
     private int orientation;
@@ -21,9 +20,6 @@ public abstract class Piece {
     private int y;
     private int x;
 
-    //NEED TO ADD TESTS FOR THIS METHOD. how to test random though?
-    //loop n times and check distribution of classes and that no nulls
-    //are returned..?
     /**
      * Factory method that returns an randomly chosen tetris Piece of
      * type I,J,L,O,S,Z,T that extends this abstract class of type Piece.
@@ -54,41 +50,53 @@ public abstract class Piece {
     /**
      * Constructs a new Piece with the properties of values passed.
      * as parameters
-     * @param name name of the constructed piece, for example I,O,Z...
      * @param size size of the 2d coordinate grid
      * @param maxOrientations amount of orientations the piece has
      * @param initialY the initial Y-coordinate for the constructed piece
      * @param initialX the initial X-coordinate for the constructed piece
      */
-    public Piece(String name, int size, int maxOrientations,
+    public Piece(int size, int maxOrientations,
             int initialY, int initialX) {
         this.orientation = 0;
 
-        this.TYPE = name;
-        this.MAX_ORIENTATIONS = maxOrientations;
+        this.maxOrientations = maxOrientations;
         this.SIZE = size;
         this.pieceCoordinates = new int[maxOrientations][size][size];
 
         this.y = initialY;
         this.x = initialX;
     }
-
-    final public int[][] getCoords() {
+    
+    private void setCoordinates(int orientation, int[][] coordinates) {
+        //initialize coordinates trough this from extending classes!
+    }
+    
+    final public int[][] getPieceCoordinates() {
         return this.pieceCoordinates[this.orientation];
     }
 
-    final public int[][] getCoordsForNextOrientation() {
+    final public int[][] getCoordinatesForNextOrientation() {
         return this.pieceCoordinates[getNextOrientation()];
     }
 
+    /**
+     * Moves the piece down. In other words increments the y-coordinate
+     * of this piece by one.
+     */
     final public void moveDown() {
         this.y++;
     }
-
+    
+    /**
+     * Moves the piece to the left.
+     */
     final public void moveLeft() {
         this.x--;
     }
 
+    /**
+     * Moves the piece to the right.
+     */
     final public void moveRight() {
         this.x++;
     }
@@ -101,16 +109,32 @@ public abstract class Piece {
         return this.y;
     }
 
+    /**
+     * Returns the size of the 2 dimensional array holding
+     * the coordinates for this piece.
+     * @return integer value representing the size.
+     */
     final public int getSize() {
         return this.SIZE;
     }
-
+    
+    /**
+     * Calculates the next orientation for the piece. The orientation
+     * of this piece is an integer value, representing the first dimension
+     * of the coordinates 3 dimensional array. That is this value is always
+     * [0, (max_orientations-1)].
+     * @return 
+     */
+    final public int getNextOrientation() {
+        return (this.orientation + 1) % this.maxOrientations;
+    }
+    
+    /**
+     * Sets the orientation integer to represent
+     * the next orientation (position).
+     */
     final public void rotateRight() {
         this.orientation = getNextOrientation();
-    }
-
-    final public int getNextOrientation() {
-        return (this.orientation + 1) % this.MAX_ORIENTATIONS;
     }
 
 }

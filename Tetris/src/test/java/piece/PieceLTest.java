@@ -58,7 +58,7 @@ public class PieceLTest {
             {6,0,0},
             {6,6,0}};
 
-        assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedCoords, tetrisPiece.getPieceCoordinates());
     }
     
     @Test
@@ -67,7 +67,7 @@ public class PieceLTest {
             {{0,0,0},
              {6,6,6},
              {6,0,0}};
-        assertArrayEquals(expectedCoords, tetrisPiece.getCoordsForNextOrientation());
+        assertArrayEquals(expectedCoords, tetrisPiece.getCoordinatesForNextOrientation());
     }
     
     @Test
@@ -79,7 +79,7 @@ public class PieceLTest {
         
         tetrisPiece.rotateRight();
         
-        assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedCoords, tetrisPiece.getPieceCoordinates());
     }
     
     @Test
@@ -92,7 +92,7 @@ public class PieceLTest {
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
         
-        assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedCoords, tetrisPiece.getPieceCoordinates());
     }
     
     @Test
@@ -106,7 +106,7 @@ public class PieceLTest {
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
         
-        assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedCoords, tetrisPiece.getPieceCoordinates());
     }
     
     @Test
@@ -121,7 +121,7 @@ public class PieceLTest {
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
         
-        assertArrayEquals(expectedCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedCoords, tetrisPiece.getPieceCoordinates());
     }
     /*
     @Test

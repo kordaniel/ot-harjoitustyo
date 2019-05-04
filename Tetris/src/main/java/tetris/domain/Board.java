@@ -47,7 +47,7 @@ public class Board {
      * @return - true if piece can go to it's current coords, false otherwise.
      */
     public boolean pieceCanBeSpawned(Piece p) {
-        return pieceCanGoCoords(p.getCoords(), p.getY(), p.getX());
+        return pieceCanGoCoords(p.getPieceCoordinates(), p.getY(), p.getX());
     }
     
     /**
@@ -57,7 +57,7 @@ public class Board {
      * @return - true, if the piece can go to the left, false otherwise.
      */
     public boolean pieceCanMoveLeft(Piece p) {
-        return pieceCanGoCoords(p.getCoords(), p.getY(), p.getX() - 1);
+        return pieceCanGoCoords(p.getPieceCoordinates(), p.getY(), p.getX() - 1);
     }
     
     /**
@@ -67,7 +67,7 @@ public class Board {
      * @return - true, if the piece can go to the right, false otherwise.
      */
     public boolean pieceCanMoveRight(Piece p) {
-        return pieceCanGoCoords(p.getCoords(), p.getY(), p.getX() + 1);
+        return pieceCanGoCoords(p.getPieceCoordinates(), p.getY(), p.getX() + 1);
     }
     
     /**
@@ -77,7 +77,7 @@ public class Board {
      * @return - true, if the piece can go down, false otherwise.
      */
     public boolean pieceCanMoveDown(Piece p) {
-        return pieceCanGoCoords(p.getCoords(), p.getY() + 1, p.getX());
+        return pieceCanGoCoords(p.getPieceCoordinates(), p.getY() + 1, p.getX());
     }
     
     /**
@@ -87,7 +87,7 @@ public class Board {
      * @return - true, if the piece can be rotated, false otherwise.
      */
     public boolean pieceCanBeRotated(Piece p) {
-        return pieceCanGoCoords(p.getCoordsForNextOrientation(), p.getY(), p.getX());
+        return pieceCanGoCoords(p.getCoordinatesForNextOrientation(), p.getY(), p.getX());
     }
     
     /**
@@ -216,7 +216,7 @@ public class Board {
         int dim = p.getSize() - 1;
         int py = p.getY();
         int px = p.getX();
-        int[][] pieceCoords = p.getCoords();
+        int[][] pieceCoords = p.getPieceCoordinates();
         
         if (!pieceCanGoCoords(pieceCoords, py, px)) {
             return;

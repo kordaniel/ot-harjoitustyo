@@ -197,7 +197,7 @@ public class Game {
 
     private void addPieceToBoardInPlay() {
         this.boardInPlay = this.board.getBoardCopy();
-        int[][] pieceCoords = this.currentPiece.getCoords();
+        int[][] pieceCoords = this.currentPiece.getPieceCoordinates();
         int py = this.currentPiece.getY();
         int px = this.currentPiece.getX();
         int dim = this.currentPiece.getSize() - 1;
@@ -217,7 +217,7 @@ public class Game {
     }
     
     public int[][] getNextPieceCoords() {
-        return this.nextPiece.getCoords();
+        return this.nextPiece.getPieceCoordinates();
     }
     
     public Statistics getStatistics() {

@@ -63,25 +63,25 @@ public class PieceSTest {
 
     @Test
     public void pieceIsConstructedWithRightCoords() {
-        assertArrayEquals(expectedUprightCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedUprightCoords, tetrisPiece.getPieceCoordinates());
     }
     
     @Test
     public void pieceReturnsCorrectCoordsForNextOrientation() {
-        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoordsForNextOrientation());
+        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoordinatesForNextOrientation());
     }
     
     @Test
     public void pieceCanBeRotatedRightOneTime() {
         tetrisPiece.rotateRight();
-        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getPieceCoordinates());
     }
     
     @Test
     public void pieceCanBeRotatedRightTwoTimes() {
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
-        assertArrayEquals(expectedUprightCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedUprightCoords, tetrisPiece.getPieceCoordinates());
     }
     
     @Test
@@ -89,6 +89,6 @@ public class PieceSTest {
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
         tetrisPiece.rotateRight();
-        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getCoords());
+        assertArrayEquals(expectedTiltedCoords, tetrisPiece.getPieceCoordinates());
     }
 }
