@@ -1,3 +1,5 @@
+package domain;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,12 +20,12 @@ public class BoardTest {
     int[][] expectedEmptyBoard;
     
     public BoardTest() {
+        boardHeight = 4;
+        boardWidth = 4;
     }
     
     @Before
     public void setUp() {
-        boardHeight = 4;
-        boardWidth = 4;
         tetrisBoard = new Board(boardHeight, boardWidth);
         expectedEmptyBoard = new int[boardHeight][boardWidth];
     }
@@ -252,8 +254,9 @@ public class BoardTest {
             {3,3,4,0,0,0},
             {3,3,4,0,0,0}};
         Board boardInstance = new Board(boardState, 5, 6);
-        boardInstance.dropRows();
+        int clearedRows = boardInstance.dropRows();
         assertArrayEquals(expectedCoords, boardInstance.getBoardCopy());
+        assertEquals(0, clearedRows);
     }
     
     @Test
@@ -264,8 +267,9 @@ public class BoardTest {
             {0,0,0,0},
             {4,4,4,4}};
         Board boardInstance = new Board(boardState, 4, 4);
-        boardInstance.dropRows();
+        int clearedRows = boardInstance.dropRows();
         assertArrayEquals(expectedEmptyBoard, boardInstance.getBoardCopy());
+        assertEquals(1, clearedRows);
     }
     
     @Test
@@ -276,8 +280,9 @@ public class BoardTest {
             {3,3,3,3},
             {3,3,3,3}};
         Board boardInstance = new Board(boardState, 4, 4);
-        boardInstance.dropRows();
+        int clearedRows = boardInstance.dropRows();
         assertArrayEquals(expectedEmptyBoard, boardInstance.getBoardCopy());
+        assertEquals(4, clearedRows);
     }
     
     @Test
@@ -293,7 +298,26 @@ public class BoardTest {
             {6,6,0,0},
             {4,5,3,0}};
         Board boardInstance = new Board(boardState, 4, 4);
-        boardInstance.dropRows();
+        int clearedRows = boardInstance.dropRows();
         assertArrayEquals(expectedCoords, boardInstance.getBoardCopy());
+        assertEquals(1, clearedRows);
+    }
+    
+    @Test
+    public void dropRowsClearsAllFullRowsAndDropsTheOneAbove() {
+        int[][] boardState = {
+            {0,7,7,7},
+            {6,6,2,2},
+            {4,5,3,0},
+            {1,2,3,4}};
+        int[][] expectedCoords = {
+            {0,0,0,0},
+            {0,0,0,0},
+            {0,7,7,7},
+            {4,5,3,0}};
+        Board boardInstance = new Board(boardState, 4, 4);
+        int clearedRows = boardInstance.dropRows();
+        assertArrayEquals(expectedCoords, boardInstance.getBoardCopy());
+        assertEquals(2, clearedRows);
     }
 }

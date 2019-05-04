@@ -1,5 +1,6 @@
 package tetris;
 
+import java.util.concurrent.TimeUnit;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -111,7 +112,6 @@ public class Main extends Application {
     
     @Override
     public void stop() {
-        System.out.println("Shutting down tetris!");
         if (!gameStatus.getStatistics().getIsSaved()) {
             gameStatus.saveGameScore();
         }
@@ -129,46 +129,32 @@ public class Main extends Application {
         
         
         primaryStage.setScene(root);
-        //primaryStage.setScene(gameScene);
+        
         primaryStage.setTitle("TETRIS beta v. " + Constants.VERSION);
         
         
         new AnimationTimer() {
-            //10^9 ns = 1 sec =>
-            //60 updates per second =>
-            //one update per 16666667 ns
-            private long sleepNanoSeconds = 16_666_667/2; // should be 120fps?
+            private final long sleepNanoSeconds = TimeUnit.SECONDS.toNanos(1L) / 60;
             private long prevNanoTime = System.nanoTime();
-            private int refreshes = 0;
             
-            long frameStartNanoTime = System.nanoTime();
-            double framesDrawn = 0.0;
+            private int ticks = 0;
             
             @Override
             public void handle(long currentNanoTime) {
-                if (!gameStatus.getIsActive()) {
+                if (!gameStatus.getIsActive()
+                        || currentNanoTime - prevNanoTime < sleepNanoSeconds) {
                     return;
                 }
                 
-                if (currentNanoTime - prevNanoTime < sleepNanoSeconds) {
-                    return;
-                }
-                if (framesDrawn == 120) {
-                    //System.out.println("fps: " + 
-                    //        (framesDrawn / ((currentNanoTime - frameStartNanoTime) / 1000000000)));
-                    //frameStartNanoTime = System.nanoTime();
-                    //framesDrawn = 0.0;
-                }
-                
-                if (refreshes >= 15) {
+                if (ticks >= gameStatus.refreshesToWait()) {
                     gameStatus.advanceGame();
-                    refreshes = 0;
+                    ticks = 0;
                 }
                 
                 gameView.updateView();
+                
                 this.prevNanoTime = currentNanoTime;
-                refreshes++;
-                framesDrawn++;
+                ticks++;
             }
         }.start();
         
@@ -183,6 +169,7 @@ public class Main extends Application {
     }
     
     public static void main(String[] args) {
+        System.out.println();
         launch(args);
     }
 }

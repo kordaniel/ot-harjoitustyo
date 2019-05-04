@@ -43,7 +43,7 @@ public class GameView {
     private GridPane nextPieceRectangle;
     private VBox gameViewMenu;
     
-    private Label labelRowsCleared;
+    private Label labelCurrentLevelShow;
     private Label labelCurrentScoreShow;
     private Label labelHighScoreShow;
     private Label labelPlayerNameShow;
@@ -91,8 +91,8 @@ public class GameView {
     }
     
     public void updateView() {
-        labelRowsCleared.setText(
-                gameStatus.getStatistics().getClearedLinesAsString());
+        labelCurrentLevelShow.setText(
+                Integer.toString(gameStatus.getStatistics().getLevel()));
         labelCurrentScoreShow.setText(
                 gameStatus.getStatistics().getTotalScoreAsString());
         labelHighScoreShow.setText(highscores.getHighScoreAsString());
@@ -243,11 +243,11 @@ public class GameView {
         Label labelNextPiece = new Label("Next:");
         styleLabelHeading(labelNextPiece, false);
         
-        Label labelLevel = new Label("Level");
-        styleLabelHeading(labelLevel, false);
+        Label labelCurrentLevel = new Label("Level");
+        styleLabelHeading(labelCurrentLevel, false);
         
-        labelRowsCleared = new Label("0");
-        styleLabelShowInfo(labelRowsCleared);
+        labelCurrentLevelShow = new Label("0");
+        styleLabelShowInfo(labelCurrentLevelShow);
         
         Label labelCurrentScore = new Label("Score");
         styleLabelHeading(labelCurrentScore, false);
@@ -286,8 +286,8 @@ public class GameView {
         gameViewMenu.getChildren().addAll(
                 labelNextPiece,
                 nextPieceRectangle,
-                labelLevel,
-                labelRowsCleared,
+                labelCurrentLevel,
+                labelCurrentLevelShow,
                 labelCurrentScore,
                 labelCurrentScoreShow,
                 labelHighScore,

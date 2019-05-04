@@ -52,7 +52,7 @@ public abstract class Piece {
     }
 
     /**
-     * Constructs a new Piece with the properties of values passed
+     * Constructs a new Piece with the properties of values passed.
      * as parameters
      * @param name name of the constructed piece, for example I,O,Z...
      * @param size size of the 2d coordinate grid

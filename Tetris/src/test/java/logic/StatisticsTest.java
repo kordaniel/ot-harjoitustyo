@@ -101,6 +101,15 @@ public class StatisticsTest {
     }
     
     @Test
+    public void zeroClearedLinesDoesNotChangeObjectState() {
+        gameStatistics.incrementClearedLines(3);
+        gameStatistics.incrementClearedLines(2);
+        gameStatistics.incrementClearedLines(0);
+        gameStatistics.incrementClearedLines(2);
+        assertEquals(1300, gameStatistics.getTotalScore());
+    }
+    
+    @Test
     public void getTotalScoreAsString() {
         gameStatistics.incrementClearedLines(4);
         assertEquals("400", gameStatistics.getTotalScoreAsString());

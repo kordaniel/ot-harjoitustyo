@@ -7,7 +7,7 @@ import javafx.scene.text.FontWeight;
 
 public class Constants {
     
-    public static final double VERSION = 0.6;
+    public static final double VERSION = 0.9;
     
     // DATABASE URI
     public static final String DATABASE_URI = "src/main/resources/db/scores.db";

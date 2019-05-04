@@ -76,9 +76,10 @@
         </module>
         
         <!-- Javadoc -->
-        
+        <!-- setting propery token here to ignore constructors -->
         <module name='JavadocMethod'>
             <property name='scope' value='public' />
+            <property name='tokens' value='METHOD_DEF,ANNOTATION_FIELD_DEF' />
             <property name='allowMissingParamTags' value='false' />
             <property name='allowMissingPropertyJavadoc' value='true' />
             <property name='allowMissingThrowsTags' value='false' />
@@ -86,9 +87,10 @@
             <property name='allowThrowsTagsForSubclasses' value='true' />
         </module>
         
+        <!-- checkEmptyJavadoc = false to ignore getters and setters -->
         <module name='JavadocStyle'>
             <property name='scope' value='public' />
-            <property name='checkEmptyJavadoc' value='true' />
+            <property name='checkEmptyJavadoc' value='false' />
         </module>
         
     </module>

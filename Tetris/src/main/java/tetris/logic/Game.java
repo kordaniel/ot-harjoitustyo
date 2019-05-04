@@ -224,4 +224,22 @@ public class Game {
         return this.gameStatistics;
     }
     
+    public int getLevel() {
+        return gameStatistics.getLevel();
+    }
+    
+    /**
+     * Returns the amount of frames that should be rendered before the 
+     * AnimationTimer should advance the game. That is, the lower this
+     * integer is, the quicker the game progresses. This method assumes
+     * that the AnimationTimer is called 60 times / second.
+     * @return int value of frames to skip between 6-17, inclusive.
+     */
+    public int refreshesToWait() {
+        final int min = 5;
+        final int max = 16;
+        int skips = max - (getLevel() - 1);
+        return skips > min ? skips : min;
+    }
+    
 }

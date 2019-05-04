@@ -22,6 +22,10 @@ public class Statistics {
     }
     
     public void incrementClearedLines(int clearedLinesAmount) {
+        if (clearedLinesAmount < 1) {
+            return;
+        }
+        
         this.totalClearedLinesNum += clearedLinesAmount;
         totalScore += basepoints * clearedLinesAmount * lastClearedLinesAmount;
         lastClearedLinesAmount = clearedLinesAmount;
@@ -43,6 +47,16 @@ public class Statistics {
         return Integer.toString(totalScore);
     }
 
+    /**
+     * Returns the current level which is calculated based on how
+     * many lines have been cleared. When 5 lines have been cleared,
+     * the level is incremented. Integer division always rounds down.
+     * @return current level.
+     */
+    public int getLevel() {
+        return getTotalClearedLinesNum() / 5 + 1;
+    }
+    
     public boolean getIsSaved() {
         return isSaved;
     }
