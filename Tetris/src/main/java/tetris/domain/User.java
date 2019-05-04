@@ -35,7 +35,7 @@ public class User {
     }
     
     /**
-     * Helper method to check if player is anonymous or using an set name.
+     * Helper method to check if player is anonymous or using a set name.
      * @return true, if username is default, false otherwise.
      */
     public boolean isAnonymous() {

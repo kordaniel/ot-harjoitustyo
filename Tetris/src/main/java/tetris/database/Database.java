@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Class that holds one database address and provides and Connection
+ * Class that holds one database address and provides an Connection
  * to it, currently only sqlite3 databases.
  * @author DanielKor
  */
@@ -24,7 +24,7 @@ public class Database {
     /**
      * Method that provides the connection to the used database.
      * @return Connection to sqlite3 database.
-     * @throws SQLException 
+     * @throws SQLException if error in connection.
      */
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(databaseAddress);
