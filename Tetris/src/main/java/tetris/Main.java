@@ -155,7 +155,7 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        if (!gameStatus.getStatistics().getIsSaved()) {
+        if (gameStatus.getStatistics().shouldBeSaved()) {
             gameStatus.saveGameScore();
         }
         scoreDao.saveAll(highscores.getAll());

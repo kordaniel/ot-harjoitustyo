@@ -57,8 +57,11 @@ public class Statistics {
         return getTotalClearedLinesNum() / 5 + 1;
     }
     
-    public boolean getIsSaved() {
-        return isSaved;
+    public boolean shouldBeSaved() {
+        if (totalScore == 0) {
+            return false;
+        }
+        return !isSaved;
     }
 
     public void setIsSaved(boolean isSaved) {

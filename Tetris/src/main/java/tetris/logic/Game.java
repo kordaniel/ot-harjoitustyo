@@ -76,9 +76,11 @@ public class Game {
     }
     
     public void saveGameScore() {
-        if (!user.isAnonymous()) {
-            highscores.newScore(user.getName(), gameStatistics.getTotalScore());
+        if (user.isAnonymous() || !gameStatistics.shouldBeSaved()) {
+            return;
         }
+        
+        highscores.newScore(user.getName(), gameStatistics.getTotalScore());
         gameStatistics.setIsSaved(true);
     }
     
@@ -104,9 +106,7 @@ public class Game {
     }
 
     public void initializeGame() {
-        if (!gameStatistics.getIsSaved()) {
-            saveGameScore();
-        }
+        saveGameScore();
         gameStatistics.reset();
         board.reset();
         boardInPlay = this.board.getBoardCopy();

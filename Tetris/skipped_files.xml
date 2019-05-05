@@ -4,4 +4,5 @@
 
 <suppressions>
     <suppress files="tetris.ui.*" checks="[a-zA-Z0-9]*" />
+    <suppress files="tetris.dao.Dao" checks="[a-zA-Z0-9]*" />
 </suppressions>

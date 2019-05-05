@@ -28,8 +28,8 @@ public class StatisticsTest {
     }
     
     @Test
-    public void constructedWithIsSavedFalse() {
-        assertFalse(gameStatistics.getIsSaved());
+    public void constructeShouldNotBeSaved() {
+        assertFalse(gameStatistics.shouldBeSaved());
     }
     
     @Test
@@ -135,9 +135,9 @@ public class StatisticsTest {
         
         assertEquals(0, gameStatistics.getTotalScore());
         assertEquals(0, gameStatistics.getTotalClearedLinesNum());
-        assertFalse(gameStatistics.getIsSaved());
+        assertFalse(gameStatistics.shouldBeSaved());
         
-        //check that lastClearedLinesGetSetToZero
+        //check that lastClearedLinesGetSetToOne
         gameStatistics.incrementClearedLines(3);
         assertEquals(300, gameStatistics.getTotalScore());
     }

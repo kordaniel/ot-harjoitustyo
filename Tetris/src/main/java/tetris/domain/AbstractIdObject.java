@@ -4,11 +4,12 @@ public abstract class AbstractIdObject {
     
     private Integer id;
 
+    
     public AbstractIdObject(Integer id) {
         this.id = id;
     }
 
-    public int getId() {
+    final public int getId() {
         return id;
     }
     

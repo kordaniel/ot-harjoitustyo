@@ -20,8 +20,30 @@ public abstract class AbstractIdObjectDao<T extends AbstractIdObject>
         this.tableName = tableName;
     }
     
+    /**
+     * All classes that extend this class must implement this method.
+     * 
+     * The methods in this abstract class that fetches data from the
+     * database uses this method to create objects of the correct type
+     * from the rows in the database.
+     * @param resultSet containing the rows data.
+     * @return Object of type T, decided by the extending class.
+     */
     public abstract T createFromRow(ResultSet resultSet);
-    public abstract PreparedStatement createInsertStatement(T score,
+    
+    /**
+     * All classes that extend this class must implement this method.
+     * 
+     * This method is used by all the methods in this abstract class that
+     * inserts data into the database. They use this abstract method to
+     * create PreparedStatement objects based on the objects of type T,
+     * decided by the extending class.
+     * @param object of type T that is to be saved.
+     * @param conn Connection to database.
+     * @return PreparedStatement containing the fields to be saved.
+     * @throws SQLException when error in DB-connection.
+     */
+    public abstract PreparedStatement createInsertStatement(T object,
             Connection conn) throws SQLException;
     
     @Override
@@ -71,11 +93,6 @@ public abstract class AbstractIdObjectDao<T extends AbstractIdObject>
             System.err.println("Error when trying to delete all rows from "
                     + tableName + ". Exception: " + e.getMessage());
         }
-    }
-    
-    @Override
-    public void delete(Integer key) {
-        //
     }
     
     @Override

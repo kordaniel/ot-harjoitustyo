@@ -33,4 +33,6 @@
 | 26.4  | 2.5h | Pistelaskujärjestelmää kehitelty. Nyt sovellus lataa aina käynnistäessä pisteet sqlite-tietokannasta, sekä tallentaa ne suljettaessa. Kaikkien pelien pisteet myös tallennetaan, jos ne ovat riittävän korkeita sekä pelaaja on asettanut itselleen nimen|
 | 04.5  | 2h   | Lisätty testejä|
 | 04.5  | 2h   | Testejä, refaktorointia, pelissä nyt levelit sekä nopeutuminen, javadoceja kirjoitettu sekää muutettu checkstyleä javadocin suhteen|
-| Yht   | 56h  | |
+| 04.5  | 1h   | Javadoc, checkstyle jatkuu. Main-luokka kun on UI-pakkauksen ulkopuolella, niin sekin nyt refaktoroitu. Pari rumaa ratkaisua jäi jotta metodit eivät olisi liian pitkiä.
+| 05.5  | 1h   | Javadoc, refaktorointia|
+| Yht   | 58h  | |

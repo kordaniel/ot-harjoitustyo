@@ -12,7 +12,7 @@ public abstract class Piece {
 
     private static final Random RANDOM = new Random();
     private final int maxOrientations;
-    private final int SIZE;
+    private final int size;
 
     private int orientation;
     protected int[][][] pieceCoordinates;
@@ -60,7 +60,7 @@ public abstract class Piece {
         this.orientation = 0;
 
         this.maxOrientations = maxOrientations;
-        this.SIZE = size;
+        this.size = size;
         this.pieceCoordinates = new int[maxOrientations][size][size];
 
         this.y = initialY;
@@ -115,7 +115,7 @@ public abstract class Piece {
      * @return integer value representing the size.
      */
     final public int getSize() {
-        return this.SIZE;
+        return this.size;
     }
     
     /**
@@ -123,7 +123,7 @@ public abstract class Piece {
      * of this piece is an integer value, representing the first dimension
      * of the coordinates 3 dimensional array. That is this value is always
      * [0, (max_orientations-1)].
-     * @return 
+     * @return orientation as integer value.
      */
     final public int getNextOrientation() {
         return (this.orientation + 1) % this.maxOrientations;
