@@ -1,7 +1,9 @@
 package tetris.logic;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import tetris.Constants;
 import tetris.domain.Score;
 
 /**
@@ -15,8 +17,10 @@ public class Highscores {
     private int scoreAmountToKeep;
     
     public Highscores(List<Score> highscores) {
-        this.highscores = highscores;
+        this.highscores = new ArrayList<>();
         this.scoreAmountToKeep = 10;
+        
+        AddAllFromList(highscores);
     }
     
     /**
@@ -57,6 +61,17 @@ public class Highscores {
     }
     
     /**
+     * Helper method that processes an list with scores
+     * and adds the scores that qualify to this objects list
+     * @param scores List with scores
+     */
+    private void AddAllFromList(List<Score> scores) {
+        scores.forEach((score) -> {
+            checkAndSaveIfHighEnough(score);
+        });
+    }
+    
+    /**
      * Keeps the list sorted.
      * @param score to add to the list.
      */
@@ -90,10 +105,13 @@ public class Highscores {
     }
     
     private Score getLeastScore() {
+        if (highscores.isEmpty()) {
+            return new Score(null, Constants.DEFAULT_ANON_PLAYER_NAME, 0);
+        }
         return highscores.get(getIndexForLeastKnownScore());
     }
     
     private int getIndexForLeastKnownScore() {
-        return highscores.size() - 1;
+        return highscores == null || highscores.isEmpty() ? null : highscores.size() - 1;
     }
 }

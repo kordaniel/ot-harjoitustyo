@@ -18,12 +18,12 @@ public class Database {
      * @param databaseAddress name of used database file.
      */
     public Database(String databaseAddress) {
-        this.databaseAddress = "jdbc:sqlite:" + databaseAddress;
+        this.databaseAddress = databaseAddress;
     }
 
     /**
      * Method that provides the connection to the used database.
-     * @return Connection to sqlite3 database.
+     * @return Connection to (sqlite3) database.
      * @throws SQLException if error in connection.
      */
     public Connection getConnection() throws SQLException {

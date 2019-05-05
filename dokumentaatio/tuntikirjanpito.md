@@ -37,4 +37,5 @@
 | 05.5  | 1h   | Javadoc, refaktorointia|
 | 05.5  | 1h   | Refaktorointia, äänet eriytetty omaan luokkaan sekä lisätty resurssien hallinta, ohjelma lataa nyt taustamusiikin suoraan jar-tiedostosta.|
 | 05.5  | 2h   | Pelattavuutta paranneltu, Game-luokan refaktorointi sekä javadocit ja testausta|
-| Yht   | 61h  | |
+| 05.5  | 4h   | Refaktorointia, Taistelua Daotestien kanssa. En saanut in-memory tietokantaa toimimaan testeissä, ilmeisesti ongelma tulee siitä kun yhteys suljetaan eri metodikutsujen välillä. Jätin kuitenkin metodin paikalleen, koska haluan jatkaa sen parissa myöhemmin|
+| Yht   | 65h  | |

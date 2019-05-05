@@ -10,7 +10,7 @@ public class Constants {
     public static final double VERSION = 0.9;
     
     // DATABASE URI
-    public static final String DATABASE_URI = "scores.db";
+    public static final String DATABASE_URI = "jdbc:sqlite:scores.db";
     
     // DATABASE TABLES
     public static final String HIGHSCORE_TABLE_NAME = "Score";
