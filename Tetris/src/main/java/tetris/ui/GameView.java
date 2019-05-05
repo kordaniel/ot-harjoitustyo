@@ -73,7 +73,8 @@ public class GameView {
                 Integer.toString(gameStatus.getStatistics().getLevel()));
         labelCurrentScoreShow.setText(
                 Integer.toString(gameStatus.getStatistics().getTotalScore()));
-        labelHighScoreShow.setText(highscores.getHighScoreAsString());
+        labelHighScoreShow.setText(
+                Integer.toString(highscores.getHighScore().getScore()));
         labelPlayerNameShow.setText(user.getName());
         
         if (gameStatus.getIsOver()) {
@@ -236,7 +237,8 @@ public class GameView {
         Label labelHighScore = new Label("High Score");
         styleLabelHeading(labelHighScore, false);
         
-        labelHighScoreShow = new Label(this.highscores.getHighScoreAsString());
+        labelHighScoreShow = new Label(
+                Integer.toString(this.highscores.getHighScore().getScore()));
         styleLabelShowInfo(labelHighScoreShow);
         
         Label labelPlayerName = new Label("Player");

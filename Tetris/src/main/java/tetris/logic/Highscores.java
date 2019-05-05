@@ -4,6 +4,11 @@ import java.util.Collections;
 import java.util.List;
 import tetris.domain.Score;
 
+/**
+ * This class holds the current highest ranked scores in memory sorted
+ * descending. The amount of scores to hold can be set by modifying the
+ * scoreAmountToKeep variables value.
+ */
 public class Highscores {
     
     private List<Score> highscores;
@@ -14,10 +19,21 @@ public class Highscores {
         this.scoreAmountToKeep = 10;
     }
     
+    /**
+     * This method is used to create a new score. The new score will
+     * be saved in the top scores if it is ranked high enough.
+     * @param name String, name of the player.
+     * @param score integer, score.
+     */
     public void newScore(String name, int score) {
         checkAndSaveIfHighEnough(new Score(null, name, score));
     }
     
+    /**
+     * This method can be used to pass a new score. The score
+     * will be saved in the top scores if it is ranked high enough.
+     * @param score to be saved if high enough.
+     */
     public void checkAndSaveIfHighEnough(Score score) {
         if (scoreIsHighEnoughToFitOnList(score)) {
             trimListSize();
@@ -29,6 +45,10 @@ public class Highscores {
         return this.highscores;
     }
     
+    /**
+     * Returns the current highest score.
+     * @return Score, the current highest ranked score.
+     */
     public Score getHighScore() {
         if (highscores.isEmpty()) {
             return new Score();
@@ -36,10 +56,10 @@ public class Highscores {
         return highscores.get(0);
     }
     
-    public String getHighScoreAsString() {
-        return Integer.toString(getHighScore().getScore());
-    }
-    
+    /**
+     * Keeps the list sorted.
+     * @param score to add to the list.
+     */
     private void addHighscoreToList(Score score) {
         highscores.add(score);
         Collections.sort(highscores);
@@ -51,6 +71,9 @@ public class Highscores {
         }
     }
     
+    /**
+     * Removes the lowest ranked score from the list.
+     */
     private void removeLeastScore() {
         highscores.remove(getIndexForLeastKnownScore());
     }

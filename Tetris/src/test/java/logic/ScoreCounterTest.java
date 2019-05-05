@@ -24,7 +24,7 @@ public class ScoreCounterTest {
     
     @Test
     public void constructedWithClearedLinesZero() {
-        assertEquals(0, scoreCounter.getTotalClearedLinesNum());
+        assertEquals(0, scoreCounter.getTotalClearedLinesAmount());
     }
     
     @Test
@@ -35,25 +35,25 @@ public class ScoreCounterTest {
     @Test
     public void oneClearedLineIncrementsClearedLines() {
         scoreCounter.incrementClearedLines(1);
-        assertEquals(1, scoreCounter.getTotalClearedLinesNum());
+        assertEquals(1, scoreCounter.getTotalClearedLinesAmount());
     }
     
     @Test
     public void twoClearedLineIncrementsClearedLines() {
         scoreCounter.incrementClearedLines(2);
-        assertEquals(2, scoreCounter.getTotalClearedLinesNum());
+        assertEquals(2, scoreCounter.getTotalClearedLinesAmount());
     }
     
     @Test
     public void threeClearedLineIncrementsClearedLines() {
         scoreCounter.incrementClearedLines(3);
-        assertEquals(3, scoreCounter.getTotalClearedLinesNum());
+        assertEquals(3, scoreCounter.getTotalClearedLinesAmount());
     }
     
     @Test
     public void fourClearedLineIncrementsClearedLines() {
         scoreCounter.incrementClearedLines(4);
-        assertEquals(4, scoreCounter.getTotalClearedLinesNum());
+        assertEquals(4, scoreCounter.getTotalClearedLinesAmount());
     }
     
     @Test
@@ -62,7 +62,7 @@ public class ScoreCounterTest {
         scoreCounter.incrementClearedLines(2);
         scoreCounter.incrementClearedLines(3);
         scoreCounter.incrementClearedLines(4);
-        assertEquals(10, scoreCounter.getTotalClearedLinesNum());
+        assertEquals(10, scoreCounter.getTotalClearedLinesAmount());
     }
     
     @Test
@@ -110,12 +110,6 @@ public class ScoreCounterTest {
     }
     
     @Test
-    public void getClearedLinesAsString() {
-        scoreCounter.incrementClearedLines(3);
-        assertEquals("3", scoreCounter.getClearedLinesAsString());
-    }
-    
-    @Test
     public void resetClearsStatistics() {
         scoreCounter.incrementClearedLines(1);
         scoreCounter.incrementClearedLines(3);
@@ -128,7 +122,7 @@ public class ScoreCounterTest {
         scoreCounter.reset();
         
         assertEquals(0, scoreCounter.getTotalScore());
-        assertEquals(0, scoreCounter.getTotalClearedLinesNum());
+        assertEquals(0, scoreCounter.getTotalClearedLinesAmount());
         assertFalse(scoreCounter.shouldBeSaved());
         
         //check that lastClearedLinesGetSetToOne

@@ -80,19 +80,12 @@ public class HighScoresTest {
         assertTrue(allEquals);
     }
     
-    // These two tests are not good, should compare current top-score after
+    // This test is not so good, should compare current top-score after
     // each iteration of creating a new score
     @Test
     public void getHighScoreReturnsCorrectScore() {
         int[] actualTopScores = populateHighScores();
         assertEquals(actualTopScores[0], highscores.getHighScore().getScore());
-    }
-    
-    @Test
-    public void getHighScoreAsStringRetrunsCorrectScore() {
-        int[] actualTopScores = populateHighScores();
-        assertEquals("" + actualTopScores[0],
-                highscores.getHighScoreAsString());
     }
     
     /**
