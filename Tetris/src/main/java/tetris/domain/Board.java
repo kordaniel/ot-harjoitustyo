@@ -3,7 +3,7 @@ package tetris.domain;
 import tetris.domain.piece.Piece;
 
 /**
- * Game logic class that represents the current state of the tetrisboard.
+ * Game domain class that represents the current state of the tetrisboard.
  * That is it has an int[][]-array that holds all the cells values. An value
  * of 0 represents an empty cell, and other values are symbols of different
  * tetris pieces.

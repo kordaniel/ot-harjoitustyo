@@ -36,4 +36,5 @@
 | 04.5  | 1h   | Javadoc, checkstyle jatkuu. Main-luokka kun on UI-pakkauksen ulkopuolella, niin sekin nyt refaktoroitu. Pari rumaa ratkaisua jäi jotta metodit eivät olisi liian pitkiä.
 | 05.5  | 1h   | Javadoc, refaktorointia|
 | 05.5  | 1h   | Refaktorointia, äänet eriytetty omaan luokkaan sekä lisätty resurssien hallinta, ohjelma lataa nyt taustamusiikin suoraan jar-tiedostosta.|
-| Yht   | 59h  | |
+| 05.5  | 2h   | Pelattavuutta paranneltu, Game-luokan refaktorointi sekä javadocit ja testausta|
+| Yht   | 61h  | |

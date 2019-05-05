@@ -70,9 +70,9 @@ public class GameView {
     
     public void updateView() {
         labelCurrentLevelShow.setText(
-                Integer.toString(gameStatus.getStatistics().getLevel()));
+                Integer.toString(gameStatus.getScoreCounter().getLevel()));
         labelCurrentScoreShow.setText(
-                Integer.toString(gameStatus.getStatistics().getTotalScore()));
+                Integer.toString(gameStatus.getScoreCounter().getTotalScore()));
         labelHighScoreShow.setText(
                 Integer.toString(highscores.getHighScore().getScore()));
         labelPlayerNameShow.setText(user.getName());

@@ -92,6 +92,9 @@ public class ScoreCounter {
         this.isSaved = isSaved;
     }
 
+    /**
+     * Resets all fields to initial values of an empty score.
+     */
     public void reset() {
         totalClearedLinesAmount = 0;
         totalScore = 0;
