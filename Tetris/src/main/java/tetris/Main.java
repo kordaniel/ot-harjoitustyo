@@ -14,6 +14,7 @@ import tetris.database.Database;
 import tetris.domain.User;
 import tetris.logic.Game;
 import tetris.logic.Highscores;
+import tetris.resources.ResourceLoader;
 import tetris.ui.AudioPlayer;
 import tetris.ui.GameView;
 import tetris.ui.HighscoresView;
@@ -22,6 +23,7 @@ import tetris.ui.SettingsView;
 
 public class Main extends Application {
 
+    private ResourceLoader resources;
     private Dao scoreDao;
     private Highscores highscores;
     private User user;
@@ -68,7 +70,7 @@ public class Main extends Application {
     }
 
     private void createAudioPlayer() {
-        audioPlayer = new AudioPlayer();
+        audioPlayer = new AudioPlayer(resources);
     }
     
     private void createMenuScene() {
@@ -135,6 +137,7 @@ public class Main extends Application {
     
     @Override
     public void init() {
+        resources = new ResourceLoader();
         Database db = new Database(Constants.DATABASE_URI);
         scoreDao = new ScoreDao(db, Constants.HIGHSCORE_TABLE_NAME);
 

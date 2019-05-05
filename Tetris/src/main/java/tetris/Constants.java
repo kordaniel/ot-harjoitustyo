@@ -1,6 +1,6 @@
 package tetris;
 
-import java.io.File;
+//import java.io.File;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -47,12 +47,9 @@ public class Constants {
     // SOUNDS
     // all sounds downloaded from https://freesound.org
     public static final double DEFAULT_BG_MUSIC_VOLUME = 0.15;
-    public static final File FILE_BG_MUSIC =
-            new File("src/main/resources/sounds/bg_music.wav");
-    public static final File FILE_SNDFX_CLEAR_ROWS =
-            new File("src/main/resources/sounds/clear_row.wav");
-    public static final File FILE_SNDFX_TURN_PIECE =
-            new File("src/main/resources/sounds/turn_piece.wav");
+    //public static final File FILE_BG_MUSIC =
+    //        new File("src/main/resources/sounds/bg_music.wav");
+    
     
     // USER
     public static final String DEFAULT_ANON_PLAYER_NAME = "Noname";

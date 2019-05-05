@@ -26,21 +26,7 @@ public class Game {
     private boolean isActive;
     private boolean isOver;
     
-    //TEMPORARILY IN THIS CLASS
-    //all sounds downloaded from https://freesound.org
-    Media sndFxTurn;
-    Media sndFxClear;
-    MediaPlayer mediaPlayerTurn;
-    MediaPlayer mediaPlayerClear;
-    
     public Game(int height, int width, User user, Highscores highscores) {
-        sndFxTurn = new Media(
-                Constants.FILE_SNDFX_TURN_PIECE.toURI().toString());
-        sndFxClear = new Media(
-                Constants.FILE_SNDFX_CLEAR_ROWS.toURI().toString());
-        mediaPlayerTurn = new MediaPlayer(this.sndFxTurn);
-        mediaPlayerClear = new MediaPlayer(this.sndFxClear);
-        
         this.height = height;
         this.width = width;
         this.user = user;
@@ -131,8 +117,7 @@ public class Game {
                 || !this.board.pieceCanBeRotated(this.currentPiece)) {
             return;
         }
-        //plays only one time, how to reset player to beginning
-        //mediaPlayerTurn.play();
+
         this.currentPiece.rotateRight();
     }
     
@@ -184,10 +169,6 @@ public class Game {
             int rowsCleared = this.board.dropRows();
             scoreCounter.incrementClearedLines(rowsCleared);
             
-            //plays only one time...
-//            if (rowsCleared >= 2) {
-//                mediaPlayerClear.play();
-//            }
             setNewPiece();
         }
         this.addPieceToBoardInPlay();

@@ -3,15 +3,18 @@ package tetris.ui;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import tetris.Constants;
+import tetris.resources.ResourceLoader;
 
 public class AudioPlayer {
     
-    Media music;
-    MediaPlayer sfxBackgroundMusic;
+    private Media music;
+    private MediaPlayer sfxBackgroundMusic;
+    private ResourceLoader resources;
 
-    public AudioPlayer() {
-        this.music = new Media(
-                Constants.FILE_BG_MUSIC.toURI().toString());
+    public AudioPlayer(ResourceLoader resources) {
+        this.resources = resources;
+        
+        this.music = new Media(this.resources.getBackgroundMusicURI());
         this.sfxBackgroundMusic  = new MediaPlayer(music);
         
         sfxBackgroundMusic.setCycleCount(Integer.MAX_VALUE);
