@@ -1,7 +1,6 @@
 # Arkkitehtuurikuvaus
 ## Luokkakaavio
-![Luokkakaavio](https://raw.githubusercontent.com/kordaniel/ot-harjoitustyo/master/dokumentaatio/kuvat/tetris_luokkakaavio.jpg)  
-luokkakaaviossa pieni virhe, Game:lla on koko ajan yhteys kahteen Piece luokkaan, vaikka kuvassa lukee 1. Laitan asiasta maininnan näin kommenttina vain sen sijaan, että tekisin uuden luokkakaavion, koska todennäköisesti tuo tulee vielä muuttumaan jossain vaiheessa.
+![Luokkakaavio](https://raw.githubusercontent.com/kordaniel/ot-harjoitustyo/master/dokumentaatio/kuvat/190505_luokkakaavio.jpg)  
 
 ## Pelilogiikka
 ### Tetris-palan siirtäminen alaspäin
