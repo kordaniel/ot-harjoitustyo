@@ -6,6 +6,7 @@ Tähän repositorioon pyrin totetuttamaan klassisen tetris-pelin kloonin. Peli o
 [Vaatimusmäärittely](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Arkkitehtuurikuvaus](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)  
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
+[Testausdokumentti](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)  
 
 ## Releaset
 [Loppupalautus](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/loppupalautus)  
