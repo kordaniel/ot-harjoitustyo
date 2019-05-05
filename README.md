@@ -1,25 +1,6 @@
 # Tetris
 Tähän repositorioon pyrin totetuttamaan klassisen tetris-pelin kloonin. Peli on minun harjoitustyö HY:n 2019 kevään kurssille _ohjelmistotekniikka_.
 
-### Tämänviikkoinen "iteraatio"
-Peliin ilmestyi bugi jota en ole ehtinyt vielä selvittää: pistelasku toimii satunnaisesti. Viikon kohokohta on se, että sovellus tallentaa sekä lataa pisteet tietokannasta sekä käyttöliittymä on vihdoin refaktoroitu hieman parempaan kuntoon, vaikka se vielä onkin jossain määrin sekava.
-
-Itse pelistä, niin muuten alkaa olemaan kunnossa. Ainut mikä vielä pitää toteuttaa on pelin tasot eli levelit järkevästi sekä pelin nopeutuminen levelien kasvamisen myötä.
-
-Checkstylestä, laitoin päälle javadocin tarkistukset ja virheitä ilmestyi vähintään riittävästi. Miten siihen pitäisi suhtautua loppupalautuksen yhteydessä? Käsittääkseni ihan kaikkia metodeja/luokkia ei tarvitse kuitenkaan dokumentoida?
-
-Testauksesta sen verran, että testikattavuus on tippunut reilusti koska koodin määrä on kasvanut reilusti tämän viikon aikana. Testien määrä on tarkalleen sama kuin viime viikolla, toki tästä varmaan pitää pisteitä vähentää :)
-
-#### Javadocista
-Seuraavat neljä luokkaa on dokumentoitu javadocilla:
-```
-Database
-Board
-User
-Piece
-```
-Sekä myös ```Game``` luokka osittain
-
 ### Dokumentaatio
 [Käyttöohje](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)  
 [Vaatimusmäärittely](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
@@ -27,6 +8,7 @@ Sekä myös ```Game``` luokka osittain
 [Työaikakirjanpito](https://github.com/kordaniel/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
 
 ## Releaset
+[Loppupalautus](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/loppupalautus)  
 [Viikko 6](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko6)  
 [Viikko 5](https://github.com/kordaniel/ot-harjoitustyo/releases/tag/viikko5)  
 
