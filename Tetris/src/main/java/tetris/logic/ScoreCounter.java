@@ -1,6 +1,6 @@
 package tetris.logic;
 
-public class Statistics {
+public class ScoreCounter {
     
     private final int basepoints;
     private int totalClearedLinesNum;
@@ -8,7 +8,7 @@ public class Statistics {
     private int lastClearedLinesAmount;
     private boolean isSaved;
 
-    public Statistics(int clearedLinesNum, int score,
+    public ScoreCounter(int clearedLinesNum, int score,
             int lastClearedLinesAmount) {
         this.basepoints = 100;
         this.totalClearedLinesNum = clearedLinesNum;
@@ -17,7 +17,7 @@ public class Statistics {
         this.isSaved = false;
     }
     
-    public Statistics() {
+    public ScoreCounter() {
         this(0, 0, 1);
     }
     

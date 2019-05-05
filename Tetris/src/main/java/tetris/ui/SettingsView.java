@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -57,7 +56,7 @@ public class SettingsView {
         Label labelVolume = new Label("Music volume:");
         settingsView.add(labelVolume, 0, 2);
         
-        sliderVolume = new Slider(0, 1, 0.15);
+        sliderVolume = new Slider(0, 1, Constants.DEFAULT_BG_MUSIC_VOLUME);
         sliderVolume.setShowTickLabels(true);
         sliderVolume.setShowTickMarks(true);
         sliderVolume.setMajorTickUnit(0.5);
@@ -80,13 +79,11 @@ public class SettingsView {
         });
     }
     
-    public void registerHandlerForVolumeSlider(GameView gameView) {
-        sliderVolume.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable,
-                    Number oldValue, Number newValue) {
-                gameView.setVolume(newValue.doubleValue());
-            }
+    public void registerHandlerForVolumeSlider(AudioPlayer audioPlayer) {
+        sliderVolume.valueProperty().addListener(
+                (ObservableValue<? extends Number> observable,
+                        Number oldValue, Number newValue) -> {
+            audioPlayer.setBackgroundMusicVolume(newValue.doubleValue());
         });
     }
 }

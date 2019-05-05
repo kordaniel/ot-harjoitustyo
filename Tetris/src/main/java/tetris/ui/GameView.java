@@ -5,12 +5,9 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PopupControl;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
@@ -37,7 +34,6 @@ public class GameView {
     private Rectangle[][] rectangleboard;
     private Rectangle[][] rectangleNextPiece;
     
-    //Scene gameScene;
     private BorderPane view;
     private GridPane gameRectangle;
     private GridPane nextPieceRectangle;
@@ -53,25 +49,7 @@ public class GameView {
     private Label popupLabel;
     private PopupControl popup;
     
-    //TEMP
-    Media music;
-    MediaPlayer sfxbgMusic;
-    public void setVolume(double vol) {
-        sfxbgMusic.setVolume(vol);
-    }
-    //TEMP
-    
     public GameView(BorderPane parent, Game gameStatus, Highscores highscores, User user) {
-        //TEMP, move to own class
-        this.music = new Media(
-                Constants.FILE_BG_MUSIC.toURI().toString());
-        this.sfxbgMusic  = new MediaPlayer(music);
-        sfxbgMusic.setCycleCount(Integer.MAX_VALUE);
-        
-        sfxbgMusic.setVolume(0.15);
-        sfxbgMusic.play();
-        //TEMP
-
         this.parent = parent;
         this.gameStatus = gameStatus;
         this.highscores = highscores;
@@ -94,7 +72,7 @@ public class GameView {
         labelCurrentLevelShow.setText(
                 Integer.toString(gameStatus.getStatistics().getLevel()));
         labelCurrentScoreShow.setText(
-                gameStatus.getStatistics().getTotalScoreAsString());
+                Integer.toString(gameStatus.getStatistics().getTotalScore()));
         labelHighScoreShow.setText(highscores.getHighScoreAsString());
         labelPlayerNameShow.setText(user.getName());
         

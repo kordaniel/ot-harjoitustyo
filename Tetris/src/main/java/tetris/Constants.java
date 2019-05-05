@@ -46,6 +46,7 @@ public class Constants {
     
     // SOUNDS
     // all sounds downloaded from https://freesound.org
+    public static final double DEFAULT_BG_MUSIC_VOLUME = 0.15;
     public static final File FILE_BG_MUSIC =
             new File("src/main/resources/sounds/bg_music.wav");
     public static final File FILE_SNDFX_CLEAR_ROWS =

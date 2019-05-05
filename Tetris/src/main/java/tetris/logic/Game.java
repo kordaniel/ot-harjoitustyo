@@ -11,7 +11,7 @@ public class Game {
 
     private Board board;
     
-    private Statistics gameStatistics;
+    private ScoreCounter scoreCounter;
     private User user;
     private Highscores highscores;
     
@@ -40,8 +40,6 @@ public class Game {
                 Constants.FILE_SNDFX_CLEAR_ROWS.toURI().toString());
         mediaPlayerTurn = new MediaPlayer(this.sndFxTurn);
         mediaPlayerClear = new MediaPlayer(this.sndFxClear);
-        //mediaPlayerTurn.setCycleCount(Integer.MAX_VALUE);
-        //mediaPlayerClear.setCycleCount(Integer.MAX_VALUE);
         
         this.height = height;
         this.width = width;
@@ -55,7 +53,7 @@ public class Game {
         this.isActive = false;
         this.isOver = false;
         
-        this.gameStatistics = new Statistics();
+        this.scoreCounter = new ScoreCounter();
     }
     
     public void startGame() {
@@ -76,12 +74,12 @@ public class Game {
     }
     
     public void saveGameScore() {
-        if (user.isAnonymous() || !gameStatistics.shouldBeSaved()) {
+        if (user.isAnonymous() || !scoreCounter.shouldBeSaved()) {
             return;
         }
         
-        highscores.newScore(user.getName(), gameStatistics.getTotalScore());
-        gameStatistics.setIsSaved(true);
+        highscores.newScore(user.getName(), scoreCounter.getTotalScore());
+        scoreCounter.setIsSaved(true);
     }
     
     /**
@@ -107,7 +105,7 @@ public class Game {
 
     public void initializeGame() {
         saveGameScore();
-        gameStatistics.reset();
+        scoreCounter.reset();
         board.reset();
         boardInPlay = this.board.getBoardCopy();
         isOver = false;
@@ -184,7 +182,7 @@ public class Game {
         } else {
             this.board.addPieceToBoard(this.currentPiece);
             int rowsCleared = this.board.dropRows();
-            gameStatistics.incrementClearedLines(rowsCleared);
+            scoreCounter.incrementClearedLines(rowsCleared);
             
             //plays only one time...
 //            if (rowsCleared >= 2) {
@@ -220,12 +218,12 @@ public class Game {
         return this.nextPiece.getPieceCoordinates();
     }
     
-    public Statistics getStatistics() {
-        return this.gameStatistics;
+    public ScoreCounter getStatistics() {
+        return this.scoreCounter;
     }
     
     public int getLevel() {
-        return gameStatistics.getLevel();
+        return scoreCounter.getLevel();
     }
     
     /**

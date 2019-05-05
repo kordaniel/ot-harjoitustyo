@@ -14,6 +14,7 @@ import tetris.database.Database;
 import tetris.domain.User;
 import tetris.logic.Game;
 import tetris.logic.Highscores;
+import tetris.ui.AudioPlayer;
 import tetris.ui.GameView;
 import tetris.ui.HighscoresView;
 import tetris.ui.MenuView;
@@ -29,6 +30,7 @@ public class Main extends Application {
 
     private Scene root;
 
+    private AudioPlayer audioPlayer;
     private BorderPane main;
     private MenuView menuView;
     private GameView gameView;
@@ -65,6 +67,10 @@ public class Main extends Application {
         });
     }
 
+    private void createAudioPlayer() {
+        audioPlayer = new AudioPlayer();
+    }
+    
     private void createMenuScene() {
         menuView = new MenuView(main);
     }
@@ -82,6 +88,7 @@ public class Main extends Application {
     }
 
     private void createScenes() {
+        createAudioPlayer();
         createRootScene();
         createMenuScene();
         createGameScene();
@@ -144,7 +151,7 @@ public class Main extends Application {
         menuView.registerHandlerForLabelHighScores(highscoresView.getScene());
 
         settingsView.registerHandlerForButtonBackToMenu(menuView.getScene());
-        settingsView.registerHandlerForVolumeSlider(gameView);
+        settingsView.registerHandlerForVolumeSlider(audioPlayer);
 
         gameView.registerHandlerForLabelBackToMenu(menuView.getScene());
 
