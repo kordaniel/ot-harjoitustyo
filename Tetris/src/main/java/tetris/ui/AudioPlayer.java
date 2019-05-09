@@ -18,13 +18,14 @@ public class AudioPlayer {
         this.music = new Media(this.resources.getBackgroundMusicURI());
         this.sfxBackgroundMusic = new MediaPlayer(music);
         
+        this.sfxBackgroundMusic.setVolume(Constants.DEFAULT_BG_MUSIC_VOLUME);
+        
         this.sfxBackgroundMusic.setStartTime(Duration.seconds(0));
         this.sfxBackgroundMusic.setStopTime(this.music.getDuration());
         
         this.sfxBackgroundMusic.setAutoPlay(true);
         this.sfxBackgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
         
-        this.sfxBackgroundMusic.setVolume(Constants.DEFAULT_BG_MUSIC_VOLUME);
         this.sfxBackgroundMusic.play();
     }
 
